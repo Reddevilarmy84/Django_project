@@ -1,0 +1,88 @@
+body {
+    background: #1e2022;
+
+}
+
+aside {
+    float: left;
+    background: #39393c;
+    width: 20%;
+    padding: 2.0%;
+    height: 100vh;
+    color: #fff;
+    border-right: 5px solid #4d4d4d;
+
+
+}
+
+aside img {
+    width: 80px;
+    float: left;
+}
+
+aside .logo {
+    font-size: 25px;
+    margin-left: 10px;
+    font-weight: bold;
+    position: relative;
+    top: 20px;
+}
+aside h3 {
+    margin-top: 50px;
+    font-size: 28px;
+}
+aside ul {list-style: none}
+aside ul a {
+    color: aliceblue;
+    display: block;
+    margin-top: 20px;
+    text-decoration: none;
+    transition: transform .6s;
+
+}
+
+aside ul Li:hover, aside ul a:hover {
+    color: #aaa1a1;
+    text-decoration: none;
+    transform: scale(1.02);
+
+
+}
+main .features{
+    color: white;
+    float: left;
+    margin-top: 50px;
+    text-align: center;
+    width: 75%;
+    margin-left: 30px;
+}
+
+main .features h1{
+    font-size: 50px;
+}
+
+main .features p {
+    max-width: 400;
+    margin: 20px auto;
+}
+
+.alert-warning {
+
+}
+
+form {
+    margin-left: 32%;
+    width: 500px;
+    margin-top: 50px;
+}
+
+g img {
+    margin: 100px auto;
+    margin-left: 20%;
+
+}
+
+div a {
+    list-style-type: none;
+    margin-bottom: 10px;
+}

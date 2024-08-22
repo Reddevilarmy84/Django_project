@@ -1,0 +1,28 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Песни{% endblock %}
+
+{% block content %}
+<div class="features">
+    <h1>Песни</h1>
+    {% if track %}
+        {% for item in track %}
+            <div class="alert alert-warning">
+                <h4>{{ item.title }}</h4>
+                <h6>{{ item.anons }}</h6>
+                {#<h6>{{ item.full_text }}</h6>#}
+                <h5>{{ item.date }}</h5>
+                <a href="{% url 'detail' item.id %}" class="btn btn-warning">Читать полностью</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>У вас нет записей</p>
+    {% endif %}
+    <a href="{% url 'create' %}"><Li><button class="btn btn-info"><i class="fas fa-plus-circle"></i>Новая запись</button></Li></a>
+    <h4> </h4>
+    <a href="{% url 'home' %}" class="btn btn-warning">На главную</a>
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<body>
+
+    <aside>
+        <img src="{% static 'main/img/logo2.png' %}" alt="logo">
+        <span class="logo">Король и шут</span>
+        <h3>
+            Навигация
+        </h3>
+        <ul>
+            <a href="{% url 'home' %}"><Li><i class="fas fa-bath"></i> Главная</Li></a>
+            <a href="{% url 'abouts' %}"><Li><i class="fas fa-bug"></i> Про нас</Li></a>
+            <a href="{% url 'contact' %}"><Li><i class="fas fa-phone"></i> Контакты</Li></a>
+            <a href="{% url 'tracks' %}"><Li><i class="fas fa-guitar"></i> Песни</Li></a>
+            <a href="{% url 'CSS_lesson' %}"><Li><i class="fas fa-guitar"></i> CSS lesson</Li></a>
+
+        </ul>
+    </aside>
+    <main>
+           {% block content %}
+            {% endblock %}
+    </main>
+</body>
+
+</html>
