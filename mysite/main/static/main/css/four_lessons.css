@@ -1,0 +1,83 @@
+* {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+  font-size: 100%;
+  font-weight: normal;
+}
+
+body {
+  min-width: 850px;
+  font-family: 'Open Sans', Arial, sans-serif;
+}
+
+
+header {
+  height: 100vh;
+  background-color: #eee;
+  background-image: url(https://code.s3.yandex.net/web-code/images/freetrack/03/cover.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(95 13 238 / 0.5);
+}
+
+.content {
+  font-size: 0;
+  background-color: #8aafcf;
+  width: 770px;
+  margin: 0 auto;
+}
+
+.card {
+  width: 360px;
+  background-color: #e3f3ff;
+  margin-bottom: 50px;
+  border: 1px solid rgb(250 50 50 / .4);
+  padding: 25px 25px 30px;
+  display: inline-block;
+  margin-right: 50px;
+}
+
+.no-right-margin {
+  margin-right: 0;
+}
+
+.card-title {
+  font-size: 31px;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 18px;
+}
+
+.card-image {
+  width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid rgb(250 50 50 / .4);
+}
+
+h1 {
+  font-size: 74px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 800;
+  padding-top: 270px;
+}
