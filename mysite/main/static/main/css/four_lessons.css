@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  margin: 0;
 }
 
 body,
@@ -8,7 +9,6 @@ h2,
 h3,
 h4,
 p {
-  margin: 0;
   font-size: 100%;
   font-weight: normal;
 }
@@ -37,16 +37,16 @@ header {
 
 .content {
   font-size: 0;
-  background-color: #8aafcf;
+  padding-top: 50px;
   width: 770px;
   margin: 0 auto;
 }
 
 .card {
+  box-shadow: 10px 10px 30px #000000;
   width: 360px;
   background-color: #e3f3ff;
   margin-bottom: 50px;
-  border: 1px solid rgb(250 50 50 / .4);
   padding: 25px 25px 30px;
   display: inline-block;
   margin-right: 50px;
@@ -72,6 +72,20 @@ header {
   width: 100%;
   margin-bottom: 20px;
   border: 1px solid rgb(250 50 50 / .4);
+}
+
+.footer {
+  display: flex;
+  text-align: center;
+  background: #4d4d4d;
+  color: white;
+  height: 300px;
+  border-top: 3px solid black;
+}
+
+.footerautor {
+  margin: auto;
+  font-size: 72px;
 }
 
 h1 {
