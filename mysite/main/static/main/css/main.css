@@ -92,7 +92,7 @@ div a {
 }
 
 .about {
-    padding-top: 20px;
+    padding-top: 60px;
     height: 700px;
     width: 400px;
     text-align: center;
@@ -100,25 +100,19 @@ div a {
 }
 
 .about-links {
-
     font-size: 32px;
     text-decoration: none;
     margin: 20px auto;
     color: #eeeeee;
     font-family: Impact;
     font-weight: normal;
-
     display: block;
-    transition: transform, color, .9s;
+    transition: all .9s;
     transition-delay: 0.01s;
 }
 
 .about-links:hover {
-
     transform: scale(1.1);
-    
-
     color: #f3e1b4;
-
-
+    text-shadow: 10px 5px 5px #504e4e;
 }
