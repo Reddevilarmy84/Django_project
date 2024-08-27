@@ -97,6 +97,7 @@ div a {
     width: 400px;
     text-align: center;
     margin: auto;
+
 }
 
 .about-links {
@@ -108,7 +109,7 @@ div a {
     font-family: Impact;
     font-weight: normal;
 
-    display: inline-block;
+    display: block;
     transition: transform, color, .9s;
     transition-delay: 0.01s;
 }
@@ -116,9 +117,8 @@ div a {
 .about-links:hover {
 
     transform: scale(1.1);
-    transform: matrix(0, 1, -2, 1, 0, 10);
-
     color: #f3e1b4;
+    text-shadow: 10px 10px 3px #4f4c4c;
 
 
 }
