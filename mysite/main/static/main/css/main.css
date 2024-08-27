@@ -23,15 +23,17 @@ aside img {
 }
 
 aside .logo {
-    font-size: 25px;
-    margin-left: 10px;
+    color: #e0d0a9;
+    font-size: 42px;
+    margin: auto;
     font-weight: bold;
-    position: relative;
-    top: 20px;
+    text-align: center;
+    text-shadow: 5px 5px 5px #4d4d4d;
 }
 aside h3 {
-    margin-top: 50px;
-    font-size: 28px;
+    margin: 40px auto;
+    font-size: 42px;
+    text-align: center;
 }
 aside ul {
     list-style: none;
@@ -41,13 +43,14 @@ aside ul a {
     display: block;
     margin-top: 20px;
     text-decoration: none;
-    transition: transform .6s;
+    transition: all .9s;
+
 }
 
 aside ul Li:hover, aside ul a:hover {
     color: #aaa1a1;
-    text-decoration: none;
-    transform: scale(1.02);
+    transform: scale(1.1);
+    transition-delay: 0.01s;
 }
 
 main {
@@ -92,7 +95,7 @@ div a {
 }
 
 .about {
-    padding-top: 60px;
+    padding-top: 90px;
     height: 700px;
     width: 400px;
     text-align: center;
@@ -100,10 +103,10 @@ div a {
 }
 
 .about-links {
-    font-size: 32px;
+    font-size: 26px;
     text-decoration: none;
     margin: 20px auto;
-    color: #eeeeee;
+    color: #ffffff;
     font-family: Impact;
     font-weight: normal;
     display: block;
@@ -112,7 +115,16 @@ div a {
 }
 
 .about-links:hover {
-    transform: scale(1.1);
-    color: #f3e1b4;
+    transform: scale(2);
+    color: #e0d0a9;
     text-shadow: 10px 5px 5px #504e4e;
+}
+
+.contacts-title {
+    color: #e0d0a9;
+    text-align: center;
+    font-size: 56px;
+    font-weight: bolder;
+    padding-top: 3%;
+    transition: all 3.2s;
 }
