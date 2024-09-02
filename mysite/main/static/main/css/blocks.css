@@ -3,24 +3,37 @@
 }
 
 .body {
-    background: #aaa1a1;
     margin: 0;
+    background: #aaa1a1;
+    background-image: url("world_map.jpg");
+    background-position: -10px -100px;
+
+
 }
 
 .header {
-    height: 10vh;
     background: #e3f3ff;
-    margin: 30px 30px 0;
+    margin: 250px 30px 10px;
+    padding: 30px;
+    text-align: center;
+    border: 2px solid #2c2828;
+    box-shadow: 5px 5px 20px black;
 }
 
 .main-section {
-    height: auto;
+    height: 200vh;
     background: #e0d0a9;
-    margin: 0 30px;
+    margin: 0 30px 10px;
+    padding: 30px;
+    border: 2px solid #2c2828;
+    box-shadow: 5px 5px 20px black;
 }
 
 .footer {
-    height: 20vh;
+    border: 2px solid #2c2828;
     background: aquamarine;
     margin: 0 30px 30px;
+    text-align: center;
+    padding: 30px;
+    box-shadow: 5px 5px 20px black;
 }
