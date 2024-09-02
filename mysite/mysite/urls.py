@@ -24,5 +24,6 @@ urlpatterns = [
     path('', include('main.urls')),
     path('tracks/', include('tracks.urls')),
     path('CSS_lesson', include('CSS_lesson.urls')),
+    path('kish', include('kish.urls')),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

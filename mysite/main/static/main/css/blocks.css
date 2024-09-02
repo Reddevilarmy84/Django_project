@@ -6,25 +6,26 @@
     margin: 0;
     background: #2d2d2d;
     background-image: url("../img/kish_back.jpg");
-    background-position: -100px -170px;
+    background-position: -100px -210px;
     background-repeat: no-repeat;
 
 
 }
 
 .header {
-    height: 100px;
+    height: 230px;
+    width: 1230px;
     background: #0e0d0d;
     background-image: url("../img/kish.jpg");
     background-repeat: no-repeat;
-    margin: 500px 60px 40px;
-    padding: 1px;
+    margin: 570px 60px 40px;
+    padding: 0px;
     text-align: center;
     border: 2px solid #2c2828;
     box-shadow: 5px 5px 11px #e0d0a9;
-    border-radius: 15px;
+    border-radius: 25px;
     color: #e0d0a9;
-    display: flex;
+    display: inline-block;
 }
 
 .header-h1 {
@@ -32,21 +33,51 @@
     font-size: 48px;
 }
 .main-section {
-    height: 200vh;
-    background: #e0d0a9;
-    margin: 0 60px 10px;
+    height: auto;
+    background: #0e0d0d;
+    margin: 0 270px 10px;
     padding: 30px;
     border: 2px solid #2c2828;
-    box-shadow: 5px 5px 15px black;
+    box-shadow: 5px 5px 11px #e0d0a9;
     border-radius: 15px;
 }
 
 .footer {
     border: 2px solid #2c2828;
-    background: aquamarine;
-    margin: 0 60px 30px;
+    background: #0e0d0d;
+    margin: 0 300px 30px 100px;
     text-align: center;
     padding: 30px;
-    box-shadow: 5px 5px 15px black;
+    box-shadow: 5px 5px 11px #e0d0a9;
     border-radius: 15px;
+    color: #aaa1a1;
+}
+
+.links {
+    width: 100%;
+    display: block;
+    margin-left: 190px;
+    margin-top: 110px;
+}
+
+a {
+    color: #eac0ab;
+    display: inline-block;
+    padding: 10px;
+    text-decoration: none;
+    text-shadow: 5px 5px 5px black;
+    list-style: none;
+    font-size: 58px;
+    transition-delay: 0.1s;
+    transition: all 0.8s;
+}
+
+a:hover {
+    color: rgb(160, 108, 80);
+    display: inline-block;
+    padding: 10px;
+    text-decoration: none;
+    text-shadow: 1px 1px 1px #45291f;
+    list-style: none;
+    transform: scale(1.05);
 }
