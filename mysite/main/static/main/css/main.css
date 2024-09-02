@@ -8,7 +8,7 @@ body {
 }
 
 aside {
-    float: left;
+    position: absolute;
     background: #39393c;
     width: 20%;
     padding: 2.0%;
@@ -37,6 +37,7 @@ aside h3 {
 }
 aside ul {
     list-style: none;
+
 }
 aside ul a {
     color: aliceblue;
@@ -59,11 +60,10 @@ main {
 
 main .features{
     color: white;
-    float: left;
-    margin-top: 50px;
     text-align: center;
     width: 75%;
-    margin-left: 30px;
+    margin: auto;
+    padding-top: 3%;
 }
 
 main .features h1{
