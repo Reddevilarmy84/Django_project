@@ -4,20 +4,26 @@
 
 .body {
     margin: 0;
-    background: #aaa1a1;
-    background-image: url("world_map.jpg");
-    background-position: -10px -100px;
+    background: #2d2d2d;
+    background-image: url("../img/kish_back.jpg");
+    background-position: -100px -170px;
+    background-repeat: no-repeat;
 
 
 }
 
 .header {
-    background: #e3f3ff;
-    margin: 250px 30px 10px;
+    height: 100px;
+    background: black;
+    background-image: url("../img/kish.jpg");
+    background-repeat: no-repeat;
+    margin: 500px 30px 10px;
     padding: 30px;
     text-align: center;
     border: 2px solid #2c2828;
-    box-shadow: 5px 5px 20px black;
+    box-shadow: 5px 5px 15px black;
+    border-radius: 15px;
+    color: #e0d0a9;
 }
 
 .main-section {
@@ -26,7 +32,8 @@
     margin: 0 30px 10px;
     padding: 30px;
     border: 2px solid #2c2828;
-    box-shadow: 5px 5px 20px black;
+    box-shadow: 5px 5px 15px black;
+    border-radius: 15px;
 }
 
 .footer {
@@ -35,5 +42,6 @@
     margin: 0 30px 30px;
     text-align: center;
     padding: 30px;
-    box-shadow: 5px 5px 20px black;
+    box-shadow: 5px 5px 15px black;
+    border-radius: 15px;
 }
