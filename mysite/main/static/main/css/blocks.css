@@ -18,6 +18,7 @@
     text-align: center;
     border: 2px solid #2c2828;
     box-shadow: 5px 5px 20px black;
+    border-radius: 20px;
 }
 
 .main-section {
@@ -27,6 +28,7 @@
     padding: 30px;
     border: 2px solid #2c2828;
     box-shadow: 5px 5px 20px black;
+    border-radius: 20px;
 }
 
 .footer {
@@ -36,4 +38,5 @@
     text-align: center;
     padding: 30px;
     box-shadow: 5px 5px 20px black;
+    border-radius: 20px;
 }
