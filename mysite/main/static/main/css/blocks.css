@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+}
+
+.body {
+    background: #aaa1a1;
+    margin: 0;
+}
+
+.header {
+    height: 10vh;
+    background: #e3f3ff;
+    margin: 30px 30px 0;
+}
+
+.main-section {
+    height: auto;
+    background: #e0d0a9;
+    margin: 0 30px;
+}
+
+.footer {
+    height: 20vh;
+    background: aquamarine;
+    margin: 0 30px 30px;
+}

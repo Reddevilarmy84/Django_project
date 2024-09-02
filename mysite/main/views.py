@@ -17,4 +17,5 @@ def abouts(request):
 def contact(request):
     return render(request, 'main/contacts.html')
 
-
+def blocks(request):
+    return render(request, 'main/blocks.html')
