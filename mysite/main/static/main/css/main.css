@@ -8,7 +8,7 @@ body {
 }
 
 aside {
-    position: absolute;
+    float: left;
     background: #39393c;
     width: 20%;
     padding: 2.0%;
@@ -23,21 +23,24 @@ aside img {
 }
 
 aside .logo {
+    display: block;
     color: #e0d0a9;
-    font-size: 42px;
+    font-size: 56px;
     margin: auto;
     font-weight: bold;
     text-align: center;
     text-shadow: 5px 5px 5px #4d4d4d;
 }
+
 aside h3 {
     margin: 40px auto;
-    font-size: 42px;
+    font-size: 32px;
     text-align: center;
 }
+
 aside ul {
     list-style: none;
-
+    display: inline-block;
 }
 aside ul a {
     color: aliceblue;
@@ -60,10 +63,11 @@ main {
 
 main .features{
     color: white;
+    float: left;
+    margin-top: 50px;
     text-align: center;
     width: 75%;
-    margin: auto;
-    padding-top: 3%;
+    margin-left: 30px;
 }
 
 main .features h1{

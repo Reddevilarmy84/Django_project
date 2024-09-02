@@ -1,45 +1,36 @@
-body {
-  min-width: 850px;
+* {
+    box-sizing: border-box;
 }
 
-h1 {
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-top: 45px;
-  color: white;
-  font-family: William, serif;
-  font-weight: normal;
-  font-size: 31px;
-  font-style: italic;
-  text-transform: uppercase;
+body {
+    margin: 0;
 }
 
 aside {
     float: left;
     background: #39393c;
-    width: 30%;
+    width: 20%;
     padding: 2.0%;
     height: 100vh;
     color: #fff;
     border-right: 5px solid #4d4d4d;
-    margin: 0;
-}
-
-body aside img {
-    width: 80px;
-    float: left;
 }
 
 aside .logo {
-    font-size: 25px;
-    margin-left: 10px;
+    display: block;
+    color: #e0d0a9;
+    font-size: 42px;
+    margin: auto;
     font-weight: bold;
-    position: relative;
-    top: 20px;
+    text-align: center;
+    text-shadow: 5px 5px 5px #4d4d4d;
 }
+
 aside h3 {
-    margin-top: 50px;
-    font-size: 28px;
+    margin: 40px auto;
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
 }
 
 aside ul {list-style: none}
@@ -50,48 +41,12 @@ aside ul a {
     margin-top: 20px;
     text-decoration: none;
     transition: transform .6s;
-
 }
 
 aside ul Li:hover, aside ul a:hover {
     color: #aaa1a1;
     text-decoration: none;
     transform: scale(1.02);
-
-}
-
-h2 {
-  margin-top: 0;
-  margin-bottom: 35px;
-  color: white;
-  font-family: Inter, sans-serif;
-  font-size: 31px;
-  text-transform: uppercase;
-}
-
-p {
-  margin-top: 0;
-  margin-bottom: 0;
-  font-family: Inter, sans-serif;
-  text-align: center;
-}
-
-img {
-  width: 210px;
-  margin-bottom: 80px;
-}
-
-div {
-    width: 500px;
-    height: 500px;
-    text-align: center;
-    background-color: deepskyblue;
-    margin: 100px auto 20px;
-}
-
-section {
-  text-align: center;
-  margin-top: 20px;
 }
 
 h3 {
