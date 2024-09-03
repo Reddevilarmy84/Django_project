@@ -103,9 +103,9 @@ a:focus {
 }
 
 .img_about {
-    width: 1100px;
-    height: 600px;
-    border: 1px solid #e8b398;
-    box-shadow: 2px 2px 2px #e8b398;
+    width: 80%;
+    height: 80%;
+
+
     border-radius: 5px;
 }
