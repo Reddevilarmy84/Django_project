@@ -8,8 +8,7 @@
     background-image: url("../img/kish_back.jpg");
     background-position: -100px -210px;
     background-repeat: no-repeat;
-
-
+    background-attachment: fixed;
 }
 
 .header {
@@ -32,6 +31,7 @@
     margin: auto;
     font-size: 48px;
 }
+
 .main-section {
     height: auto;
     background: #0e0d0d;
@@ -40,6 +40,7 @@
     border: 2px solid #2c2828;
     box-shadow: 5px 5px 11px #e0d0a9;
     border-radius: 15px;
+    text-align: center;
 }
 
 .footer {
@@ -69,15 +70,42 @@ a {
     list-style: none;
     font-size: 58px;
     transition-delay: 0.1s;
-    transition: all 0.8s;
+    transition: all 0.4s;
 }
 
 a:hover {
-    color: rgb(160, 108, 80);
+    color: #e8b398;
     display: inline-block;
     padding: 10px;
     text-decoration: none;
     text-shadow: 1px 1px 1px #45291f;
     list-style: none;
-    transform: scale(1.05);
+    transform: scale(1.02);
+}
+
+a:focus {
+  color: #1e2022;
+}
+
+.h2-about {
+    color: #ffffff;
+    font-size: 48px;
+}
+.p-about {
+    color: #ffffff;
+    font-size: 30px;
+    scroll-behavior: smooth;
+}
+
+.a_about {
+    color: #4d4d4d;
+    font-size: 20px;
+}
+
+.img_about {
+    width: 1100px;
+    height: 600px;
+    border: 1px solid #e8b398;
+    box-shadow: 2px 2px 2px #e8b398;
+    border-radius: 5px;
 }
