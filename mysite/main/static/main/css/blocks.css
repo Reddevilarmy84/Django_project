@@ -120,7 +120,8 @@ a:focus {
 }
 
 .chords-h2 {
-    color: #eeeeee;
+    color: #b5b3b3;
+    font-size: 48px;
 }
 
 .chords-a {
@@ -144,11 +145,10 @@ a:focus {
     font-size: 20px;
 }
 
-
-
 .song {
     width: 100%;
     display: flex;
     text-align: center;
-
+    border: 2px solid #4d4d4d;
+    border-radius: 5px;
 }
