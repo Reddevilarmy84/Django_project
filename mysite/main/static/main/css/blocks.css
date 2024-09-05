@@ -105,7 +105,50 @@ a:focus {
 .img_about {
     width: 80%;
     height: 80%;
-
-
     border-radius: 5px;
+}
+
+.chords-section {
+    height: auto;
+    background: #0e0d0d;
+    margin: 50px 50px 10px;
+    padding: 30px;
+    border: 2px solid #2c2828;
+    box-shadow: 5px 5px 17px #e0d0a9;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.chords-h2 {
+    color: #eeeeee;
+}
+
+.chords-a {
+    font-size: 34px;
+}
+
+.chords-p {
+    color: #eeeeee;
+    font-size: 18px;
+}
+
+.verse {
+    padding: 2%;
+    width: 250px;
+    height: auto;
+    color: #eeeeee;
+    text-align: center;
+    transition: all 0.5s;
+    display: inline-block;
+    margin: 0 auto;
+    font-size: 20px;
+}
+
+
+
+.song {
+    width: 100%;
+    display: flex;
+    text-align: center;
+
 }

@@ -6,3 +6,6 @@ def kish(request):
 
 def about_kish(request):
     return render(request, 'kish/about_kish.html')
+
+def chords(request):
+    return render(request, 'kish/chords.html')
