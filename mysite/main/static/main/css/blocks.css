@@ -6,7 +6,7 @@
     margin: 0;
     background: #2d2d2d;
     background-image: url("../img/kish_back.jpg");
-    background-position: -100px -210px;
+    background-position: -5px 1px;
     background-repeat: no-repeat;
     background-attachment: fixed;
     scroll-behavior: smooth;
@@ -18,7 +18,7 @@
     background: #0e0d0d;
     background-image: url("../img/kish.jpg");
     background-repeat: no-repeat;
-    margin: 570px 60px 40px;
+    margin: 700px 300px 40px;
     padding: 0px;
     text-align: center;
     border: 2px solid #2c2828;
@@ -117,6 +117,10 @@ a:focus {
     box-shadow: 5px 5px 17px #e0d0a9;
     border-radius: 15px;
     text-align: center;
+}
+
+.chords-section-hone-link {
+    padding-bottom: 40px;
 }
 
 .chords-h2 {
