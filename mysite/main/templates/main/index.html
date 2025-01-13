@@ -3,18 +3,10 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-    <div class="about">
+    <div class="mainContent">
         <h1>{{ title }}</h1>
         <a href="{% url 'abouts' %}" class = "btn btn-warning">{% filter upper %}Про нас</a>
         {% endfilter %}
-        {% for element in values %}
-            {% if element == 'hello'%}
-            <p>{{ element|upper }}</p>
-            {% endif%}
-        {% endfor %}
-        {% for element in obj %}
-        <p>{{ element }}</p>
-        {% endfor %}
     </div>
 
 {% endblock %}
