@@ -13,20 +13,27 @@
       href="https://code.s3.yandex.net/web-code/images/playlist-favicon.ico"
     />
 </head>
+
 <body>
-    <div>
-          <h1>The Life of</h1>
-          <h2>Coder</h2>
-          <img
-            src="https://pictures.s3.yandex.net/frontend-developer/free-course/mountains.jpg"
-            alt="Чёрно-белая фотография гор в тумане"
-          />
-          <h3>2022 Liza G.</h3>
-    </div>
-    <p><a target="_blank" href="https://music.yandex.ru/users/ynx-praktikum/playlists/1002">Плейлист</a> для беспечного занятия кодингом.</p>
-    <p>Один раз послушал — семь раз покодил.</p>
-    <section>
-        <a href="{% url 'CSS_lesson' %}" class = "btn btn-warning">назад</a>
+    <header class="playlistHeader">
+        <h1>Playlist</h1>
+    </header>
+    <section class="playlistMainSection">
+        <div>
+            <h1>The Life of</h1>
+            <h2>Coder</h2>
+            <img src="https://pictures.s3.yandex.net/frontend-developer/free-course/mountains.jpg" alt="Чёрно-белая фотография гор в тумане"
+            />
+            <h3>2022 Liza G.</h3>
+        </div>
+        <p><a target="_blank" href="https://music.yandex.ru/users/ynx-praktikum/playlists/1002">Плейлист</a> для беспечного занятия кодингом.</p>
+        <p>Один раз послушал — семь раз покодил.</p>
+        <section>
+            <a href="{% url 'CSS_lesson' %}" class = "btn btn-warning">назад</a>
+        </section>
     </section>
+    <footer class="playlistFooter">
+        <h1>2025</h1>
+    </footer>
 </body>
 </html>

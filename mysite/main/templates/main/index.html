@@ -3,19 +3,18 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-<div class="features">
-    <h1>{{ title }}</h1>
-    <p>Панки хой!</p>
-    <a href="{% url 'abouts' %}" class = "btn btn-warning">{% filter upper %}Про нас</a>
-    {% endfilter %}
-    {% for element in values %}
-        {% if element == 'hello'%}
-        <p>{{ element|upper }}</p>
-        {% endif%}
-    {% endfor %}
-    {% for element in obj %}
-    <p>{{ element }}</p>
-    {% endfor %}
-</div>
+    <div class="about">
+        <h1>{{ title }}</h1>
+        <a href="{% url 'abouts' %}" class = "btn btn-warning">{% filter upper %}Про нас</a>
+        {% endfilter %}
+        {% for element in values %}
+            {% if element == 'hello'%}
+            <p>{{ element|upper }}</p>
+            {% endif%}
+        {% endfor %}
+        {% for element in obj %}
+        <p>{{ element }}</p>
+        {% endfor %}
+    </div>
 
 {% endblock %}
