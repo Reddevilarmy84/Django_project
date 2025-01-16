@@ -1,12 +1,7 @@
 {% extends 'main/layout.html' %}
-
 {% block title %}{{ title }}{% endblock %}
+{% block header %}<h1>{{ header}}!</h1>{% endblock %}
 
 {% block content %}
-    <div class="mainContent">
-        <h1>{{ title }}</h1>
-        <a href="{% url 'abouts' %}" class = "btn btn-warning">{% filter upper %}Про нас</a>
-        {% endfilter %}
-    </div>
-
+    <div class="content"></div>
 {% endblock %}

@@ -4,7 +4,10 @@
 
 body {
     margin: 0;
+    background-color: #3a5b7c;
+    padding: 20px;
 }
+
 
 aside {
     float: left;

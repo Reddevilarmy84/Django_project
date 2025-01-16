@@ -3,18 +3,25 @@ from django.shortcuts import render
 
 def index(request):
     data = {
-
-        'title': 'Главная страница',
-
+        'title': 'MadJunior Главная!',
+        'header': 'MadJunior',
     }
     return render(request, 'main/index.html', data)
 
 
 def abouts(request):
-    return render(request, 'main/about.html')
+    data = {
+        'title': 'MadJunior Про нас',
+        'header': 'Про нас',
+    }
+    return render(request, 'main/about.html', data)
 
 
 def contact(request):
-    return render(request, 'main/contacts.html')
+    data = {
+        'title': 'MadJunior Вспомагательные материалы',
+        'header': 'Ссылки на Вспомагательные материалы',
+    }
+    return render(request, 'main/contacts.html', data)
 
 

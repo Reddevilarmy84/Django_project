@@ -2,101 +2,102 @@
     box-sizing: border-box;
 }
 
-body {
+#body {
     margin: 0;
-    background-color: #3a5b7c;
-    padding: 20px;
+    background-image: url("../img/background.webp");
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#tinting {
+
+    background-color: rgba(50, 50, 50, 0.8);
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+#skeleton {
+    position: static;
+    margin: 4rem;
+    background-color: rgba(50, 50, 50, 0.8);
+    border-radius: 2rem;
+    border: rgba(0, 0, 0, 1) solid 0.2rem;
+}
+
+#header {
+    padding-top: 1rem;
+    height: 15rem;
+    background-color: rgba(50, 50, 50, 1);
+    text-align: center;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    border-bottom: rgba(0, 0, 0, 1) solid 0.2rem;
+}
+
+#navigation {
+    margin-left: 5px;
+    margin-top: 7px;
+    padding-left: 10px;
+    padding-top: 5px;
+    position: sticky;
+    top: -0.2rem;
+    height: 3rem;
+    width: max-content;
+    background-color: rgb(255, 0, 0);
+    border: #0e0d0d solid 0.2rem;
+}
+
+.content {
+    height: 110vh;
+    text-align: center;
+    margin-top: 50px;
+
+}
+
+#footer {
+    height: 5rem;
+    background-color: rgba(50, 50, 50, 1);
+    text-align: center;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    border-top: rgba(0, 0, 0, 1) solid 0.2rem;
+}
+
+nav a {
+    margin: 10px 10px 10px 10px;
+    font-family: "Comic Sans MS";
+    font-weight: bolder;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+nav a:hover {
+    color: #eeeeee;
+    text-shadow: #000000 2px 2px 2px;
 }
 
 h1 {
-    color: #e0d0a9;
-    text-align: center;
-    font-size: 56px;
-    font-weight: bolder;
-    padding-top: 3%;
-    transition: all 3.2s;
-    margin: 0 0 40px 0;
+    color: rgb(200, 200, 200);
 }
 
-h1:hover {
-    color: #9a896e;
-    text-align: center;
-    font-size: 56px;
-    font-weight: bolder;
-    padding-top: 3%;
-    transition: all 3.2s;
-    margin: 0 0 40px 0;
+header h1 {
+    color: rgb(200, 200, 200);
+    font-size: 5rem;
 }
 
-aside {
-    float: left;
-    background: #39393c;
-    width: 20%;
-    padding: 2.0%;
-    height: 100vh;
-    color: #fff;
-    border: 5px solid #4d4d4d;
-    border-radius: 30px;
-}
-
-aside h3 {
-    margin: 40px auto;
-    font-size: 32px;
-    text-align: center;
-}
-
-aside ul {
-    list-style: none;
-    display: inline-block;
-}
-aside ul a {
-    color: aliceblue;
-    display: block;
-    margin-top: 20px;
-    text-decoration: none;
-    transition: all .6s;
-
-}
-
-aside ul Li:hover, aside ul a:hover {
-    color: #aaa1a1;
-    transform: scale(1.1);
-    transition-delay: 0.01s;
-}
-
-main {
-    margin-left: 20%;
-}
-
-.features {
-
-}
-
-form {
+.form {
     margin-left: 32%;
     width: 500px;
     margin-top: 50px;
 }
 
-div a {
-    list-style-type: none;
-    margin-bottom: 10px;
-}
-
-.mainContent {
-    padding: 2%;
-    height: 100vh;
-    width: 100%;
-    text-align: center;
-    margin-left: 10px;
-    background-color: #1e2022;
-    border-radius: 40px;
-}
-
 .about-links {
     font-size: 26px;
     text-decoration: none;
-    margin: 10px auto;
+    margin: 10px;
     color: #ffffff;
     font-family: Impact;
     font-weight: normal;
@@ -106,7 +107,6 @@ div a {
 }
 
 .about-links:hover {
-    transform: scale(2);
     color: #e0d0a9;
     text-shadow: 10px 5px 5px #504e4e;
 }
