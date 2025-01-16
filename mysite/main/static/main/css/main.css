@@ -39,7 +39,6 @@
     display: flex;
     margin-left: 5px;
     margin-top: 7px;
-
     position: sticky;
     top: -0.2rem;
     height: 3rem;
@@ -51,7 +50,8 @@
 .content {
     padding: 40px;
     display: flex;
-    height: 110vh;
+    flex-wrap: wrap;
+    height: max-content;
     text-align: center;
     margin-top: 50px;
 
@@ -97,6 +97,7 @@ header h1 {
 }
 
 .JavaBox {
+    margin: 30px 30px;
     padding: 20px;
     height: max-content;
     width: max-content;
@@ -105,6 +106,20 @@ header h1 {
     font-family: "Comic Sans MS";
     font-size: 2rem;
     border-radius: 30px;
+}
+
+#monitor {
+    display: none;
+    text-align: center;
+    position: fixed;
+    top: 260px;
+    right: 30px;
+    float: right;
+    height: 200px;
+    width: 400px;
+    background-color: #0e0d0d;
+    border: #ff0000 solid 4px;
+    border-radius: 20px;
 }
 
 .form {

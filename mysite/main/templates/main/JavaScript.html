@@ -4,17 +4,53 @@
     {{ title }}
 {% endblock %}
 {% block header %}
-    <h1>{{ header}}!</h1>
+    <h1>{{ header }}!</h1>
+
 {% endblock %}
 {% block content %}
-    <h1 style="text-align: center; margin-top: 40px">Добро пожаловать в раздел JavaScript!<br>
-    Он состоит из мини-блоков в которых реализуется код на JC</h1>
-    <div class="content">
+    <div id="monitor"><h1>Отображение изменений</h1></div>
+    <h1 id="greet" style="text-align: center; margin-top: 40px">Добро пожаловать в раздел JavaScript!<br>
+    Он состоит из мини-блоков в которых реализуется код на JC</h1><br>
+    <div id="parentElement" class="content">
         <div class="JavaBox">
-            JC, поздоровайся с гостями.<br>
+            JC, выведи в JavaBox приветствие.<br>
             <script>
-                document.write('Hello! I am Java Script!')
+                document.write('HELLO! I am Java Script!')
+            </script>
+        </div>
+        <div class="JavaBox" onclick="showmessage ()">
+            JC, выведи сообщение с приветствием.<br>
+        </div>
+        <div class="JavaBox" onclick="f ()">
+            Добавить JavaBox<br>
+            <script>
+                function  f () {
+                    let parent = document.getElementById('parentElement');
+                    let newElement = document.createElement('div');
+                    newElement.className = "JavaBox";
+                    newElement.textContent = "Новый JavaBox";
+                    parent.appendChild(newElement);
+                }
+            </script>
+        </div>
+        <div class="JavaBox" onclick="changeHeader ()">
+            Поменяй текст в приветствии<br>
+            <script>
+                function changeHeader () {
+                    let greet = document.getElementById('greet')
+                    greet.innerHTML = "Изменили текст в приветствии"
+                }
+            </script>
+        </div>
+        <div class="JavaBox" id="turn" onclick="turnOn ()">
+            JC, включи монитор.<br>
+            <script>
+                function turnOn () {
+                    let monitor = document.getElementById('monitor');
+                    monitor.style.display = "flex";
+                }
             </script>
         </div>
     </div>
+    <div style="height: 50vh"></div>
 {% endblock %}
