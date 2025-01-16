@@ -13,19 +13,18 @@
 }
 
 .header {
-    height: 230px;
-    width: 1230px;
+    height: max-content;
+    width: 1400px;
     background: #0e0d0d;
     background-image: url("../img/kish.jpg");
     background-repeat: no-repeat;
-    margin: 700px 300px 40px;
-    padding: 0px;
+    margin: 600px 300px 40px;
     text-align: center;
     border: 2px solid #2c2828;
     box-shadow: 3px 3px 17px #e0d0a9;
     border-radius: 25px;
     color: #e0d0a9;
-    display: inline-block;
+    display: flex;
 }
 
 .header-h1 {
@@ -58,8 +57,7 @@
 .links {
     width: 100%;
     display: block;
-    margin-left: 190px;
-    margin-top: 110px;
+    margin: 100px auto;
 }
 
 a {

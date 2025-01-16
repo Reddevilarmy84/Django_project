@@ -1,0 +1,20 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block header %}
+    <h1>{{ header}}!</h1>
+{% endblock %}
+{% block content %}
+    <h1 style="text-align: center; margin-top: 40px">Добро пожаловать в раздел JavaScript!<br>
+    Он состоит из мини-блоков в которых реализуется код на JC</h1>
+    <div class="content">
+        <div class="JavaBox">
+            JC, поздоровайся с гостями.<br>
+            <script>
+                document.write('Hello! I am Java Script!')
+            </script>
+        </div>
+    </div>
+{% endblock %}

@@ -1,7 +1,13 @@
 {% extends 'main/layout.html' %}
+{% load static %}
 {% block title %}{{ title }}{% endblock %}
-{% block header %}<h1>{{ header}}!</h1>{% endblock %}
+{% block header %}
+    <h1>{{ header}}!</h1>
+
+{% endblock %}
 
 {% block content %}
-    <div class="content"></div>
+    <div class="content">
+        <h1>Добро пожаловать на мой первый проэкт на Django, где я применяю полученные во время обучения знания для закрепления результатов.</h1>
+    </div>
 {% endblock %}

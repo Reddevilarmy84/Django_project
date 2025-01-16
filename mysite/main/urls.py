@@ -17,4 +17,5 @@ urlpatterns = [
     path('', views.index, name='home'),
     path('abouts', views.abouts, name='abouts'),
     path('contact', views.contact, name='contact'),
+    path('java-script', views.java_script, name='java-script'),
 ]

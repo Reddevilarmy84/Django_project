@@ -12,11 +12,36 @@
 <body id="body">
     <div id="tinting">
         <div id="skeleton">
-            <header id="header">{% block header %}{% endblock %}</header>
+            <header id="header">
+                {% block header %}{% endblock %}
+                    <img src="{% static '/main/img/progger.jpg' %}"
+                         alt="Программист за рабочим столом"
+                         style="
+                             width: 300px;
+                             height: 200px;
+                             border-radius:30px;
+                             position: absolute;
+                             left: 75px;
+                             top: 75px
+                        "
+                    >
+            </header>
             <nav id="navigation">
-                <a href="{% url 'home' %}">Домой</a>
-                <a href="{% url 'abouts' %}">Про нас</a>
-                <a href="{% url 'contact' %}">Вспомагательные материалы</a>
+                <div class="navButton">
+                    <a href="{% url 'home' %}">Домой</a>
+                </div>
+                <div class="navButton">
+                    <a href="{% url 'java-script' %}">JavaScript</a>
+                </div>
+                <div class="navButton">
+                    <a href="{% url 'abouts' %}">Про нас</a>
+                </div>
+                <div class="navButton">
+                    <a href="{% url 'contact' %}">Вспомагательные материалы</a>
+                </div>
+                <div class="navButton">
+                    <a href="{% url 'kish' %}">Проект "Король и шут"</a>
+                </div>
             </nav>
             <main>{% block content %}{% endblock %}</main>
             <footer id="footer">

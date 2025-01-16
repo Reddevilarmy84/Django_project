@@ -32,9 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'kish',
-    'CSS_lesson',
     'main',
-    'tracks',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
