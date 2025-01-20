@@ -118,8 +118,12 @@ header h1 {
     height: 200px;
     width: 400px;
     background-color: #0e0d0d;
-    border: #ff0000 solid 4px;
+    border: rgb(255, 0, 0) solid 4px;
     border-radius: 20px;
+}
+
+#monitor h1 {
+    text-align: center;
 }
 
 .form {
@@ -129,6 +133,8 @@ header h1 {
 }
 
 .about-links {
+    height: max-content;
+    width: max-content;
     font-size: 26px;
     text-decoration: none;
     margin: 10px;
@@ -143,5 +149,16 @@ header h1 {
 .about-links:hover {
     color: #e0d0a9;
     text-shadow: 10px 5px 5px #504e4e;
+}
+
+#time {
+    color: #eeeeee;
+    font-size: 15px;
+    text-align: right;
+    position: relative;
+    top: -260px;
+    right: 15px;
+    font-size: 1rem;
+    font-family: "Comic Sans MS";
 }
 

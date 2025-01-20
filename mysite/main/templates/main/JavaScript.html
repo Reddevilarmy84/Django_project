@@ -5,22 +5,45 @@
 {% endblock %}
 {% block header %}
     <h1>{{ header }}!</h1>
-
 {% endblock %}
 {% block content %}
-    <div id="monitor"><h1>Отображение изменений</h1></div>
+    <div id="monitor"><h1>Отображение</h1></div>
+    <div id="time">
+        <p>
+        <script>
+            function TimeNow () {
+                var Now = new Date();
+                var day = Now.getDate();
+                var month = Now.getMonth()
+                var year = Now.getFullYear();
+                var hours = Now.getHours();
+                var minutes = Now.getMinutes();
+                var seconds = Now.getSeconds();
+                var monthes = ['Января']
+                seconds = seconds < 10 ? '0' + seconds : seconds;
+                minutes = minutes < 10 ? '0' + minutes : minutes;
+                var full = `${day}  ${monthes[Now.getMonth()]}  ${year}г.  время  ${hours}:${minutes}:${seconds}`;
+                document.getElementById('time').textContent = full;
+            };
+            setInterval(TimeNow, 1000);
+        </script>
+        </p>
+    </div>
     <h1 id="greet" style="text-align: center; margin-top: 40px">Добро пожаловать в раздел JavaScript!<br>
     Он состоит из мини-блоков в которых реализуется код на JC</h1><br>
     <div id="parentElement" class="content">
+        <!--JC, выведи в JavaBox приветствие-->
         <div class="JavaBox">
             JC, выведи в JavaBox приветствие.<br>
             <script>
                 document.write('HELLO! I am Java Script!')
             </script>
         </div>
+        <!--выведи сообщение с приветствием-->
         <div class="JavaBox" onclick="showmessage ()">
             JC, выведи сообщение с приветствием.<br>
         </div>
+        <!--Добавить JavaBox-->
         <div class="JavaBox" onclick="f ()">
             Добавить JavaBox<br>
             <script>
@@ -33,22 +56,38 @@
                 }
             </script>
         </div>
-        <div class="JavaBox" onclick="changeHeader ()">
+        <!--Поменяй текст в приветствии-->
+        <div class="JavaBox" onclick="changeGreet ()">
             Поменяй текст в приветствии<br>
             <script>
-                function changeHeader () {
+                function changeGreet () {
                     let greet = document.getElementById('greet')
                     greet.innerHTML = "Изменили текст в приветствии"
                 }
             </script>
         </div>
-        <div class="JavaBox" id="turn" onclick="turnOn ()">
-            JC, включи монитор.<br>
+        <!--JC, включи монитор.-->
+        <div class="JavaBox" id="turnedOff" style="background-color: rgb(255, 0, 0)">JC, включи монитор.
             <script>
-                function turnOn () {
-                    let monitor = document.getElementById('monitor');
-                    monitor.style.display = "flex";
-                }
+                var status = 'off'
+                document.addEventListener('DOMContentLoaded', () => {
+                    document.getElementById("turnedOff").addEventListener("click",
+                        function () {
+                            if(status === 'off') {
+                                status = 'on';
+                                document.getElementById('monitor').style.display = 'block';
+                                document.getElementById('turnedOff').textContent = `JC, выключи монитор.`;
+                                document.getElementById('turnedOff').style.backgroundColor = `green`;
+                            }
+                            else {
+                                status = 'off'
+                                document.getElementById('monitor').style.display = 'none';
+                                document.getElementById('turnedOff').textContent = `JC, включи монитор.`;
+                                document.getElementById('turnedOff').style.backgroundColor = `red`;
+                            }
+                        }
+                    )
+                })
             </script>
         </div>
     </div>
