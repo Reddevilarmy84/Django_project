@@ -1,5 +1,5 @@
 import os
-from utils import dict_to_json, json_to_dict, pars_lord_film
+from pars_utils import dict_to_json, json_to_dict, pars_lord_film
 
 #print(soup.prettify())
 
@@ -13,8 +13,8 @@ parent_dir = os.path.dirname(this_py_dir)
 path_to_json = os.path.join(this_py_dir, 'films.json')
 
 
-year = 2023
-page = 3
+year = 2025
+page = 1
 url = f'https://13.lordfilm-dc.com/films-{year}/page/{page}'
 
 

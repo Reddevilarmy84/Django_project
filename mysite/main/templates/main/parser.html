@@ -11,7 +11,7 @@
     <div class="content">
        <h2>
             {% for item in JsonData %}
-                <div class="film_card">
+                <div class="film_card" src="{{item.img}}">
                     <h3>{{item.name}}</h3>
                     <a href="{{item.link}}"><img class="card_img" src="{{item.img}}" alt="{{item.name}}"></a>
                     <h3>{{item.year}}</h3>

@@ -57,7 +57,7 @@ h2 {
 
 h3 {
     color: rgb(200, 200, 200);
-    font-size: 1.2vw;
+    font-size: 1vw;
     width: 15vw;
 }
 
@@ -170,14 +170,20 @@ nav div a {
 
 .film_card {
     margin: 2vw;
-    padding: 0.5vw;
-    display: block;
+    display: inline-block;
     text-align: center;
     height: min-content;
     width: max-content;
     border: #0e0d0d solid 0.2vw;
     border-radius: 2vw;
     background-color: #373737;
+    cursor: pointer;
+    box-shadow: #0e0d0d 1vw 1vw 1vw;
+    transition: all 0.3s;
+}
+
+.film_card:hover {
+    transform: scale(1.02);
 }
 
 .card_img {

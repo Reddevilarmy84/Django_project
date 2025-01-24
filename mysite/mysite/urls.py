@@ -23,5 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
     path('kish', include('kish.urls')),
+    path('parsing/', include('parsing.urls')),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

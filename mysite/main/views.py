@@ -11,7 +11,7 @@ parent_dir = os.path.dirname(this_py_dir)
 pre_parent_dir = os.path.dirname(parent_dir)
 
 # Получаем путь к JSON
-path_to_json = os.path.join(pre_parent_dir, 'Python', 'parser', 'films.json')
+path_to_json = os.path.join(this_py_dir, 'films.json')
 
 
 
