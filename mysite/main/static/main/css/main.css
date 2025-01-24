@@ -14,8 +14,8 @@
 #tinting {
     background-color: rgba(50, 50, 50, 0.8);
     background-size: cover;
-    width: 100vw;
-    height: 120vw;
+    width: min(100vw);
+    height: min(120vw);
 
 }
 
@@ -153,5 +153,12 @@ nav div a {
     color: rgb(255, 255, 255);
 }
 
+#radiobells_container {
+    margin-top: 10px;
+    width: 200px;
+    position: absolute;
+    right: 3.2vw;
+    top: 8.4vw;
+}
 
 
