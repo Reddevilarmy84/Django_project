@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    user-select: none;
 }
 
 #body {
@@ -13,87 +14,99 @@
 #tinting {
     background-color: rgba(50, 50, 50, 0.8);
     background-size: cover;
-    width: 100%;
-    height: 100%;
 }
 
 #skeleton {
     position: static;
-    margin: 4rem;
+    margin: 3vw;
     background-color: rgba(50, 50, 50, 0.8);
-    border-radius: 2rem;
-    border: rgba(0, 0, 0, 1) solid 0.2rem;
+    border-radius: 2vw;
+    border: rgba(0, 0, 0, 1) solid 0.2vw;
 }
 
 #header {
-    padding-top: 1rem;
+    padding-top: 0.5vw;
     height: max-content;
-    background-color: rgba(50, 50, 50, 1);
+    background-color: rgba(50, 50, 50, 0.8);
     text-align: center;
-    border-top-left-radius: 2rem;
-    border-top-right-radius: 2rem;
-    border-bottom: rgba(0, 0, 0, 1) solid 0.2rem;
+    border-top-left-radius: 1.8vw;
+    border-top-right-radius: 1.8vw;
+    border-bottom: rgba(0, 0, 0, 1) solid 0.2vw;
 }
 
-#navigation {
-    display: flex;
-    margin-left: 5px;
-    margin-top: 7px;
-    position: sticky;
-    top: -0.2rem;
-    height: 3rem;
-    width: max-content;
-    background-color: rgb(255, 0, 0);
-    border: rgba(0, 0, 0, 1) solid 0.2rem;
-}
-
-.content {
-    padding: 40px;
-    display: flex;
-    flex-wrap: wrap;
-    height: max-content;
-    text-align: center;
-    margin-top: 50px;
-
-}
-
-#footer {
-    height: 5rem;
-    background-color: rgba(50, 50, 50, 1);
-    text-align: center;
-    border-bottom-left-radius: 2rem;
-    border-bottom-right-radius: 2rem;
-    border-top: rgba(0, 0, 0, 1) solid 0.2rem;
-}
-
-nav a {
-    margin: 10px 10px 10px 10px;
-    font-family: "Comic Sans MS";
-    font-weight: bolder;
-    font-size: 1.5rem;
-    text-decoration: none;
-    color: rgb(200, 200, 200);
-    text-align: center;
-    text-shadow: rgba(0, 0, 0, 1) 2px 2px 2px;
-}
-
-.navButton {
-    transition: all .5s;
-    transition-delay: 0.02s;
-}
-
-.navButton:hover {
-    background-color: rgb(0, 0, 0, 0.4);
+#headerImg {
+    position: absolute;
+    left: 3.2vw;
+    top: 3.2vw;
+    height: 10.4vw;
+    border-top-left-radius: 1.8vw;
 }
 
 h1 {
     color: rgb(200, 200, 200);
+    font-size: 4vw;
 }
 
-header h1 {
-    margin-left: 300px;
+h2 {
+    margin: 5vw;
     color: rgb(200, 200, 200);
-    font-size: 5rem;
+    font-size: 2vw;
+    text-align: center;
+}
+
+#navigation {
+    display: flex;
+    position: sticky;
+    top: -0.8vw;
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.navButton {
+    padding: 1vw;
+    transition: all .3s;
+    transition-delay: 0.02s;
+}
+
+.navButton:hover {
+    background-color: rgba(255, 0, 0, 0.9);
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+nav div a {
+    font-family: "Comic Sans MS";
+    font-weight: bolder;
+    font-size: 1vw;
+    text-decoration: none;
+    color: rgb(200, 200, 200);
+    text-align: center;
+    text-shadow: rgba(0, 0, 0, 1) 0.2vw 0.2vw 0.3vw;
+}
+
+#time {
+    color: #eeeeee;
+    position: absolute;
+    right: 1vw;
+    top: 1vw;
+    font-size: 1vw;
+    font-family: "Comic Sans MS";
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    height: max-content;
+    text-align: center;
+
+}
+
+#footer {
+    height: max-content;
+    background-color: rgba(50, 50, 50, 0.8);
+    text-align: center;
+    border-bottom-left-radius: 1.8vw;
+    border-bottom-right-radius: 1.8vw;
+    border-top: rgba(0, 0, 0, 1) solid 0.2vw;
 }
 
 .JavaBox {
@@ -122,16 +135,6 @@ header h1 {
     border-radius: 20px;
 }
 
-#monitor h1 {
-    text-align: center;
-}
-
-.form {
-    margin-left: 32%;
-    width: 500px;
-    margin-top: 50px;
-}
-
 .about-links {
     height: max-content;
     width: max-content;
@@ -151,14 +154,5 @@ header h1 {
     text-shadow: 10px 5px 5px #504e4e;
 }
 
-#time {
-    color: #eeeeee;
-    font-size: 15px;
-    text-align: right;
-    position: relative;
-    top: -260px;
-    right: 15px;
-    font-size: 1rem;
-    font-family: "Comic Sans MS";
-}
+
 

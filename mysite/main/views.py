@@ -20,7 +20,7 @@ def abouts(request):
 def contact(request):
     data = {
         'title': 'MadJunior: Вспомагательные материалы',
-        'header': 'Ссылки на Вспомагательные материалы',
+        'header': 'Вспомагательные материалы',
     }
     return render(request, 'main/contacts.html', data)
 

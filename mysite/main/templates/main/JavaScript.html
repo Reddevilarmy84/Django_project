@@ -8,29 +8,8 @@
 {% endblock %}
 {% block content %}
     <div id="monitor"><h1>Отображение</h1></div>
-    <div id="time">
-        <p>
-        <script>
-            function TimeNow () {
-                var Now = new Date();
-                var day = Now.getDate();
-                var month = Now.getMonth()
-                var year = Now.getFullYear();
-                var hours = Now.getHours();
-                var minutes = Now.getMinutes();
-                var seconds = Now.getSeconds();
-                var monthes = ['Января']
-                seconds = seconds < 10 ? '0' + seconds : seconds;
-                minutes = minutes < 10 ? '0' + minutes : minutes;
-                var full = `${day}  ${monthes[Now.getMonth()]}  ${year}г.  время  ${hours}:${minutes}:${seconds}`;
-                document.getElementById('time').textContent = full;
-            };
-            setInterval(TimeNow, 1000);
-        </script>
-        </p>
-    </div>
-    <h1 id="greet" style="text-align: center; margin-top: 40px">Добро пожаловать в раздел JavaScript!<br>
-    Он состоит из мини-блоков в которых реализуется код на JC</h1><br>
+    <h2 id="greet">Добро пожаловать в раздел JavaScript!<br>
+    Он состоит из мини-блоков в которых реализуется код на JC</h2><br>
     <div id="parentElement" class="content">
         <!--JC, выведи в JavaBox приветствие-->
         <div class="JavaBox">
