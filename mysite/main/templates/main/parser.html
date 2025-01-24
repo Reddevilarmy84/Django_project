@@ -1,0 +1,22 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block header %}
+    <h1>{{ header }}!</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+       <h2>
+            {% for item in JsonData %}
+                <div class="film_card">
+                    <h3>{{item.name}}</h3>
+                    <a href="{{item.link}}"><img class="card_img" src="{{item.img}}" alt="{{item.name}}"></a>
+                    <h3>{{item.year}}</h3>
+                </div>
+            {% endfor %}
+       </h2>
+    </div>
+{% endblock %}

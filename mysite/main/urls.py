@@ -18,4 +18,5 @@ urlpatterns = [
     path('abouts', views.abouts, name='abouts'),
     path('contact', views.contact, name='contact'),
     path('java-script', views.java_script, name='java-script'),
+    path('parser', views.parser, name='parser'),
 ]
