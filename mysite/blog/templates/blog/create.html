@@ -4,16 +4,16 @@
 {% block header %}
     <h1>Блог: добавить запись</h1>
 {% endblock %}
-
 {% block content %}
-<h2>Добавить запись</h2>
-    <form method="post"> <!--можно прописать атрибут action, чтобы указать на какой странице будет происходить обработка данных, если не указывать, то на текущей-->
-        {% csrf_token %}<br>
-        {{ form.title }}<br>
-        {{ form.anons }}<br>
-        {{ form.full_text }}<br>
-        {{ form.date }}<br>
-        <span>{{ error }}</span>
-        <button type="submit" class="button">Добавить блог</button>
-    </form>
+    <div style="text-align: center; margin-top: 2vw">
+        <form method="post"> <!--можно прописать атрибут action, чтобы указать на какой странице будет происходить обработка данных, если не указывать, то на текущей-->
+            {% csrf_token %}<br>
+            {{ form.title }}<br>
+            {{ form.anons }}<br>
+            {{ form.full_text }}<br>
+            {{ form.date }}<br>
+            <span>{{ error }}</span>
+            <button type="submit" class="button">Добавить блог</button>
+        </form>
+    </div>
 {% endblock %}

@@ -6,7 +6,6 @@ class ArticleForm(ModelForm):
     class Meta:
         model = Artiсles
         fields = ['title', 'anons', 'full_text', 'date']
-
         widgets = {
             'title': TextInput(attrs={
                 'class': 'input',

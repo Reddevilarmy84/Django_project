@@ -354,7 +354,7 @@ def xp_bar():
     pmp = player.exp
     section = math.floor(player.exp_to_lvl/19)
     pbar = str( ' ' * int(pmp/section) )
-    mbar = str( ' ' * (47 - len(pbar) - len(' из ') -\
+    mbar = str( ' ' * (47 - len(pbar) - len(' из ') - \
            len(str(player.exp_to_lvl)) - len(str(player.exp))))
     bar = c.light_blue + c.inv + c.bolt + 'EXP:' + str(player.exp) +\
           ' из ' + str(player.exp_to_lvl) + pbar + c.res + mbar +\

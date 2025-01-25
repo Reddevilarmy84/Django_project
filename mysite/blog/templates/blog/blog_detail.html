@@ -10,9 +10,10 @@
     <h4>{{ article.date }}</h4>
     <h2>{{ article.full_text }}</h2>
     <div style="text-align: center">
-        <a href="{% url 'blog_home' %}">
-            <button class="button">Назад</button>
-        </a>
+        <a href="{% url 'blog_home' %}"><button class="button">Назад</button></a>
+        <a href="{% url 'blog_update' article.id %}"><button class="button">Редактировать</button></a>
+        <a href="{% url 'blog_delete' article.id %}"><button class="button">Удалить</button></a>
     </div>
+
 
 {% endblock %}

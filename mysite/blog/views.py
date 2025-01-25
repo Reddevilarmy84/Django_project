@@ -4,15 +4,22 @@ from .forms import ArticleForm
 from django.views.generic import DetailView, ListView, CreateView, UpdateView, DeleteView
 
 
-class BlogUpdateView(DetailView):
+class BlogUpdateView(UpdateView):
     model = Artiсles
     template_name = 'blog/create.html'
+
     form_class = ArticleForm
 
 class BlogDetailView(DetailView):
     model = Artiсles
     template_name = 'blog/blog_detail.html'
     context_object_name = 'article'
+
+
+class BlogDeleteView(DeleteView):
+    model = Artiсles
+    template_name = 'blog/blog_delete.html'
+    success_url = '/blog'
 
 
 def blog_home(request):

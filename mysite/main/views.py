@@ -25,6 +25,7 @@ def contact(request):
     }
     return render(request, 'main/contacts.html', data)
 
+
 def java_script(request):
     data = {
         'title': 'MadJunior: JavaScript',
@@ -33,12 +34,12 @@ def java_script(request):
     return render(request, 'main/JavaScript.html', data)
 
 
-def parser(request):
-    year = 2022
-    pages = 1
-    new_list = pars_lord_film(year, pages) #спарсили
-    dict_to_json(new_list, path_to_json) #заJSONили
-    json_data = json_to_dict(path_to_json) #разJSONили в переменную
+def parser(request, year=2025, pages=1):
+    year = request.GET.get('year', year)
+    pages = int(request.GET.get('pages', pages))
+    new_list = pars_lord_film(year, pages)
+    dict_to_json(new_list, path_to_json)
+    json_data = json_to_dict(path_to_json)
     data = {
         'title': 'MadJunior: parser',
         'header': 'Парсинг сайта LordFilms',

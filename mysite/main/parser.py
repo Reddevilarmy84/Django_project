@@ -10,9 +10,6 @@ parent_dir = os.path.dirname(this_py_dir)
 # Получаем путь к JSON
 path_to_json = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'films.json')
 
-#year = 2020
-#pages = 9
-#url = f'https://13.lordfilm-dc.com/films-{year}/page/{page}'
 
 def pars_lord_film(year, pages):
     new_list = []
@@ -32,6 +29,8 @@ def pars_lord_film(year, pages):
             new_list.append(new_dict)
             id += 1
     return new_list
+
+
 def dict_to_json(dict_list, filename):
     try:
         json_str = json.dumps(dict_list, ensure_ascii=False)
@@ -41,6 +40,8 @@ def dict_to_json(dict_list, filename):
     except (TypeError, ValueError, IOError) as e:
         print(f"Ошибка при преобразовании списка словарей в JSON или записи в файл: {e}")
         return None
+
+
 def json_to_dict(filename):
     try:
         with open(filename, "r", encoding="utf-8") as file:
@@ -50,15 +51,6 @@ def json_to_dict(filename):
     except (TypeError, ValueError, IOError) as e:
         print(f"Ошибка при чтении JSON из файла или преобразовании в список словарей: {e}")
         return None
-
-
-#new_list = pars_lord_film(year, pages)        #спарсили url
-#dict_to_json(new_list, path_to_json)        #записали список словарей в виде JSON
-#dict_from_json = json_to_dict(path_to_json)         #записали в переменную список словарей, созданный из JSON
-
-
-#for item in dict_from_json:
-#    print(item)
 
 
 

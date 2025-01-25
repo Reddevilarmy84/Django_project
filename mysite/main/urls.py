@@ -7,4 +7,7 @@ urlpatterns = [
     path('contact', views.contact, name='contact'),
     path('java_script', views.java_script, name='java-script'),
     path('parser', views.parser, name='parser'),
+    path("parser/<int:year>", views.parser),
+    path("parser/<int:year>/<int:pages>", views.parser),
 ]
+

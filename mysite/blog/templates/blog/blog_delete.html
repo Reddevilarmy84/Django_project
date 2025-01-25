@@ -1,0 +1,16 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block title %}MadJunior: Блог: удалить запись{% endblock %}
+{% block header %}
+    <h1>Удалить запись</h1>
+{% endblock %}
+{% block content %}
+    <h2>Вы уверены, что хотите удалить запись?</h2>
+    <div style="text-align: center"
+    <form method="post"> <!--можно прописать атрибут action, чтобы указать на какой странице будет происходить обработка данных, если не указывать, то на текущей-->
+        {% csrf_token %}
+        <button type="submit" class="button">Удалить запись</button>
+
+    </form>
+    </div>
+{% endblock %}

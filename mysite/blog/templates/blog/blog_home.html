@@ -7,8 +7,6 @@
 
 {% block content %}
     <div style="text-align: center"><a href="{% url 'create' %}"><button class="button">Новая запись</button></a></div>
-
-
         {% if blog %}
             {% for item in blog %}
                 <a href="{% url 'blog-detail' item.id %}">
