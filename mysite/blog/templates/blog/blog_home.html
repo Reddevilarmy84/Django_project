@@ -6,17 +6,18 @@
 {% endblock %}
 
 {% block content %}
-        <div class="button">
-           <a href="{% url 'create' %}">Добавить блог</a>
-        </div>
+    <div style="text-align: center"><a href="{% url 'create' %}"><button class="button">Новая запись</button></a></div>
+
 
         {% if blog %}
             {% for item in blog %}
-                <div class="film_card">
-                    <h3>{{ item.title }}</h3>
-                    <h3>{{ item.anons }}</h3>
-                    <h3>{{ item.full_text }}</h3>
-                </div>
+                <a href="{% url 'blog-detail' item.id %}">
+                    <div class="film_card">
+                        <h3>{{ item.title }}</h3>
+                        <h3>{{ item.anons }}</h3>
+
+                    </div>
+                </a>
             {% endfor %}
         {% else %}
            <h3>У вас нет статей</h3>

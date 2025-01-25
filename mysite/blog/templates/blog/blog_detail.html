@@ -1,0 +1,18 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block title %}{{ article.title }}{% endblock %}
+{% block header %}
+    <h1>{{ article.title }}</h1>
+{% endblock %}
+
+{% block content %}
+ <!-- context_object_name = 'article' далее .элемент БД-->
+    <h4>{{ article.date }}</h4>
+    <h2>{{ article.full_text }}</h2>
+    <div style="text-align: center">
+        <a href="{% url 'blog_home' %}">
+            <button class="button">Назад</button>
+        </a>
+    </div>
+
+{% endblock %}

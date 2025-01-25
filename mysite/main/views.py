@@ -34,7 +34,7 @@ def java_script(request):
 
 
 def parser(request):
-    year = 2025
+    year = 2022
     pages = 1
     new_list = pars_lord_film(year, pages) #спарсили
     dict_to_json(new_list, path_to_json) #заJSONили

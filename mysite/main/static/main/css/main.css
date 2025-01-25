@@ -61,6 +61,12 @@ h3 {
     width: 15vw;
 }
 
+h4 {
+    color: rgb(200, 200, 200);
+    font-size: 1vw;
+    text-align: center;
+}
+
 #navigation {
     display: flex;
     position: sticky;
@@ -230,6 +236,12 @@ nav div a {
     font-size: 1.5vw;
     text-align: center;
     color: rgb(200, 200, 200);
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.button:hover {
+    transform: scale(1.02);
 }
 .button a{
     text-decoration: none;
