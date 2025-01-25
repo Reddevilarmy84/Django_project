@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'parsing',
+    'blog',
     'kish',
     'main',
     'django.contrib.admin',

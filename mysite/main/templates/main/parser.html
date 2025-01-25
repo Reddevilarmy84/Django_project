@@ -4,12 +4,12 @@
     {{ title }}
 {% endblock %}
 {% block header %}
-    <h1>{{ header }}!</h1>
+    <h1>{{ header }}</h1>
 {% endblock %}
 
 {% block content %}
+    <h2>Фильмы за {{ year }} год. Страниц: {{ pages }}</h2>
     <div class="content">
-       <h2>
             {% for item in JsonData %}
                 <div class="film_card" src="{{item.img}}">
                     <h3>{{item.name}}</h3>
@@ -17,6 +17,6 @@
                     <h3>{{item.year}}</h3>
                 </div>
             {% endfor %}
-       </h2>
+
     </div>
 {% endblock %}

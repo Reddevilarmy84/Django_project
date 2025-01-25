@@ -1,29 +1,5 @@
 from django.shortcuts import render
-import os
-import json
-
-# Получаем путь к директории текущего скрипта
-this_py_dir = os.path.dirname(os.path.abspath(__file__))
-
-# Переходим на уровень выше
-parent_dir = os.path.dirname(this_py_dir)
-
-pre_parent_dir = os.path.dirname(parent_dir)
-
-# Получаем путь к JSON
-path_to_json = os.path.join(this_py_dir, 'films.json')
-
-
-
-def json_to_dict(filename):
-    try:
-        with open(filename, "r", encoding="utf-8") as file:
-            json_str = file.read()
-            dict_list = json.loads(json_str)
-        return dict_list
-    except (TypeError, ValueError, IOError) as e:
-        print(f"Ошибка при чтении JSON из файла или преобразовании в список словарей: {e}")
-        return None
+from .parser import pars_lord_film, dict_to_json, json_to_dict, path_to_json
 
 
 def index(request):
@@ -58,11 +34,16 @@ def java_script(request):
 
 
 def parser(request):
-    json_data = json_to_dict(path_to_json)
+    year = 2025
+    pages = 1
+    new_list = pars_lord_film(year, pages) #спарсили
+    dict_to_json(new_list, path_to_json) #заJSONили
+    json_data = json_to_dict(path_to_json) #разJSONили в переменную
     data = {
         'title': 'MadJunior: parser',
         'header': 'Парсинг сайта LordFilms',
         'JsonData': json_data,
+        'year': year,
+        'pages': pages,
     }
-
     return render(request, 'main/parser.html', data)
