@@ -106,6 +106,7 @@ nav div a {
 }
 
 #footer {
+    margin-top: 5vw;
     height: 10vw;
     background-color: rgba(50, 50, 50, 0.8);
     text-align: center;
@@ -174,11 +175,11 @@ nav div a {
     text-align: center;
     height: min-content;
     width: max-content;
-    border: #0e0d0d solid 0.2vw;
+    border: rgba(0, 0, 0, 1) solid 0.2vw;
     border-radius: 2vw;
-    background-color: #373737;
+    background-color: rgba(50, 50, 50, 0.8);
     cursor: pointer;
-    box-shadow: #0e0d0d 1vw 1vw 1vw;
+    box-shadow: rgba(0, 0, 0, 1) 1vw 1vw 1vw;
     transition: all 0.3s;
 }
 
@@ -191,4 +192,46 @@ nav div a {
     width: 15vw;
 }
 
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    padding: 2vw;
+    height: max-content;
+    width: 20vw;
+    background-color: rgba(50, 50, 50, 0.8);
+    border: rgba(0, 0, 0, 1) solid 0.2vw;
+    border-radius: 2vw;
+    box-shadow: rgba(0, 0, 0, 1) 1vw 1vw 1vw;
+}
+
+.input {
+    padding: 0.7vw;
+    width: 16vw;
+    margin: 0.05vw;
+    border: rgba(0, 0, 0, 1) solid 0.15vw;
+    border-radius: 2vw;
+    font-family: "Comic Sans MS";
+    font-size: 1vw;
+}
+
+.button {
+    margin: auto;
+    margin-top: 1.5vw;
+    height: max-content;
+    width: max-content;
+    background-color: rgb(255, 0, 0);
+    text-align: center;
+    padding: 1vw;
+    border-radius: 2vw;
+    border: rgba(0, 0, 0, 1) solid 0.15vw;
+    box-shadow: rgba(0, 0, 0, 1) 0.1vw 0.1vw 0.3vw;
+    font-family: "Comic Sans MS";
+    font-size: 1.5vw;
+    text-align: center;
+    color: rgb(200, 200, 200);
+}
+.button a{
+    text-decoration: none;
+}
 

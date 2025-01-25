@@ -1,0 +1,19 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block title %}MadJunior: Блог: добавить запись{% endblock %}
+{% block header %}
+    <h1>Блог: добавить запись</h1>
+{% endblock %}
+
+{% block content %}
+<h2>Добавить запись</h2>
+    <form method="post" class="form"> <!--можно прописать атрибут action, чтобы указать на какой странице будет происходить обработка данных, если не указывать, то на текущей-->
+        {% csrf_token %}
+        <input type="text" class="input" placeholder="Название" ><br>
+        <input type="text" class="input" placeholder="Анонс" ><br>
+        <textarea placeholder="Текст статьи" class="input" ></textarea><br>
+        <input type="date" placeholder="Дата"  class="input" ><br>
+        <input type="time" placeholder="Время"  class="input" ><br>
+        <button type="submit" class="button">Добавить блог</button>
+    </form>
+{% endblock %}

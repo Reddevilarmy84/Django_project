@@ -9,3 +9,6 @@ def blog_home(request):
     #сортируем данные по дате, можно использовать срез
     blog = Artiсles.objects.order_by('-date')[0:50]
     return render(request, 'blog/blog_home.html', {'blog': blog})
+
+def create(request):
+    return render(request, 'blog/create.html')
