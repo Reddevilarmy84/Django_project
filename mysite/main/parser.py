@@ -10,6 +10,25 @@ parent_dir = os.path.dirname(this_py_dir)
 # Получаем путь к JSON
 path_to_json = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'films.json')
 
+url = 'https://ru.tradingview.com/markets/stocks-russia/market-movers-all-stocks/'
+
+
+def pars(url):
+    new_list = []
+    id = 0
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'lxml')
+    find = soup.find_all('tr', class_="row-RdUXZpkv listRow")
+    for item in find:
+        new_dict = {}
+        new_dict['id'] = id
+        new_dict['title'] = item.find('a').get('title')
+        new_dict['img'] = item.find('img', class_="logo-PsAlMQQF xsmall-PsAlMQQF tickerLogo-GrtoTeat wrapper-TJ9ObuLF skeleton-PsAlMQQF").get('src')
+
+
+        new_list.append(new_dict)
+        id += 1
+    return new_list
 
 def pars_lord_film(year, pages):
     new_list = []
@@ -53,9 +72,22 @@ def json_to_dict(filename):
         return None
 
 
+new_list = pars(url)
 
 
 
+def gen(new_list):
+    for item in new_list:
+        yield print(f'\n{item}\n')
 
+G = gen(new_list)
+
+for i in range(1, 4):
+    next(G)
+
+
+
+#for item in find:
+#    print(item)
 
 
