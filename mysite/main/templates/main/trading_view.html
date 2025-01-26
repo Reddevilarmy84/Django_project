@@ -1,0 +1,19 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block header %}
+    <h1>{{ header }}</h1>
+{% endblock %}
+{% block content %}
+    <div class="content">
+        {% for item in json_data_stocks %}
+            <div class="film_card">
+                <h3 style="font-size: 0.7vw">{{item.title}}</h3>
+                <a><img class="card_img" style="height: 14vw; width: 14vw" src="{{item.img}}" alt="{{item.title}}"></a>
+                <h3 style="font-size: 1vw">{{item.cell}}</h3>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

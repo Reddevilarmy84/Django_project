@@ -9,5 +9,6 @@ urlpatterns = [
     path('parser', views.parser, name='parser'),
     path("parser/<int:year>", views.parser),
     path("parser/<int:year>/<int:pages>", views.parser),
+    path('trading_view', views.trading_view, name='trading_view'),
 ]
 

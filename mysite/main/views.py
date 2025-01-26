@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from .parser import pars_lord_film, dict_to_json, json_to_dict, path_to_json
+from .parser import pars_lord_film, dict_to_json, json_to_dict, pars_trading_view, url_trading_view, path_to_json_stocks
+import os
 
 
 def index(request):
@@ -34,7 +35,22 @@ def java_script(request):
     return render(request, 'main/JavaScript.html', data)
 
 
+def trading_view(request):
+    url_trading_view = 'https://ru.tradingview.com/markets/stocks-russia/market-movers-all-stocks/'
+    path_to_json_stocks = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'stocks.json')
+    new_list = pars_trading_view(url_trading_view)
+    dict_to_json(new_list, path_to_json_stocks)
+    json_data_stocks = json_to_dict(path_to_json_stocks)
+    data = {
+        'title': 'MadJunior: Акции',
+        'header': 'Акции',
+        'json_data_stocks': new_list
+    }
+    return render(request, 'main/trading_view.html', data)
+
+
 def parser(request, year=2025, pages=1):
+    path_to_json = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'films.json')
     year = request.GET.get('year', year)
     pages = int(request.GET.get('pages', pages))
     new_list = pars_lord_film(year, pages)
