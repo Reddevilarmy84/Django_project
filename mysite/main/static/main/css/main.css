@@ -57,8 +57,9 @@ h2 {
 
 h3 {
     color: rgb(200, 200, 200);
-    font-size: 1vw;
-    width: 15vw;
+    font-size: 0.7vw;
+    width: 12vw;
+
 }
 
 h4 {
@@ -108,6 +109,7 @@ nav div a {
 .content {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
     height: min(27vw), max(max-content);
 }
 
@@ -176,13 +178,15 @@ nav div a {
 }
 
 .film_card {
-    margin: 1.62vw;
-    display: inline-block;
+    margin: 1vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     text-align: center;
-    height: min-content;
+    height: max-content;
     width: max-content;
     border: rgba(0, 0, 0, 1) solid 0.2vw;
-    border-radius: 2vw;
+    border-radius: 1vw;
     background-color: rgba(50, 50, 50, 0.8);
     cursor: pointer;
     box-shadow: rgba(0, 0, 0, 1) 1vw 1vw 1vw;
@@ -190,12 +194,13 @@ nav div a {
 }
 
 .film_card:hover {
-    transform: scale(1.02);
+    transform: scale(1.003);
+    background-color: rgba(56, 255, 0, 0.2);
 }
 
 .card_img {
-    height: 20vw;
-    width: 15vw;
+    height: 15vw;
+    width: 12vw;
 }
 
 .form {
@@ -259,7 +264,7 @@ nav div a {
 }
 
 #submit-button:hover {
-    background-color: chartreuse;
+    background-color: #80ff00;
 }
 
 .param_form {
@@ -272,4 +277,32 @@ nav div a {
     border-radius: 2vw;
     background-color: rgba(50, 50, 50, 0.8);
     box-shadow: rgba(0, 0, 0, 1) 1vw 1vw 1vw;
+}
+
+.trade_card_green {
+    transition: all 0.3s;
+    background-color: rgba(15,255,0,0.3);
+    height: 4vw;
+    margin: 0.5vw;
+    display: flex;
+    border-radius: 0.5vw
+}
+
+.trade_card_green:hover {
+    background-color: rgba(15,255,0,0.4);
+    transform: scale(1.01);
+}
+
+.trade_card_red {
+    transition: all 0.3s;
+    background-color: rgba(255,0,0,0.3);
+    height: 4vw;
+    margin: 0.5vw;
+    display: flex;
+    border-radius: 0.5vw
+}
+
+.trade_card_red:hover {
+    background-color: rgba(255,0,0,0.4);
+    transform: scale(1.01);
 }

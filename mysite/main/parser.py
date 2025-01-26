@@ -9,11 +9,12 @@ this_py_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.dirname(this_py_dir)
 # Получаем путь к JSON
 path_to_json = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'films.json')
+path_to_json_stocks = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'stocks.json')
+path_to_json_data = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data.json')
+url_trading_view = 'https://ru.tradingview.com/markets/stocks-russia/market-movers-all-stocks/'
 
-url = 'https://ru.tradingview.com/markets/stocks-russia/market-movers-all-stocks/'
 
-
-def pars(url):
+def pars_trading_view(url):
     new_list = []
     id = 0
     response = requests.get(url)
@@ -23,17 +24,43 @@ def pars(url):
         new_dict = {}
         new_dict['id'] = id
         new_dict['title'] = item.find('a').get('title')
-        new_dict['img'] = item.find('img', class_="logo-PsAlMQQF xsmall-PsAlMQQF tickerLogo-GrtoTeat wrapper-TJ9ObuLF skeleton-PsAlMQQF").get('src')
+        #изображение
+        try:
+            new_dict['img'] = item.find('img').get('src')
+        except: new_dict['img'] = 'None'
+        #цена
+        try:
+            new_dict['cell'] = item.find('td', class_="cell-RLhfr_y4 right-RLhfr_y4").text
+        except: new_dict['cell'] = 'None'
+#______________________боремся с позитивом___________________________________________________________________________
+        try:
+            new_dict['cell_fall'] = item.find('span', class_="negative-p_QIAEOQ").text
+        except:
+            new_dict['cell_fall'] = 'None'
+        try:
+            new_dict['cell_raise'] = item.find('span', class_="positive-p_QIAEOQ").text
+        except:
+            new_dict['cell_raise'] = 'None'
 
+# ______________________боремся с позитивом__________________________________________________________________________
+#        new_dict['название'] = item.find('sup', class_ ="apply-common-tooltip tickerDescription-GrtoTeat").text
 
+        #группа
+        try:
+            new_dict['group'] = item.find('a', class_="link-KcaOqbQP apply-common-tooltip").text
+        except:
+            new_dict['group'] = 'None'
         new_list.append(new_dict)
         id += 1
     return new_list
 
 def pars_lord_film(year, pages):
+    if not pages:
+        pages = 1
     new_list = []
     id = 0
-    for page in range(1, pages + 1):
+    page_id = 1
+    for page in range(1, int(pages) + 1):
         url = f'https://13.lordfilm-dc.com/films-{year}/page/{page}'
         response = requests.get(url)
         soup = BeautifulSoup(response.text, 'lxml') #html.parser по умолчанию
@@ -41,12 +68,14 @@ def pars_lord_film(year, pages):
         for item in th_item:
             new_dict = {}
             new_dict['id'] = id
+            new_dict['page'] = page_id
             new_dict['name'] = item.find('div', class_="th-title").get_text()
             new_dict['link'] = item.get('href')
             new_dict['img'] = 'https://13.lordfilm-dc.com/' + item.find('img').get('src')
             new_dict['year'] = year
             new_list.append(new_dict)
             id += 1
+        page_id += 1
     return new_list
 
 
@@ -70,24 +99,3 @@ def json_to_dict(filename):
     except (TypeError, ValueError, IOError) as e:
         print(f"Ошибка при чтении JSON из файла или преобразовании в список словарей: {e}")
         return None
-
-
-new_list = pars(url)
-
-
-
-def gen(new_list):
-    for item in new_list:
-        yield print(f'\n{item}\n')
-
-G = gen(new_list)
-
-for i in range(1, 4):
-    next(G)
-
-
-
-#for item in find:
-#    print(item)
-
-

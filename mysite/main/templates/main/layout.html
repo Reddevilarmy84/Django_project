@@ -56,10 +56,13 @@
                     <a href="{% url 'kish' %}">Проект "Король и шут"</a>
                 </div>
                 <div class="navButton">
-                    <a href="{% url 'parser' %}">Пaрсер</a>
+                    <a href="{% url 'parser' %}">Пaрсинг LordFilms</a>
                 </div>
                 <div class="navButton">
                     <a href="{% url 'blog_home' %}">Блог</a>
+                </div>
+                <div class="navButton">
+                    <a href="{% url 'trading_view' %}">Парсинг Trading view</a>
                 </div>
             </nav>
             <main>{% block content %}{% endblock %}</main>

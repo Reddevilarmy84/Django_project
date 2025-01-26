@@ -1,0 +1,121 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block header %}
+    <h1>{{ header }}</h1>
+{% endblock %}
+{% block content %}
+    <div style="display: block; text-align: center; margin: 2vw">
+        <a style="color: #b5b3b3; font-size: 2vw; text-decoration: none; margin: 2vw" href="https://ru.tradingview.com/markets/stocks-russia/market-movers-all-stocks/" target="_blank">источник</a>
+        <a style="color: #b5b3b3; font-size: 2vw; text-decoration: none; margin: 2vw" href="{% url 'trading_view' 'market-movers-all-stocks' %}">все акции</a>
+        <a style="color: #b5b3b3; font-size: 2vw; text-decoration: none; margin: 2vw" href="{% url 'trading_view' 'market-movers-gainers' %}">лидеры роста</a>
+        <a style="color: #b5b3b3; font-size: 2vw; text-decoration: none; margin: 2vw" href="{% url 'trading_view' 'market-movers-losers' %}">лидеры падения</a>
+    </div>
+
+    <div class="content" style="display: block; margin: 1.1vw">
+        {% for item in json_data_stocks %}
+
+            {% if item.cell_raise != 'None' %}
+ <!---------------------------------подсвеченые зеленым------------------------------------------------------------------------------------------------>
+                <div class="trade_card_green">
+
+ <!---------------------------------image------------------------------------------------------------------------------------------------------------>
+                    {% if item.img != "None" %}
+                        <a><img class="card_img" style="height: 4vw; width: 4vw; border-radius: 0.5vw" src="{{ item.img }}" alt="{{item.title}}"></a>
+                    {% else %}
+                        <a><img class="card_img" style="height: 4vw; width: 4vw; border-radius: 0.5vw" src="{% static 'main/img/none.jpg' %}" alt="{{item.title}}"></a>
+                    {% endif %}
+ <!---------------------------------/image------------------------------------------------------------------------------------------------------------>
+
+ <!---------------------------------title------------------------------------------------------------------------------------------------------------>
+                    <div style="height: 3vw; width: 20vw; text-align: center; margin-left: 30px">
+                        <h3 style="font-size: 1vw; text-align: center">{{item.title}}</h3>
+                    </div>
+ <!---------------------------------/title------------------------------------------------------------------------------------------------------------>
+
+ <!---------------------------------group------------------------------------------------------------------------------------------------------------>
+                    {% if item.group == "None" %}
+                    <div style="height: 4vw; width: 20vw">
+                        <h3 style="font-size: 1vw"><pre> </pre></h3>  <!-- тег <pre> отобразит на странице присутствующий в тексте одиночный пробел-->
+                    </div>
+                    {% else %}
+                    <div style="width: 20vw">
+                         <h3 style="font-size: 1vw; text-align: center; margin-left: 20px">{{ item.group }}</h3>
+                    </div>
+                    {% endif %}
+<!---------------------------------/group------------------------------------------------------------------------------------------------------------>
+
+<!---------------------------------cell------------------------------------------------------------------------------------------------------------>
+                    {% if item.cell == None %}
+                        <h3 style="font-size: 1vw; text-align: center"> Бесценная </h3>
+                    {% else %}
+                        <h3 style="font-size: 1vw; text-align: center">{{ item.cell }}</h3>
+                    {% endif %}
+<!---------------------------------/cell------------------------------------------------------------------------------------------------------------>
+<!---------------------------------/cell_raise------------------------------------------------------------------------------------------------------------>
+                    {% if item.cell_raise != "None" %}
+                        <h3 style="font-size: 1vw; color: chartreuse; text-align: center">{{ item.cell_raise }}</h3>
+                    {% endif %}
+<!---------------------------------/cell_raise------------------------------------------------------------------------------------------------------------>
+<!---------------------------------/cell_fall------------------------------------------------------------------------------------------------------------>
+                    {% if item.cell_fall != "None" %}
+                        <h3 style="font-size: 1vw; color: crimson; text-align: center">{{ item.cell_fall }}</h3>
+                    {% endif %}
+<!---------------------------------/cell_fall------------------------------------------------------------------------------------------------------------>
+
+                </div>
+
+            {% else %}
+<!---------------------------------подсвеченые красным------------------------------------------------------------------------------------------------>
+                <div class="trade_card_red">
+
+ <!---------------------------------image------------------------------------------------------------------------------------------------------------>
+                    {% if item.img != "None" %}
+                        <a><img class="card_img" style="height: 4vw; width: 4vw; border-radius: 0.5vw" src="{{ item.img }}" alt="{{item.title}}"></a>
+                    {% else %}
+                        <a><img class="card_img" style="height: 4vw; width: 4vw; border-radius: 0.5vw" src="{% static 'main/img/none.jpg' %}" alt="{{item.title}}"></a>
+                    {% endif %}
+ <!---------------------------------/image------------------------------------------------------------------------------------------------------------>
+
+ <!---------------------------------title------------------------------------------------------------------------------------------------------------>
+                    <div style="height: 4vw; width: 20vw; text-align: center; margin-left: 30px">
+                        <h3 style="font-size: 1vw; text-align: center">{{item.title}}</h3>
+                    </div>
+ <!---------------------------------/title------------------------------------------------------------------------------------------------------------>
+
+ <!---------------------------------group------------------------------------------------------------------------------------------------------------>
+                    {% if item.group == "None" %}
+                    <div style="height: 4vw; width: 20vw">
+                        <h3 style="font-size: 1vw"><pre> </pre></h3>  <!-- тег <pre> отобразит на странице присутствующий в тексте одиночный пробел-->
+                    </div>
+                    {% else %}
+                    <div style="height: 4vw; width: 20vw">
+                         <h3 style="font-size: 1vw; text-align: center; margin-left: 20px">{{ item.group }}</h3>
+                    </div>
+                    {% endif %}
+<!---------------------------------/group------------------------------------------------------------------------------------------------------------>
+
+<!---------------------------------cell------------------------------------------------------------------------------------------------------------>
+                    {% if item.cell == None %}
+                        <h3 style="font-size: 1vw; text-align: center"> Бесценная </h3>
+                    {% else %}
+                        <h3 style="font-size: 1vw; text-align: center">{{ item.cell }}</h3>
+                    {% endif %}
+<!---------------------------------/cell------------------------------------------------------------------------------------------------------------>
+<!---------------------------------/cell_raise------------------------------------------------------------------------------------------------------------>
+                    {% if item.cell_raise != "None" %}
+                        <h3 style="font-size: 1vw; color: chartreuse; text-align: center">{{ item.cell_raise }}</h3>
+                    {% endif %}
+<!---------------------------------/cell_raise------------------------------------------------------------------------------------------------------------>
+<!---------------------------------/cell_fall------------------------------------------------------------------------------------------------------------>
+                    {% if item.cell_fall != "None" %}
+                        <h3 style="font-size: 1vw; color: crimson; text-align: center">{{ item.cell_fall }}</h3>
+                    {% endif %}
+<!---------------------------------/cell_fall------------------------------------------------------------------------------------------------------------>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}
