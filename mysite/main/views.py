@@ -65,7 +65,7 @@ def parser(request, year: Optional[int] = None, pages: Optional[int] = None):
         print('if not json_data: распаковали JSON')
     #---------------------------------------------------------------------------------
     else:#если есть информации
-        print(f'Год:{json_data[-1]['year']} страниц:{json_data[-1]['page']} в Json')                     #
+        print(f'Год:{json_data[-1]['year']} страниц:{json_data[-1]['page']} в Json')
 ##---------------------------------------------------------------------------------
     print(f'Принимаем параметры запроса')
     year = request.GET.get('year', year)
