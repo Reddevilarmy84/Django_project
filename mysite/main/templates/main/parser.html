@@ -27,13 +27,14 @@
 
 {% if JsonData %}
     <div class="content">
-            {% for item in JsonData %}
-                        <div class="film_card">
-                            <h3>{{item.name}}</h3>
-                            <a href="{{item.link}}"><img class="card_img" src="{{item.img}}" alt="{{item.name}}"></a>
-                            <h3>{{item.year}}</h3>
-                        </div>
-            {% endfor %}
+        {% for item in JsonData %}
+            <div class="film_card">
+                <h3>{{item.name}}</h3>
+                <a href="{{item.link}}"><img class="card_img" src="{{item.img}}" alt="{{item.name}}"></a>
+                <h3>{{item.year}}</h3>
+            </div>
+        {% endfor %}
+    </div>
 {% else %}
     <div class="content">
         <div style="width: 300px; height: 100px">

@@ -109,7 +109,8 @@ nav div a {
 .content {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
     height: min(27vw), max(max-content);
 }
 
@@ -194,7 +195,6 @@ nav div a {
 }
 
 .film_card:hover {
-    transform: scale(1.003);
     background-color: rgba(56, 255, 0, 0.2);
 }
 

@@ -10,7 +10,6 @@ parent_dir = os.path.dirname(this_py_dir)
 # Получаем путь к JSON
 path_to_json = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'films.json')
 path_to_json_stocks = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'stocks.json')
-path_to_json_data = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data.json')
 url_trading_view = 'https://ru.tradingview.com/markets/stocks-russia/market-movers-all-stocks/'
 
 
@@ -79,6 +78,21 @@ def pars_lord_film(year, pages):
     return new_list
 
 
+def parser():
+    url = 'https://lenta.ru/'
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'lxml')
+    print(soup.prettify())
+    items = soup.find_all('img')
+    Lst = []
+    Dict = {}
+
+    for i in items:
+        Lst.append(i)
+
+    return Lst
+
+
 def dict_to_json(dict_list, filename):
     try:
         json_str = json.dumps(dict_list, ensure_ascii=False)
@@ -99,3 +113,10 @@ def json_to_dict(filename):
     except (TypeError, ValueError, IOError) as e:
         print(f"Ошибка при чтении JSON из файла или преобразовании в список словарей: {e}")
         return None
+
+
+
+#news = parser()
+
+#for i in news:
+#    print(i)

@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from .parser import pars_lord_film, dict_to_json, json_to_dict, pars_trading_view, url_trading_view, path_to_json_stocks, path_to_json, path_to_json_data
-import os
+from .parser import pars_lord_film, dict_to_json, json_to_dict, pars_trading_view, url_trading_view, path_to_json_stocks, path_to_json
 from typing import Optional
 
 
@@ -99,7 +98,7 @@ def parser(request, year: Optional[int] = None, pages: Optional[int] = None):
             if not pages or pages is None:
                 pages = json_data[-1]['page']
                 print(f'if not pages or pages is None: Установили согласно JSON на = {pages}')
-
+            ##--------------------------------------------------------------------------------------------------
             if int(json_data[-1]['page']) >= int(pages):
                 print(f'Спарсено больше страниц, чем запрошено:')
                 print('Не парсим')
@@ -107,9 +106,9 @@ def parser(request, year: Optional[int] = None, pages: Optional[int] = None):
                 json_data = [i for i in json_data if int(i['page']) <= int(pages) ]
                 print(f'Пересоздаем список согласно запросу страниц и выводим в Data')
             else:       # если запрос на большее колличество страниц, а такого количества нет в JSON
-
+                ##--------------------------------------------------------------------------------------------------
                 print('ФИЛЬМОВ МЕНЬШЕ, ЧЕМ ТЫ ХОЧЕШЬ!')
-
+                ##--------------------------------------------------------------------------------------------------
                 new_list = pars_lord_film(year, pages)
                 print(f'Парсим Год:{year} страниц:{pages}')
                 print(f'Запаковываем в JSON')
@@ -117,7 +116,7 @@ def parser(request, year: Optional[int] = None, pages: Optional[int] = None):
                 print(f'Распаковываем из JSON')
                 json_data = json_to_dict(path_to_json)
     print(f'\nфиниш\n')
-
+    ##--------------------------------------------------------------------------------------------------
     data = {
         'title': 'MadJunior: parser',
         'header': 'Парсинг сайта LordFilms',
@@ -125,5 +124,5 @@ def parser(request, year: Optional[int] = None, pages: Optional[int] = None):
         'year': year,
         'pages': pages,
     }
-
+    ##--------------------------------------------------------------------------------------------------
     return render(request, 'main/parser.html', data)
