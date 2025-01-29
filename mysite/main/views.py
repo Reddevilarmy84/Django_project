@@ -50,47 +50,74 @@ def trading_view(request, urrl = 'market-movers-all-stocks'):
     return render(request, 'main/trading_view.html', data)
 
 
-def parser(request, year: Optional[int] = None, pages: Optional[int] = None, last_seach: Optional[int] = None):
-    last_seach = request.GET.get('last_seach', last_seach)
+def parser(request, year: Optional[int] = None, pages: Optional[int] = None):
+    print(f'\nстарт\n')
     json_data = json_to_dict(path_to_json)
-    print(f'Список фильмов в Json:')
-
-    for item in json_data:
-        print(f'                  {item['name']}')
-
+    print(f'прочитали список словарей из старого JSON\n')
+    #---------------------------------------------------------------------------------
     if not json_data:
-        new_list = pars_lord_film(year=2025, pages=1)
+        print('if not json_data: информации в JSON нет ')
+        new_list = pars_lord_film(year=2020, pages=3)
+        print('if not json_data: спарсили сайт. По умолчанию выставлено year=2020, pages=3 ')
         dict_to_json(new_list, path_to_json)
+        print('if not json_data: запаковали JSON ')
         json_data = json_to_dict(path_to_json)
+        print('if not json_data: распаковали JSON')
+    #---------------------------------------------------------------------------------
+    else:#если есть информации
+        print(f'Год:{json_data[-1]['year']} страниц:{json_data[-1]['page']} в Json')                     #
+##---------------------------------------------------------------------------------
+    print(f'Принимаем параметры запроса')
+    year = request.GET.get('year', year)
+    pages = request.GET.get('pages', pages)
+    print(f'Год:{year} Страниц:{pages}')
+##---------------------------------------------------------------------------------
+    if year is None or not year:
+        year = int(json_data[-1]['year'])
+        print(f'if year is None or not year: установили Год:{year}')
+        if pages is None or not pages:
+            pages = int(json_data[-1]['page'])
+            print(f'if year is None or not year: установили Страниц:{pages}')
+##---------------------------------------------------------------------------------
     else:
-        if last_seach is not None:
-            year = request.GET.get('year', year)
-            pages = request.GET.get('pages', pages)
+        print(f'Год в запросе:{year}')
+        if pages is None:
+            pages = 1
+            print(f'if pages is None: установили страниц:{pages}')
+        ##--------------------------------------------------------------------------------------------------
+        if int(year) != int(json_data[0]['year']):
+            print(f'Год не совпадает с годом в файле. Год:{year}')
+            new_list = pars_lord_film(year, pages)
+            print('Парсим год:{year} страниц:{pages}')
+            dict_to_json(new_list, path_to_json)
+            print('Запаковываем в JSON')
             json_data = json_to_dict(path_to_json)
-            if year != json_data[0]['year']:
-                if year is not None:
-                    if pages is None:
-                        pages = 1
-                    new_list = pars_lord_film(year, pages)
-                    print('парсим')
-                    dict_to_json(new_list, path_to_json)
-                    json_data = json_to_dict(path_to_json)
-                else:
-                    year = None
-                    json_data = None
-            else:
-                if json_data[-1]['page'] >= int(pages):
-                    print('не парсим')
-                    json_data = [i for i in json_data if int(i['page']) <= int(pages) ]
-                else:
-                    print('ФИЛЬМОВ МЕНЬШЕ, ЧЕМ ТЫ ХОЧЕШЬ')
-                    new_list = pars_lord_film(year, pages)
-                    print('парсим')
-                    dict_to_json(new_list, path_to_json)
-                    json_data = json_to_dict(path_to_json)
-        else:
-            json_data = json_to_dict(path_to_json)
-            year = None
+            print('Распаковываем из JSON')
+        ##--------------------------------------------------------------------------------------------------
+        else:  # если год равен году в файле
+            # проверяем сколько станиц в файле
+            if not pages or pages is None:
+                pages = json_data[-1]['page']
+                print(f'if not pages or pages is None: Установили согласно JSON на = {pages}')
+
+            if int(json_data[-1]['page']) >= int(pages):
+                print(f'Спарсено больше страниц, чем запрошено:')
+                print('Не парсим')
+                # пересоздаем список согласно запросу страниц и в data выводим
+                json_data = [i for i in json_data if int(i['page']) <= int(pages) ]
+                print(f'Пересоздаем список согласно запросу страниц и выводим в Data')
+            else:       # если запрос на большее колличество страниц, а такого количества нет в JSON
+
+                print('ФИЛЬМОВ МЕНЬШЕ, ЧЕМ ТЫ ХОЧЕШЬ!')
+
+                new_list = pars_lord_film(year, pages)
+                print(f'Парсим Год:{year} страниц:{pages}')
+                print(f'Запаковываем в JSON')
+                dict_to_json(new_list, path_to_json)
+                print(f'Распаковываем из JSON')
+                json_data = json_to_dict(path_to_json)
+    print(f'\nфиниш\n')
+
     data = {
         'title': 'MadJunior: parser',
         'header': 'Парсинг сайта LordFilms',
