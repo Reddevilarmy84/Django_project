@@ -118,6 +118,11 @@ def parser(request, year: Optional[int] = None, pages: Optional[int] = None):
                 dict_to_json(new_list, path_to_json)
                 print(f'Распаковываем из JSON')
                 json_data = json_to_dict(path_to_json)
+    for i in json_data:
+        if not i['link']:
+            new_new_list = pars_lord_film(i["year"], i["page"])
+            print(f'Репарсинг {i["page"]}\n')
+
     print(f'\nфиниш\n')
     ##--------------------------------------------------------------------------------------------------
     data = {
