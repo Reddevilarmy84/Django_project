@@ -30,7 +30,20 @@
         {% for item in JsonData %}
             <div class="film_card">
                 <h3>{{item.name}}</h3>
-                <a href="{{item.link}}"><img class="card_img" src="{{item.img}}" alt="{{item.name}}"></a>
+
+
+
+
+
+                {% if item.img %}
+                    <a href="{{item.link}}"><img class="card_img" src="{{item.img}}" alt="{{item.name}}"></a>
+                {% else %}
+                    <a><img class="card_img" src="{% static 'main/img/none.jpg' %}" alt="{{item.name}}"></a>
+                {% endif %}
+
+
+
+ <!--               <a href="{{item.link}}"><img class="card_img" src="{{item.img}}" alt="{{item.name}}"></a> -->
                 <h3>{{item.year}}</h3>
             </div>
         {% endfor %}

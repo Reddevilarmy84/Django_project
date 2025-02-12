@@ -57,23 +57,31 @@ def pars_lord_film(year, pages):
     if not pages:
         pages = 1
     new_list = []
-    id = 0
     page_id = 1
     for page in range(1, int(pages) + 1):
         url = f'https://13.lordfilm-dc.com/films-{year}/page/{page}'
-        response = requests.get(url)
-        soup = BeautifulSoup(response.text, 'lxml') #html.parser по умолчанию
-        th_item = soup.find_all('a', class_="th-in with-mask")
-        for item in th_item:
+        try:
+            response = requests.get(url)
+        except:
+            print(f'Disconect: {url}')
             new_dict = {}
-            new_dict['id'] = id
             new_dict['page'] = page_id
-            new_dict['name'] = item.find('div', class_="th-title").get_text()
-            new_dict['link'] = item.get('href')
-            new_dict['img'] = 'https://13.lordfilm-dc.com/' + item.find('img').get('src')
-            new_dict['year'] = year
+            new_dict['name'] = f'Страница {page} не спарсилась'
+            new_dict['link'] = None
+            new_dict['img'] = None
+            new_dict['year'] = int(year)
             new_list.append(new_dict)
-            id += 1
+        else:
+            soup = BeautifulSoup(response.text, 'lxml') #html.parser по умолчанию
+            th_item = soup.find_all('a', class_="th-in with-mask")
+            for item in th_item:
+                new_dict = {}
+                new_dict['page'] = page_id
+                new_dict['name'] = item.find('div', class_="th-title").get_text()
+                new_dict['link'] = item.get('href')
+                new_dict['img'] = 'https://13.lordfilm-dc.com/' + item.find('img').get('src')
+                new_dict['year'] = int(year)
+                new_list.append(new_dict)
         page_id += 1
     return new_list
 

@@ -55,8 +55,10 @@ def parser(request, year: Optional[int] = None, pages: Optional[int] = None):
     print(f'прочитали список словарей из старого JSON\n')
     #---------------------------------------------------------------------------------
     if not json_data:
+        year = 2020 # если нет фильмов в файле установлено по умолчанию
+        pages = 3 # если нет фильмов в файле установлено по умолчанию
         print('if not json_data: информации в JSON нет ')
-        new_list = pars_lord_film(year=2020, pages=3)
+        new_list = pars_lord_film(year, pages)
         print('if not json_data: спарсили сайт. По умолчанию выставлено year=2020, pages=3 ')
         dict_to_json(new_list, path_to_json)
         print('if not json_data: запаковали JSON ')
@@ -65,19 +67,19 @@ def parser(request, year: Optional[int] = None, pages: Optional[int] = None):
     #---------------------------------------------------------------------------------
     else:#если есть информации
         print(f'Год:{json_data[-1]['year']} страниц:{json_data[-1]['page']} в Json')
-##---------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------
     print(f'Принимаем параметры запроса')
     year = request.GET.get('year', year)
     pages = request.GET.get('pages', pages)
     print(f'Год:{year} Страниц:{pages}')
-##---------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------
     if year is None or not year:
         year = int(json_data[-1]['year'])
         print(f'if year is None or not year: установили Год:{year}')
         if pages is None or not pages:
             pages = int(json_data[-1]['page'])
             print(f'if year is None or not year: установили Страниц:{pages}')
-##---------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------
     else:
         print(f'Год в запросе:{year}')
         if pages is None:
@@ -107,6 +109,7 @@ def parser(request, year: Optional[int] = None, pages: Optional[int] = None):
                 print(f'Пересоздаем список согласно запросу страниц и выводим в Data')
             else:       # если запрос на большее колличество страниц, а такого количества нет в JSON
                 ##--------------------------------------------------------------------------------------------------
+
                 print('ФИЛЬМОВ МЕНЬШЕ, ЧЕМ ТЫ ХОЧЕШЬ!')
                 ##--------------------------------------------------------------------------------------------------
                 new_list = pars_lord_film(year, pages)
