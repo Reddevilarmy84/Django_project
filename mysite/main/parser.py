@@ -53,12 +53,12 @@ def pars_trading_view(url):
         id += 1
     return new_list
 
-def pars_lord_film(year, pages):
-    if not pages:
-        pages = 1
+def pars_lord_film(year, end_page, start_page=1):
+    if not end_page:
+        end_page = 1
     new_list = []
     page_id = 1
-    for page in range(1, int(pages) + 1):
+    for page in range(start_page, int(end_page) + 1):
         url = f'https://13.lordfilm-dc.com/films-{year}/page/{page}'
         try:
             response = requests.get(url)
@@ -66,7 +66,7 @@ def pars_lord_film(year, pages):
             print(f'Disconect: {url}')
             new_dict = {}
             new_dict['page'] = page_id
-            new_dict['name'] = f'Страница {page} не спарсилась'
+            new_dict['name'] = None
             new_dict['link'] = None
             new_dict['img'] = None
             new_dict['year'] = int(year)
