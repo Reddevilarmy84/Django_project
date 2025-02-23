@@ -24,12 +24,11 @@
                         function TimeNow () {
                             var Now = new Date();
                             var day = Now.getDate();
-                            var month = Now.getMonth()
                             var year = Now.getFullYear();
                             var hours = Now.getHours();
                             var minutes = Now.getMinutes();
                             var seconds = Now.getSeconds();
-                            var monthes = ['Января']
+                            var monthes = ['Января', 'Февраля', 'Марта', 'Апреля']
                             seconds = seconds < 10 ? '0' + seconds : seconds;
                             minutes = minutes < 10 ? '0' + minutes : minutes;
                             var full = `${day}  ${monthes[Now.getMonth()]}  ${year}г.  время  ${hours}:${minutes}:${seconds}`;
