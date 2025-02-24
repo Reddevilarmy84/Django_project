@@ -11,6 +11,50 @@
     background-size: cover;
 }
 
+#game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    background-image: url("../img/cave.jpg");
+    background-size: cover;
+    height: 700px;
+
+}
+
+.game {
+    color: #eeeeee;
+    animation-duration: 0.7s;
+    animation-name: slidein;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.mage {
+    background-image: url("../img/mage.jpg");
+    background-size: cover;
+    height: 200px;
+    width: 200px;
+}
+
+@keyframes slidein {
+    from {
+        font-size: 48px;
+    }
+
+    to {
+        font-size: 50px;
+    }
+
+}
+
+.game_button {
+    background-color: rgba(50, 50, 50, 0.1);
+    border-radius: 50px;
+}
+
+
+
 #tinting {
     background-color: rgba(50, 50, 50, 0.8);
     background-size: cover;
@@ -101,7 +145,7 @@ nav div a {
     color: rgb(200, 200, 200);
     position: absolute;
     right: 1vw;
-    top: -2.5vw;
+    top: -2vw;
     font-size: 1vw;
     font-family: "Comic Sans MS";
 }

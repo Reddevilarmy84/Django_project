@@ -1,0 +1,32 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block title %}
+{{ title }}
+{% endblock %}
+{% block header %}
+<h1>{{ header }}</h1>
+{% endblock %}
+{% block content %}
+    <div id="game">
+{% if start_game is False %}
+        <form method="get">
+            <button type="submit" name="start_game" value="True" class="game_button"><h1 class="game">Начать игру</h1></button>>
+        </form>
+{% endif %}
+
+{% if start_game %}
+        <form method="get">
+            <button type="submit" name="hero" value="mage" class="game_button"><h1 class="mage game">Маг</h1></button>>
+        </form>
+{% endif %}
+
+{% if hero %}
+       <form method="get">
+           <button type="submit" name="start_game" value="True" class="game_button"><h1 class="game">Легко</h1></button>>
+           <button type="submit" name="start_game" value="True" class="game_button"><h1 class="game">Средне</h1></button>>
+           <button type="submit" name="start_game" value="True" class="game_button"><h1 class="game">Сложно</h1></button>>
+        </form>
+{% endif %}
+
+    </div>
+{% endblock %}

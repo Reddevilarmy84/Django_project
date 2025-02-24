@@ -20,6 +20,36 @@ def abouts(request):
     return render(request, 'main/about.html', data)
 
 
+class Game:
+    start_game = False
+    hero = False
+    cave = False
+
+def game(request, start_game = False, hero = False):
+    start_game = request.GET.get('start_game', start_game)
+    game_start_game = False
+    game_hero = False
+    if start_game:
+        game = Game()
+        print('создали обьект')
+        game.start_game = True
+
+        game_start_game = game.start_game
+    hero = request.GET.get('hero', hero)
+    if hero:
+        print(game.hero)
+        game.hero = 'Mage'
+        game_hero = game.hero
+    data = {
+        'title': 'MadJunior: повелитель пещер',
+        'header': 'повелитель пещер',
+        'start_game': game_start_game,
+        'hero': game_hero,
+
+    }
+    return render(request, 'main/game.html', data)
+
+
 def contact(request):
     data = {
         'title': 'MadJunior: Вспомагательные материалы',

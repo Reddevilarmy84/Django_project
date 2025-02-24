@@ -28,7 +28,7 @@
                             var hours = Now.getHours();
                             var minutes = Now.getMinutes();
                             var seconds = Now.getSeconds();
-                            var monthes = ['Января', 'Февраля', 'Марта', 'Апреля']
+                            var monthes = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня','Июля','Августа','Сентября','Октября','Ноября','Декабря']
                             seconds = seconds < 10 ? '0' + seconds : seconds;
                             minutes = minutes < 10 ? '0' + minutes : minutes;
                             var full = `${day}  ${monthes[Now.getMonth()]}  ${year}г.  время  ${hours}:${minutes}:${seconds}`;
@@ -62,6 +62,9 @@
                 </div>
                 <div class="navButton">
                     <a href="{% url 'trading_view' %}">Парсинг Trading view</a>
+                </div>
+                <div class="navButton">
+                    <a href="{% url 'game' %}">Повелитель пещер</a>
                 </div>
             </nav>
             <main>{% block content %}{% endblock %}</main>
