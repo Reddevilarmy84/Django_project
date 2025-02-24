@@ -50,7 +50,9 @@
 
 .game_button {
     background-color: rgba(50, 50, 50, 0.1);
-    border-radius: 50px;
+    border: 2px solid white;
+    border-radius: 100px;
+    padding: 30px;
 }
 
 
