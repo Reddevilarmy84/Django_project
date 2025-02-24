@@ -18,11 +18,12 @@
                 {% endif %}
                 <form method="get"> <!--можно прописать атрибут action, чтобы указать на какой странице будет происходить обработка данных, если не указывать, то на текущей-->
                     {% csrf_token %}<br>
-                    <input name="year" type="number" class="input" value="{{ year }}" min="2020" max="2025">
-                    <input name="pages" type="number" class="input" value="{{ pages }}" min="1" max="50">
+                    <input name="year" type="number" class="input" value="{{ year }}" min="2020" max="2025" placeholder="Выберите год">
+                    <input name="pages" type="number" class="input" value="{{ pages }}" min="1" max="30" placeholder="Выберите кол-во страниц">
                     <button type="submit" id="submit-button">ОК</button>
                 </form>
             </div>
+            <p style="font-size: 20px; color: #b5b3b3">{{ content }}</p>
         </div>
 
 {% if JsonData %}
@@ -44,18 +45,12 @@
 
 
  <!--               <a href="{{item.link}}"><img class="card_img" src="{{item.img}}" alt="{{item.name}}"></a> -->
-                <h3>{{item.year}}</h3>
+                <h3>{{item.year}} стр{{item.page}}</h3>
             </div>
         {% endfor %}
     </div>
 {% else %}
     <div class="content">
-        <div style="width: 300px; height: 100px">
-            <h2>Нечего отображать</h2>
-        </div>
-        <div style="width: 300px; height: 100px">
-            <h2>Нечего отображать</h2>
-        </div>
         <div style="width: 300px; height: 100px">
             <h2>Нечего отображать</h2>
         </div>

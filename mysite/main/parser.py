@@ -13,6 +13,35 @@ path_to_json_stocks = os.path.join(os.path.dirname(os.path.abspath(__file__)), '
 url_trading_view = 'https://ru.tradingview.com/markets/stocks-russia/market-movers-all-stocks/'
 
 
+class Colors:
+    black = '\033[30m'
+    red = '\033[31m'
+    green = '\033[32m'
+    yellow = '\033[33m'
+    blue = '\033[34m'
+    purple = '\033[35m'
+    light_blue = '\033[36m'
+    grey = '\033[37m'
+
+    black_back = '\033[40m'
+    red_back = '\033[41m'
+    green_back = '\033[42m'
+    yellow_back = '\033[43m'
+    blue_back = '\033[44m'
+    purple_back = '\033[45m'
+    light_blue_back = '\033[46m'
+    grey_back = '\033[47m'
+
+    reset = '\033[0m'  #сброс
+    bolt = '\033[1m'  #жирный
+    light = '\033[2m'  #Блёклый
+    curs = '\033[3m'  #Курсив
+    line = '\033[4m'  #Подчёркнутый
+    blink = '\033[5m'  # Редкое мигание
+    blink_fast = '\033[6m'  # Частое мигание
+    inv = '\033[7m'  # Смена цвета фона с цветом текста
+
+
 def pars_trading_view(url):
     new_list = []
     id = 0
@@ -53,58 +82,43 @@ def pars_trading_view(url):
         id += 1
     return new_list
 
-def pars_lord_film(year, end_page, start_page=1):
-    if not end_page:
+
+def pars_lord_film(year:int, start_page:int = 1, end_page:int = None):
+    if end_page is None:
         end_page = 1
     new_list = []
-    page_id = 1
     for page in range(start_page, int(end_page) + 1):
         url = f'https://13.lordfilm-dc.com/films-{year}/page/{page}'
         try:
             response = requests.get(url)
+            print(f'Парсим: {url}')
         except:
             print(f'Disconect: {url}')
             new_dict = {}
-            new_dict['page'] = page_id
+            new_dict['year'] = year
+            new_dict['page'] = page
             new_dict['name'] = None
             new_dict['link'] = None
             new_dict['img'] = None
-            new_dict['year'] = int(year)
             new_list.append(new_dict)
         else:
             soup = BeautifulSoup(response.text, 'lxml') #html.parser по умолчанию
             th_item = soup.find_all('a', class_="th-in with-mask")
             for item in th_item:
                 new_dict = {}
-                new_dict['page'] = page_id
+                new_dict['year'] = year
+                new_dict['page'] = page
                 new_dict['name'] = item.find('div', class_="th-title").get_text()
                 new_dict['link'] = item.get('href')
                 new_dict['img'] = 'https://13.lordfilm-dc.com/' + item.find('img').get('src')
-                new_dict['year'] = int(year)
                 new_list.append(new_dict)
-        page_id += 1
     return new_list
-
-
-def parser():
-    url = 'https://lenta.ru/'
-    response = requests.get(url)
-    soup = BeautifulSoup(response.text, 'lxml')
-    print(soup.prettify())
-    items = soup.find_all('img')
-    Lst = []
-    Dict = {}
-
-    for i in items:
-        Lst.append(i)
-
-    return Lst
 
 
 def dict_to_json(dict_list, filename):
     try:
         json_str = json.dumps(dict_list, ensure_ascii=False)
-        with open(filename, "w", encoding="utf-8") as file:
+        with open(filename, "w+", encoding="utf-8") as file:
             file.write(json_str)
         return json_str
     except (TypeError, ValueError, IOError) as e:
@@ -119,12 +133,13 @@ def json_to_dict(filename):
             dict_list = json.loads(json_str)
         return dict_list
     except (TypeError, ValueError, IOError) as e:
-        print(f"Ошибка при чтении JSON из файла или преобразовании в список словарей: {e}")
-        return None
+        print(f"Ошибка при чтении JSON из файла или преобразовании в список словарей: {e}\n"
+              f"Фаёл films.json пересоздан")
+        with open(filename, "w+", encoding="utf-8") as file:
+            json_str = '[]'
+            file.write(json_str)
+        with open(filename, "r", encoding="utf-8") as file:
+            json_str = file.read()
+            dict_list = json.loads(json_str)
+        return dict_list
 
-
-
-#news = parser()
-
-#for i in news:
-#    print(i)
