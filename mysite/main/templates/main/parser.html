@@ -18,12 +18,13 @@
                 {% endif %}
                 <form method="get"> <!--можно прописать атрибут action, чтобы указать на какой странице будет происходить обработка данных, если не указывать, то на текущей-->
                     {% csrf_token %}<br>
-                    <input name="year" type="number" class="input" value="{{ year }}" min="2020" max="2025" placeholder="Выберите год">
-                    <input name="pages" type="number" class="input" value="{{ pages }}" min="1" max="30" placeholder="Выберите кол-во страниц">
+                    <input name="year" type="number" class="input"  min="2020" max="2025" placeholder="Выберите год">
+                    <input name="pages" type="number" class="input"  min="1" max="30" placeholder="Выберите кол-во страниц">
                     <button type="submit" id="submit-button">ОК</button>
+                    <button type="submit" id="submit-button" name="clear" value="True">Очистить БД</button>
                 </form>
             </div>
-            <p style="font-size: 20px; color: #b5b3b3">{{ content }}</p>
+            <p style="font-size: {{ font_size }}px; color: #b5b3b3">{{ content }}</p>
         </div>
 
 {% if JsonData %}

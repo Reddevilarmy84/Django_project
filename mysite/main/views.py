@@ -46,8 +46,13 @@ def trading_view(request, urrl='market-movers-all-stocks'):
     return render(request, 'main/trading_view.html', data)
 
 
-def parser(request, year: int = None, pages: int = None):
+def parser(request, year: int = None, pages: int = None, clear: bool = False):
+    font_size = 25
     json_data = []  #создать список для контекста
+    clear = request.GET.get('clear', clear)
+    if clear:
+        dict_to_json(json_data, path_to_json)
+        print(f'БД очищена')
     json_data_db = json_to_dict(path_to_json)  #вернули список фильмов из БД
     if json_data_db:  #генерируем список случайных фильмов, исключая дубликаты
         for i in range(0, 6):
@@ -129,5 +134,6 @@ def parser(request, year: int = None, pages: int = None):
         'year': year,
         'pages': pages,
         'content': content,
+        'font_size': font_size,
     }
     return render(request, 'main/parser.html', context)
