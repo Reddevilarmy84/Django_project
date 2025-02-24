@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from .parser import pars_lord_film, dict_to_json, json_to_dict, pars_trading_view, url_trading_view, \
-    path_to_json_stocks, path_to_json, Colors
+from .parser import pars_lord_film, dict_to_json, json_to_dict, pars_trading_view, path_to_json, Colors
 from random import randint
+from .game import path_to_json_game
 
 
 def index(request):
@@ -20,34 +20,36 @@ def abouts(request):
     return render(request, 'main/about.html', data)
 
 
-class Game:
-    start_game = False
-    hero = False
-    cave = False
-
-def game(request, start_game = False, hero = False):
+def game(request, start_game: bool = None, hero: str = None, phase: str = None, difficulty: str = None):
+    config = json_to_dict(path_to_json_game)
+    phase = request.GET.get('phase', phase)
     start_game = request.GET.get('start_game', start_game)
-    game_start_game = False
-    game_hero = False
-    if start_game:
-        game = Game()
-        print('создали обьект')
-        game.start_game = True
-
-        game_start_game = game.start_game
     hero = request.GET.get('hero', hero)
+    difficulty = request.GET.get('difficulty', difficulty)
+    if difficulty:
+        config[0]["difficulty"] = difficulty
+        config[0]["phase"] = "exploration"
+    if phase:
+        config[0]["phase"] = phase
+    if start_game:
+        config[0]["game_started"] = start_game
+        config[0]["phase"] = "choose hero"
     if hero:
-        print(game.hero)
-        game.hero = 'Mage'
-        game_hero = game.hero
-    data = {
+        config[0]["hero"] = hero
+        config[0]["phase"] = "choose cave"
+        if hero == "mage":
+            config[0]["hero_hp"] = "400"
+            config[0]["hero_mp"] = "400"
+            config[0]["hero_exp"] = "400"
+            config[0]["hero_lvl"] = "1"
+            config[0]["hero_img"] = "mage.jpg"
+    dict_to_json(config, path_to_json_game)
+    context = {
         'title': 'MadJunior: повелитель пещер',
         'header': 'повелитель пещер',
-        'start_game': game_start_game,
-        'hero': game_hero,
-
+        'config': config[0],
     }
-    return render(request, 'main/game.html', data)
+    return render(request, 'main/game.html', context)
 
 
 def contact(request):
