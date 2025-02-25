@@ -388,7 +388,7 @@ nav div a {
     height: 200px;
     display: flex;
     align-items: start;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 #game {
