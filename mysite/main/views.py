@@ -20,34 +20,37 @@ def abouts(request):
     return render(request, 'main/about.html', data)
 
 
-def game(request, start_game: bool = None, hero: str = None, phase: str = None, difficulty: str = None):
-    config = json_to_dict(path_to_json_game)
-    phase = request.GET.get('phase', phase)
-    start_game = request.GET.get('start_game', start_game)
-    hero = request.GET.get('hero', hero)
-    difficulty = request.GET.get('difficulty', difficulty)
-    if difficulty:
-        config[0]["difficulty"] = difficulty
-        config[0]["phase"] = "exploration"
-    if phase:
-        config[0]["phase"] = phase
-    if start_game:
-        config[0]["game_started"] = start_game
-        config[0]["phase"] = "choose hero"
-    if hero:
-        config[0]["hero"] = hero
-        config[0]["phase"] = "choose cave"
-        if hero == "mage":
-            config[0]["hero_hp"] = "400"
-            config[0]["hero_mp"] = "400"
-            config[0]["hero_exp"] = "400"
-            config[0]["hero_lvl"] = "1"
-            config[0]["hero_img"] = "mage.jpg"
-    dict_to_json(config, path_to_json_game)
+def game(request, action: str = None):
+    json = json_to_dict(path_to_json_game)
+    action = request.GET.get('action', action)
+
+    if action == "exit":
+        for i in json:
+            if i["id"] == "config":
+                i["phase"] = "title"
+    print(f"фаза {json}")
+
+    try:
+        phase = [i['phase'] for i in json if i["id"] == "config"][0]
+        print(f"фаза {phase}")
+    except:
+        print(f"фаза не найдена")
+        phase = None
+
+
+
+    if phase == "title":
+        if action == "start_game":
+            for i in json:
+                if i["id"] == "config":
+                    i["phase"] = "choose_hero"
+
+    print(json)
+    dict_to_json(json, path_to_json_game)
     context = {
         'title': 'MadJunior: повелитель пещер',
         'header': 'повелитель пещер',
-        'config': config[0],
+        'json': json,
     }
     return render(request, 'main/game.html', context)
 

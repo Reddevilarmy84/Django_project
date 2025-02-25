@@ -7,49 +7,54 @@
 <h1>{{ header }}</h1>
 {% endblock %}
 {% block content %}
-    <div id="back">
-            <form method="get">
-                <button type="submit" name="phase" value="title" class="game_button_on_title">на главный экран</button>
-            </form>
-            <div style="height: 99px; width: 500px; position: relative; left: 10px; top: -30px; display: flex;">
-                <img src="{% static 'main/img/mage.jpg' %}" width="100px" height="100px" alt="маг">
-                <p style="color: #000000; position: absolute;   left: 60px; top: -16px;">{{config.hero_lvl}} лвл</p>
-                <div>
-                    <div style="height: 33px; width: {{config.hero_hp}}px; background-color: #ff0000; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px">HP</div>
-                    <div style="height: 33px; width: {{config.hero_mp}}px; background-color: #0020a2; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px"">MP</div>
-                    <div style="height: 33px; width: {{config.hero_exp}}px; background-color: #6e6e6e; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px"">EXP</div>
+    <div id="back-div"><br>
+        <div id="title-div">
+            <div style="display: flex; width: 400px;">
+                <img src="{% static 'main/img/mage.jpg' %}" width="100px" height="100px" alt="маг" style="border-radius: 20px">
+                <div style="margin-left: 5px">
+                    <div style="border-radius: 10px; height: 25px; margin: 4px; width: 300px; background-color: #ff0000; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px">HP</div>
+                    <div style="border-radius: 10px; height: 25px; margin: 4px; width: 260px; background-color: #0020a2; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px"">MP</div>
+                    <div style="border-radius: 10px; height: 25px; margin: 4px; width: 70px; background-color: #6e6e6e; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px"">EXP</div>
                 </div>
-            <div>
-        <div id="game">
-
-
-{% if config.phase == "title" %}
-        <form method="get" class="game">
-            <button type="submit" name="start_game" value="True" class="game_button">Начать игру</button>
-        </form>
-{% endif %}
-
-{% if config.phase == "choose hero" %}
-        <form method="get">
-            <button type="submit" name="hero" value="mage" class="game_button"><h1 class="mage game"></h1></button>
-        </form>
-{% endif %}
-
-{% if config.phase == "choose cave" %}
-       <form method="get">
-           <button type="submit" name="difficulty" value="easy" class="game_button"><h1 class="game">Легко</h1></button>
-           <button type="submit" name="difficulty" value="medium" class="game_button"><h1 class="game">Средне</h1></button>
-           <button type="submit" name="difficulty" value="hard" class="game_button"><h1 class="game">Сложно</h1></button>
-        </form>
-{% endif %}
-
-{% if config.phase == "exploration" %}
-       <form method="get">
-           <button type="submit" name="difficulty" value="easy" class="game_button"><h1 class="game">идти вперед</h1></button>
-        </form>
-
-{% endif %}
-
+            </div>
+            <div id="game">
+                <form method="get" class="game">
+                    <button type="submit" name="action" value="exit" class="game_button_exit">выйти из игры</button>
+                </form>
+            </div>
+            <div style="display: flex; width: 400px; justify-content: right">
+                <div style="margin-left: 5px;">
+                    <div style="border-radius: 10px; height: 25px; margin: 4px; width: 300px; background-color: #ff0000; color: #e0d0a9; display: flex; align-items: center; justify-content: right; position: relative; right: 1px; padding-left: 5px">HP</div>
+                    <div style="border-radius: 10px; height: 25px; margin: 4px; width: 260px; background-color: #0020a2; color: #e0d0a9; display: flex; align-items: center; justify-content: right; position: relative; right: 1px; padding-left: 5px"">MP</div>
+                    <div style="border-radius: 10px; height: 25px; margin: 4px; width: 70px; background-color: #6e6e6e; color: #e0d0a9; display: flex; align-items: center; justify-content: right; position: relative; right: 1px; padding-left: 5px"">EXP</div>
+                </div>
+                <img src="{% static 'main/img/mage.jpg' %}" width="100px" height="100px" alt="маг" style="border-radius: 20px">
+            </div>
         </div>
+        <div id="body-div">
+<!-------------------phase title------------------------------>
+        {% for item in json %}
+        {% if item.id == 'config' %}
+        {% if item.phase == 'title' %}
+            <div id="game">
+                <form method="get" class="game">
+                    <button type="submit" name="action" value="start_game" class="game_button">Начать игру!</button>
+                </form>
+            </div>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+<!-------------------end phase title------------------------------>
+        </div>
+        <div id="foot-div">
+            <div class="game">
+            action
+            </div>
+        </div>
+
+
+
+
+
     </div>
 {% endblock %}
