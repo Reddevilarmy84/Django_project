@@ -11,7 +11,7 @@
         <div id="title-div">
             {% for item in json %}
             {% if item.id == 'config' %}
-            {% if item.phase == 'title' %}
+            {% if item.phase == 'battle' %}
             <div style="display: flex; width: 400px;">
                 <img src="{% static 'main/img/mage.jpg' %}" width="100px" height="100px" alt="маг" style="border-radius: 20px">
                 <div style="margin-left: 5px">
@@ -30,7 +30,7 @@
             </div>
         {% for item in json %}
         {% if item.id == 'config' %}
-        {% if item.phase == 'title' %}
+        {% if item.phase == 'battle' %}
             <div style="display: flex; width: 400px; justify-content: right">
                 <div style="margin-left: 5px;">
                     <div style="border-radius: 10px; height: 25px; margin: 4px; width: 300px; background-color: #ff0000; color: #e0d0a9; display: flex; align-items: center; justify-content: right; position: relative; right: 1px; padding-left: 5px">HP</div>
@@ -62,7 +62,7 @@
         <div id="foot-div">
         {% for item in json %}
         {% if item.id == 'config' %}
-        {% if item.phase == 'title' %}
+        {% if item.phase == 'battle' %}
             <div class="game">
                 атака
             </div>

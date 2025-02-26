@@ -24,5 +24,6 @@ urlpatterns = [
     path('', include('main.urls')),
     path('kish', include('kish.urls')),
     path('blog/', include('blog.urls')),
+    path('Dungeon_master/', include('Dungeon_master.urls')),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

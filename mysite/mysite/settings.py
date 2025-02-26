@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'blog',
     'kish',
     'main',
+    'Dungeon_master',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -11,6 +11,5 @@ urlpatterns = [
     path("parser/<int:year>/<int:pages>", views.parser),
     path('trading_view', views.trading_view, name='trading_view'),
     path('trading_view/<str:urrl>', views.trading_view, name='trading_view'),
-    path('game', views.game, name='game'),
 ]
 

@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from .parser import pars_lord_film, dict_to_json, json_to_dict, pars_trading_view, path_to_json, Colors
 from random import randint
-from .game import path_to_json_game
 
 
 def index(request):
@@ -18,41 +17,6 @@ def abouts(request):
         'header': 'Про нас',
     }
     return render(request, 'main/about.html', data)
-
-
-def game(request, action: str = None):
-    json = json_to_dict(path_to_json_game)
-    action = request.GET.get('action', action)
-
-    if action == "exit":
-        for i in json:
-            if i["id"] == "config":
-                i["phase"] = "title"
-    print(f"фаза {json}")
-
-    try:
-        phase = [i['phase'] for i in json if i["id"] == "config"][0]
-        print(f"фаза {phase}")
-    except:
-        print(f"фаза не найдена")
-        phase = None
-
-
-
-    if phase == "title":
-        if action == "start_game":
-            for i in json:
-                if i["id"] == "config":
-                    i["phase"] = "choose_hero"
-
-    print(json)
-    dict_to_json(json, path_to_json_game)
-    context = {
-        'title': 'MadJunior: повелитель пещер',
-        'header': 'повелитель пещер',
-        'json': json,
-    }
-    return render(request, 'main/game.html', context)
 
 
 def contact(request):

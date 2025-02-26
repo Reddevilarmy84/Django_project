@@ -1,0 +1,65 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block header %}
+<h1>{{ header }}</h1>
+{% endblock %}
+{% block content %}
+    <div id="back-div"><br>
+        <div id="title-div">
+            {% for dict in json %}
+            {% if dict.phase == 'choose_hero' %}
+            <h1>Выбери героя</h1>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div id="body-div">
+            <!--         title                -->
+            {% for dict in json %}
+            {% if dict.phase == 'title' %}
+                <div id="game">
+                    <form method="get" class="game">
+                        <button  id="1" type="submit" name="action" value="start_game" class="game_button">Начать игру!</button>
+                    </form>
+                </div>
+            {% endif %}
+            {% endfor %}
+            <!--         chose hero                -->
+            {% for dict in json %}
+            {% if dict.phase == 'choose_hero' %}
+                <div id="game">
+                    <div class="game" style="margin: 50px">
+                        {{ player.name }}
+                    </div>
+                    <form method="get" class="game">
+                        <button id="1" type="submit" name="action" value="mage" class="game_button">
+                            <img src="{% static 'main/img/mage.jpg' %}" alt="маг" width="200px" height="200px" style="border-radius: 30px">
+                        </button>
+                    </form>
+                </div>
+                <div class="game" style="margin: 50px">
+                    <form method="get" class="game">
+                        <button id="1" type="submit" name="action" value="warior" class="game_button">
+                            <img src="{% static 'main/img/warior.jpg' %}" alt="воин" width="200px" height="200px" style="border-radius: 30px">
+                        </button>
+                    </form>
+                </div>
+                <div class="game" style="margin: 50px">
+                    <form method="get" class="game">
+                        <button id="1" type="submit" name="action" value="chief" class="game_button">
+                            <img src="{% static 'main/img/chief.jpg' %}" alt="разбойник" width="200px" height="200px" style="border-radius: 30px">
+                        </button>
+                    </form>
+                </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div id="foot-div">
+
+        </div>
+    </div>
+{% endblock %}
