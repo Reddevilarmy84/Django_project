@@ -10,12 +10,36 @@
 {% endblock %}
 {% block content %}
     <div id="back-div"><br>
+        <div id="manage-div">
+            <div class="game">
+                <form method="get" class="game">
+                    <button type="submit" name="action" value="exit" class="game_button_exit">выйти</button>
+                </form>
+            </div>
+        </div>
         <div id="title-div">
+
+            <!--         chose hero                -->
             {% for dict in json %}
             {% if dict.phase == 'choose_hero' %}
             <h1>Выбери героя</h1>
             {% endif %}
             {% endfor %}
+            <!--         chose location                -->
+            {% for dict in json %}
+            {% if dict.phase == 'choose_location' %}
+            <div style="display: flex; width: 400px;">
+                <img src="{% static player.img %}" width="100px" height="100px" alt="маг" style="border-radius: 20px">
+                <div style="margin-left: 5px">
+                    <div style="border-radius: 10px; height: 25px; margin: 4px; width: 300px; background-color: #ff0000; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px">HP</div>
+                    <div style="border-radius: 10px; height: 25px; margin: 4px; width: 260px; background-color: #0020a2; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px"">MP</div>
+                    <div style="border-radius: 10px; height: 25px; margin: 4px; width: 70px; background-color: #6e6e6e; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px"">LVL {{player.lvl}}</div>
+                </div>
+            </div>
+            <h1>Выбери локацию</h1>
+            {% endif %}
+            {% endfor %}
+
         </div>
         <div id="body-div">
             <!--         title                -->
@@ -31,24 +55,50 @@
             <!--         chose hero                -->
             {% for dict in json %}
             {% if dict.phase == 'choose_hero' %}
-                <div id="game" style="margin: 30px">
+                <div class="game" style="margin: 30px">
                     <form method="get" class="game">
-                        <button id="1" type="submit" name="action" value="mage" class="game_button">
+                        <button id="1" type="submit" name="action" value="mage" class="game_card">
                             <img src="{% static 'main/img/mage.jpg' %}" alt="маг" width="200px" height="200px" style="border-radius: 30px">
                         </button>
                     </form>
                 </div>
                 <div class="game" style="margin: 30px">
                     <form method="get" class="game">
-                        <button id="1" type="submit" name="action" value="warior" class="game_button">
+                        <button id="1" type="submit" name="action" value="warior" class="game_card">
                             <img src="{% static 'main/img/warior.jpg' %}" alt="воин" width="200px" height="200px" style="border-radius: 30px">
                         </button>
                     </form>
                 </div>
                 <div class="game" style="margin: 30px">
                     <form method="get" class="game">
-                        <button id="1" type="submit" name="action" value="chief" class="game_button">
+                        <button id="1" type="submit" name="action" value="chief" class="game_card">
                             <img src="{% static 'main/img/chief.jpg' %}" alt="разбойник" width="200px" height="200px" style="border-radius: 30px">
+                        </button>
+                    </form>
+                </div>
+            {% endif %}
+            {% endfor %}
+            <!--         chose location                -->
+            {% for dict in json %}
+            {% if dict.phase == 'choose_location' %}
+                <div class="game" style="margin: 30px">
+                    <form method="get" class="game">
+                        <button id="1" type="submit" name="action" value="mage" class="game_card">
+                            <img src="{% static 'main/img/locations/loc_1.jpg' %}" alt="маг" width="200px" height="200px" style="border-radius: 30px">
+                        </button>
+                    </form>
+                </div>
+                <div class="game" style="margin: 30px">
+                    <form method="get" class="game">
+                        <button id="1" type="submit" name="action" value="warior" class="game_card">
+                            <img src="{% static 'main/img/locations/loc_4.jpg' %}" alt="воин" width="200px" height="200px" style="border-radius: 30px">
+                        </button>
+                    </form>
+                </div>
+                <div class="game" style="margin: 30px">
+                    <form method="get" class="game">
+                        <button id="1" type="submit" name="action" value="chief" class="game_card">
+                            <img src="{% static 'main/img/locations/loc_3.jpg' %}" alt="разбойник" width="200px" height="200px" style="border-radius: 30px">
                         </button>
                     </form>
                 </div>

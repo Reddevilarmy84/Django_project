@@ -31,6 +31,7 @@ class Colors:
     blink_fast = '\033[6m'  # Частое мигание
     inv = '\033[7m'  # Смена цвета фона с цветом текста
 
+
 class Mob:
     exp = 10
     mp = 30

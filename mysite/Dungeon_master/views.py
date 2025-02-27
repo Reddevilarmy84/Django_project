@@ -27,12 +27,13 @@ def Dungeon_master(request, action: str = None):
                     i["phase"] = "choose_hero"
     # отслеживание фазы выбор героя
     if phase == "choose_hero":
-        if action == "mage":
-            player.type = "action"
-            player.lvl = 1
+        if action == "mage" or action == "warior" or action == "chief":
+            player.type = action
+            player.img = f"main/img/{action}" + ".jpg"
             for i in json:
                 if i["id"] == "config":
-                    i["phase"] = "choose_hero"
+                    i["phase"] = "choose_location"
+
 
     print(json)
     dict_to_json(json, path_to_json_DM)
