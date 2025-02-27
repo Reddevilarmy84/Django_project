@@ -12,6 +12,30 @@
     justify-content: space-between;
 }
 
+#title-block-1 {
+    height: 100px;
+    width: 33%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+#title-block-2 {
+    height: 100px;
+    width: 33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#title-block-3 {
+    height: 100px;
+    width: 33%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
 #manage-div {
     padding: 10px;
     height: 20px;
