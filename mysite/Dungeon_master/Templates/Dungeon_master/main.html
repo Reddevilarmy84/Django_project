@@ -4,6 +4,15 @@
 {% block title %}
 {{ title }}
 {% endblock %}
+    {% block style %}
+        <style>
+            #back-div {
+            background-image: url( "{% static location.location.img %}" );
+            background-size: cover;
+            height: 600px;
+        }
+        </style>
+    {% endblock %}
 
 {% block header %}
 <h1>{{ header }}</h1>
@@ -23,10 +32,10 @@
                 <!--         chose location                -->
                 {% if dict.phase == 'choose_location' %}
                 <div style="display: flex; width: 400px">
-                    <img src="{% static player.img %}" width="120px" height="120px" alt="маг" style="border-radius: 20px; margin-right: 5px">
+                    <img src="{% static player.hero.img %}" width="120px" height="120px" alt="маг" style="border-radius: 20px; margin-right: 5px">
                     <div style="margin-top: 5px; display: flex; flex-direction: column; align-items: flex-start">
-                        <div style="border-radius: 10px; height: 25px; margin: 2px; width: {{player.hp}}px; background-color: #ff0000; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px">HP:{{player.hp}}</div>
-                        <div style="border-radius: 10px; height: 25px; margin: 2px; width: {{player.mp}}px; background-color: #0020a2; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px"">MP:{{player.mp}}</div>
+                        <div style="border-radius: 10px; height: 25px; margin: 2px; width:{{ player.hp_bar }}px; background-color: #ff0000; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px">HP:{{player.hero.hp}}</div>
+                        <div style="border-radius: 10px; height: 25px; margin: 2px; width: {{player.mp_bar}}px; background-color: #0020a2; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px"">MP:{{player.hero.mp}}</div>
                         <div style="border-radius: 10px; height: 25px; margin: 2px; width: {{player.exp}}px; background-color: #6e6e6e; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px"">exp:{{player.exp}}/{{player.exp_to_lvl}}</div>
                         <div style="border-radius: 10px; height: 25px; margin: 2px; width: 45px; background-color: #6e6e6e; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px"">lvl:{{player.lvl}}</div>
                     </div>
@@ -42,8 +51,8 @@
                 {% if dict.phase == 'choose_location' %}
                 <h2>Выбери локацию</h2>
                 {% endif %}
-                {% if dict.phase == 'exploration' and loc.path_traveled != 0 %}
-                <h2>пройдено: {{loc.path_traveled}} из {{loc.length}}</h2>
+                {% if dict.phase == 'exploration' and location.path_traveled != 0 %}
+                <h2>пройдено: {{location.path_traveled}} из {{location.length}}</h2>
                 {% endif %}
             </div>
             <div id="title-block-3">

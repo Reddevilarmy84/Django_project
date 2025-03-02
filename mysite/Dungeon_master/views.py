@@ -3,9 +3,10 @@ from .Dungeon_master import dict_to_json, json_to_dict, path_to_json_DM, Colors,
 
 player = Hero()
 mob = Mob()
-loc = Location()
+location = Location()
 
 def Dungeon_master(request, action: str = None):
+    print(location.location['img'])
     json = json_to_dict(path_to_json_DM)
     action = request.GET.get('action', action)
 
@@ -19,6 +20,11 @@ def Dungeon_master(request, action: str = None):
     except:
         print(f"фаза не найдена")
         phase = None
+
+    if not player.hero and phase != "choose_hero":
+        for i in json:
+            if i["id"] == "config":
+                i["phase"] = "title"
     print(f"действие: {action}")
     #отслеживание фаз
     if phase == "title":
@@ -30,39 +36,40 @@ def Dungeon_master(request, action: str = None):
     if phase == "choose_hero":
         if action == "mage" or action == "warior" or action == "chief":
             player.type = action
-            player.img = f"main/img/{action}" + ".jpg"
+            player.hero['img'] = f"main/img/{action}" + ".jpg"
             for i in json:
                 if i["id"] == "config":
                     i["phase"] = "choose_location"
     # отслеживание фазы выбор локации
     if phase == "choose_location":
         if action == "cave_1":
-            loc.length = 10
-            loc.path_traveled = 0
+            location.location['img'] = 'main/img/locations/loc_1.jpg'
+            location.length = 10
+            location.path_traveled = 0
             for i in json:
                 if i["id"] == "config":
                     i["phase"] = "exploration"
     # отслеживание фазы локации
     if phase == "exploration":
-        print(f"Пройдено: {loc.path_traveled}")
+        print(f"Пройдено: {location.path_traveled}")
         if action == "do_step":
-            if loc.path_traveled == loc.length-1:
-                loc.path_traveled += 1
+            if location.path_traveled == location.length-1:
+                location.path_traveled += 1
                 for i in json:
                     if i["id"] == "config":
                         i["phase"] = "exploration_completed"
                         print("Локация пройдена")
             else:
-                loc.path_traveled += 1
+                location.path_traveled += 1
     # отслеживание фазы локация пройдена
     if phase == "exploration_completed":
         if action == "complete":
             for i in json:
                 if i["id"] == "config":
                     i["phase"] = "choose_location"
-            loc.path_traveled = 0
-            player.exp += 100
-            if player.exp >= player.exp_to_lvl:
+            location.path_traveled = 0
+            player.hero['exp'] += 100
+            if player.hero['exp'] >= player.hero['exp_to_lvl']:
                 player.up_lvl(1)
 
 
@@ -74,6 +81,6 @@ def Dungeon_master(request, action: str = None):
         'json': json,
         'player': player,
         'mob': mob,
-        'loc': loc,
+        'location': location,
     }
     return render(request, 'Dungeon_master/main.html', context)
