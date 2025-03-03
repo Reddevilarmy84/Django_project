@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from .Dungeon_master import dict_to_json, json_to_dict, path_to_json_DM, Colors, Hero, Mob, Location
+import re
 
-player = Hero()
+hero = Hero()
 mob = Mob()
 location = Location()
 
@@ -21,10 +22,7 @@ def Dungeon_master(request, action: str = None):
         print(f"фаза не найдена")
         phase = None
 
-    if not player.hero and phase != "choose_hero":
-        for i in json:
-            if i["id"] == "config":
-                i["phase"] = "title"
+
     print(f"действие: {action}")
     #отслеживание фаз
     if phase == "title":
@@ -32,19 +30,24 @@ def Dungeon_master(request, action: str = None):
             for i in json:
                 if i["id"] == "config":
                     i["phase"] = "choose_hero"
+            if hero.stats:
+                for i in json:
+                    if i["id"] == "config":
+                        i["phase"] = "choose_location"
     # отслеживание фазы выбор героя
     if phase == "choose_hero":
-        if action == "mage" or action == "warior" or action == "chief":
-            player.type = action
-            player.hero['img'] = f"main/img/{action}" + ".jpg"
+        if re.match('hero', action):
+            hero.content = hero.content_list[int(list(action)[-1])]
+            hero.stats = hero.stats_list[int(list(action)[-1])]
+            print(f'статы:{hero.stats}\nконтент:{hero.content}')
             for i in json:
                 if i["id"] == "config":
                     i["phase"] = "choose_location"
     # отслеживание фазы выбор локации
     if phase == "choose_location":
-        if action == "cave_1":
-            location.location['img'] = 'main/img/locations/loc_1.jpg'
-            location.length = 10
+        if  re.match("cave", action):
+            location.location['img'] = f'main/img/locations/loc_{int(list(action)[-1])}.jpg'
+            location.length = int(f'{list(action)[-1]}0')
             location.path_traveled = 0
             for i in json:
                 if i["id"] == "config":
@@ -68,18 +71,18 @@ def Dungeon_master(request, action: str = None):
                 if i["id"] == "config":
                     i["phase"] = "choose_location"
             location.path_traveled = 0
-            player.hero['exp'] += 100
-            if player.hero['exp'] >= player.hero['exp_to_lvl']:
-                player.up_lvl(1)
+            hero.stats['exp'] += 100
+            if hero.stats['exp'] >= hero.stats['exp_to_lvl']:
+                hero.up_lvl(1)
 
 
-    print(json)
+
     dict_to_json(json, path_to_json_DM)
     context = {
-        'title': 'MadJunior: повелитель пещер',
-        'header': 'повелитель пещер',
+        'title': 'MadJunior: Повелитель Пещер',
+        'header': 'Повелитель Пещер',
         'json': json,
-        'player': player,
+        'hero': hero,
         'mob': mob,
         'location': location,
     }

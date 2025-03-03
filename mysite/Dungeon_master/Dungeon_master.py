@@ -8,45 +8,120 @@ class Mob:
     pass
 
 class Hero:
-    hero = {
-        'hp':200,
-        'hp_max':200,
-        'mp': 200,
-        'mp_max': 200,
-        'exp': 0,
-        'exp_to_lvl': 70,
-        'lvl': 1,
-        'pwr': 10,
-    }
-
-    spec1 = 'огненный шар'
-    spec1_mp = 20
-    spec1_pwr = 0
-    spec2 = 'огненный шторм'
-    spec2_mp = 30
-    spec2_pwr = 0
-    spec3 = 'плазменный взрыв'
-    spec3_mp = 50
-    spec3_pwr = 0
+    current_attack = {}
+    content = {}
+    stats = {}
+    stats_list = [
+        {
+            'id': 'hero_0',
+            'lvl': 1,
+            'attack_pwr': 10,
+            'hp':50,
+            'hp_max':50,
+            'hp_before': 50,
+            'mp': 100,
+            'mp_max': 100,
+            'mp_before': 100,
+            'exp': 0,
+            'exp_to_lvl': 100,
+            'exp_before': 100,
+            'spec1_pwr': 20,
+            'spec2_pwr': 30,
+            'spec3_pwr': 40,
+            'spec1_mp': 20,
+            'spec2_mp': 30,
+            'spec3_mp': 40,
+        },
+        {
+            'id': 'hero_1',
+            'lvl': 1,
+            'attack_pwr': 10,
+            'hp': 50,
+            'hp_max': 50,
+            'hp_before': 50,
+            'mp': 100,
+            'mp_max': 100,
+            'mp_before': 100,
+            'exp': 0,
+            'exp_to_lvl': 100,
+            'exp_before': 100,
+            'spec1_pwr': 20,
+            'spec2_pwr': 30,
+            'spec3_pwr': 40,
+            'spec1_mp': 20,
+            'spec2_mp': 30,
+            'spec3_mp': 40,
+        },
+        {
+            'id': 'hero_2',
+            'lvl': 1,
+            'attack_pwr': 10,
+            'hp': 50,
+            'hp_max': 50,
+            'hp_before': 50,
+            'mp': 100,
+            'mp_max': 100,
+            'mp_before': 100,
+            'exp': 0,
+            'exp_to_lvl': 100,
+            'exp_before': 100,
+            'spec1_pwr': 20,
+            'spec2_pwr': 30,
+            'spec3_pwr': 40,
+            'spec1_mp': 20,
+            'spec2_mp': 30,
+            'spec3_mp': 40,
+        },
+]
+    content_list = [
+        {
+            'class': 'маг',
+            'img': 'main/img/hero/hero_0.jpg',
+            'spec1': 'огненный шар',
+            'spec2': 'ледяной шторм',
+            'spec3': 'солнечная вспышка',
+            'spec1_img': '',
+            'spec2_img': '',
+            'spec3_img': '',
+        },
+        {
+            'class': 'воин',
+            'img': 'main/img/hero/hero_1.jpg',
+            'spec1': 'рассечение',
+            'spec2': 'выпад силы',
+            'spec3': 'снизхождение',
+            'spec1_img': '',
+            'spec2_img': '',
+            'spec3_img': '',
+        },
+        {
+            'class': 'вор',
+            'img': 'main/img/hero/hero_2.jpg',
+            'spec1': 'удар в спину',
+            'spec2': 'выстрел из арбалета',
+            'spec3': 'атака тени',
+            'spec1_img': '',
+            'spec2_img': '',
+            'spec3_img': '',
+        },
+    ]
 
     def up_lvl(self, lvl):
-        self.hero['lvl'] += lvl
-        self.hero['hp_max'] += lvl*40
-        self.hero['hp'] = self.hero['hp_max']
-        self.hero['pwr'] += lvl*5
-        self.hero['mp'] = self.hero['mp_max']
-        self.hero['exp_to_lvl'] += 110
-        self.spec1_pwr = math.floor(self.hero['lvl']/2) * 9
-        self.spec1_mp += (lvl * 10)
-        self.spec2_mp += lvl * 14
-        self.spec2_pwr = math.floor(self.hero['lvl']/5) * 38
-        self.spec3_mp += lvl * 19
-        self.spec3_pwr = math.floor(self.hero['lvl']/10) * 147
+        self.stats['lvl'] += lvl
+        self.stats['hp_max'] += lvl*40
+        self.stats['hp'] = self.stats['hp_max']
+        self.stats['attack_pwr'] += lvl*5
+        self.stats['mp_max'] += lvl*80
+        self.stats['mp'] = self.stats['mp_max']
+        self.stats['exp_to_lvl'] += 170
 
     def hp_bar(self):
-        return int( self.hero['hp'] / self.hero['hp_max'] * 300 )
+        return int( self.stats['hp'] / self.stats['hp_max'] * 300 )
+
     def mp_bar(self):
-        return int( self.hero['mp'] / self.hero['mp_max'] * 300 )
+        return int( self.stats['mp'] / self.stats['mp_max'] * 300 )
+    def exp_bar(self):
+        return int( self.stats['exp'] / self.stats['exp_to_lvl'] * 300 )
 
 class Location:
     location = {'img': 'main/img/locations/loc_0.jpg'}
