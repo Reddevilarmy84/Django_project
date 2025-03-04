@@ -7,7 +7,7 @@ mob = Mob()
 location = Location()
 
 def Dungeon_master(request, action: str = None):
-    print(location.location['img'])
+    print(location.content['img'])
     json = json_to_dict(path_to_json_DM)
     action = request.GET.get('action', action)
 
@@ -46,33 +46,35 @@ def Dungeon_master(request, action: str = None):
     # отслеживание фазы выбор локации
     if phase == "choose_location":
         if  re.match("cave", action):
-            location.location['img'] = f'main/img/locations/loc_{int(list(action)[-1])}.jpg'
-            location.length = int(f'{list(action)[-1]}0')
-            location.path_traveled = 0
+            location.content = location.content_list[int(list(action)[-1])]
+            location.stats = location.stats_list[int(list(action)[-1])]
+            print(location.content)
+            print(location.stats)
             for i in json:
                 if i["id"] == "config":
                     i["phase"] = "exploration"
     # отслеживание фазы локации
     if phase == "exploration":
-        print(f"Пройдено: {location.path_traveled}")
+        print(f"Пройдено: {location.stats['completed']}")
         if action == "do_step":
-            if location.path_traveled == location.length-1:
-                location.path_traveled += 1
+            if location.stats['completed'] == location.stats['length']-1:
+                location.stats['completed'] += 1
                 for i in json:
                     if i["id"] == "config":
                         i["phase"] = "exploration_completed"
                         print("Локация пройдена")
             else:
-                location.path_traveled += 1
+                location.stats['completed'] += 1
     # отслеживание фазы локация пройдена
     if phase == "exploration_completed":
         if action == "complete":
             for i in json:
                 if i["id"] == "config":
                     i["phase"] = "choose_location"
-            location.path_traveled = 0
+            location.stats['completed'] = 0
             hero.stats['exp'] += 100
             if hero.stats['exp'] >= hero.stats['exp_to_lvl']:
+                hero.stats['exp'] -= hero.stats['exp_to_lvl']
                 hero.up_lvl(1)
 
 

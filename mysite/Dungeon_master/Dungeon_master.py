@@ -13,7 +13,6 @@ class Hero:
     stats = {}
     stats_list = [
         {
-            'id': 'hero_0',
             'lvl': 1,
             'attack_pwr': 10,
             'hp':50,
@@ -24,7 +23,7 @@ class Hero:
             'mp_before': 100,
             'exp': 0,
             'exp_to_lvl': 100,
-            'exp_before': 100,
+            'exp_before': 0,
             'spec1_pwr': 20,
             'spec2_pwr': 30,
             'spec3_pwr': 40,
@@ -44,7 +43,7 @@ class Hero:
             'mp_before': 100,
             'exp': 0,
             'exp_to_lvl': 100,
-            'exp_before': 100,
+            'exp_before': 0,
             'spec1_pwr': 20,
             'spec2_pwr': 30,
             'spec3_pwr': 40,
@@ -64,7 +63,7 @@ class Hero:
             'mp_before': 100,
             'exp': 0,
             'exp_to_lvl': 100,
-            'exp_before': 100,
+            'exp_before': 0,
             'spec1_pwr': 20,
             'spec2_pwr': 30,
             'spec3_pwr': 40,
@@ -107,27 +106,64 @@ class Hero:
     ]
 
     def up_lvl(self, lvl):
+        exp_before = self.stats['exp']
+        for i in range(1, lvl+1):
+            self.stats = {k:int(v*1.2) for k, v in self.stats.items()}
         self.stats['lvl'] += lvl
-        self.stats['hp_max'] += lvl*40
         self.stats['hp'] = self.stats['hp_max']
-        self.stats['attack_pwr'] += lvl*5
-        self.stats['mp_max'] += lvl*80
         self.stats['mp'] = self.stats['mp_max']
-        self.stats['exp_to_lvl'] += 170
+        self.stats['exp'] = exp_before
+
 
     def hp_bar(self):
         return int( self.stats['hp'] / self.stats['hp_max'] * 300 )
-
     def mp_bar(self):
         return int( self.stats['mp'] / self.stats['mp_max'] * 300 )
     def exp_bar(self):
         return int( self.stats['exp'] / self.stats['exp_to_lvl'] * 300 )
 
 class Location:
-    location = {'img': 'main/img/locations/loc_0.jpg'}
-    length = 10
-    path_traveled = 0
+    content = {'img': 'main/img/locations/loc_0.jpg'}
+    stats = {}
+    content_list = [
+        {
+            'name': 'Пещера пиратов',
+            'img': 'main/img/locations/loc_1.jpg',
+        },
+        {
+            'name': 'Пещера троля',
+            'img': 'main/img/locations/loc_2.jpg',
+        },
+        {
+            'name': 'Сумеречная пещера',
+            'img': 'main/img/locations/loc_3.jpg',
+        },
 
+    ]
+    stats_list = [
+        {
+            'length': 10,
+            'completed': 0,
+            'chance_mob': 20,
+            'chance_reward': 20,
+
+        },
+        {
+            'length': 15,
+            'completed': 0,
+            'chance_mob': 30,
+            'chance_reward': 30,
+
+        },
+        {
+            'length': 20,
+            'completed': 0,
+            'chance_mob': 50,
+            'chance_reward': 50,
+
+        },
+
+    ]
 
 class Colors:
     black = '\033[30m'

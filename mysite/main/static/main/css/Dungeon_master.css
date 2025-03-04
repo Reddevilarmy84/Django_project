@@ -84,6 +84,9 @@
 }
 
 .game_button {
+    font-weight: bolder;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #0e0d0d;
     background-color: rgba(255, 255, 255, 0.1);
     border: none;
     color: white;
@@ -93,6 +96,9 @@
 }
 
 .game_button_exit {
+    font-weight: bold;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: #0e0d0d;
     background-color: rgba(50, 50, 50, 1);
     border: none;
     color: white;
