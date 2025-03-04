@@ -1,4 +1,6 @@
-
+#back-tinting {
+    background-color: rgba(0, 0, 0, 0.7);
+}
 
 #title-div {
     padding: 20px;
@@ -8,7 +10,7 @@
     justify-content: space-between;
 }
 
-#title-block-1 {
+#title-block-left {
     height: 100px;
     width: 33%;
     display: flex;
@@ -16,7 +18,7 @@
     align-items: center;
 }
 
-#title-block-2 {
+#title-block-center {
     height: 100px;
     width: 33%;
     display: flex;
@@ -24,7 +26,7 @@
     align-items: center;
 }
 
-#title-block-3 {
+#title-block-right {
     height: 100px;
     width: 33%;
     display: flex;
@@ -34,10 +36,12 @@
 
 #manage-div {
     padding: 10px;
-    height: 20px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 20px;
+    border: #ffffff 2px;
 }
 
 #body-div {
@@ -47,23 +51,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 
 #foot-div {
     font-size: 40px;
     color: white;
-    height: 200px;
+    height: 160px;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-#game {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    height: 700px;
+    gap: 30px;
 }
 
 .game {
@@ -72,6 +70,7 @@
     animation-iteration-count: infinite;
     animation-direction: alternate;
     border: none;
+    cursor: pointer;
 }
 
 @keyframes scaling {
@@ -108,6 +107,8 @@
 }
 
 .game_card {
+    height: 300px;
+    width: 300px;
     background-color: rgba(255, 255, 255, 0.1);
     border: none;
     color: white;
