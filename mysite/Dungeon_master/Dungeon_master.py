@@ -4,6 +4,101 @@ import random
 
 path_to_json_DM = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'Dungeon_master.json')
 
+mob_content_list = [
+    {
+        'class': 'Пещерная крыса',
+        'img': 'main/img/mob/mob_0.jpg',
+        'spec1': 'укус крысы',
+        'spec2': 'удар хвостом',
+        'spec3': 'яростные когти',
+        'spec0_img': 'main/img/mob/mob_0/spec_0.jpg',
+        'spec1_img': 'main/img/mob/mob_0/spec_1.jpg',
+        'spec2_img': 'main/img/mob/mob_0/spec_2.jpg',
+        'spec3_img': 'main/img/mob/mob_0/spec_3.jpg',
+    },
+    {
+        'class': 'Гном',
+        'img': 'main/img/mob/mob_1.jpg',
+        'spec1': 'удар дубиной',
+        'spec2': 'Бросок камнем',
+        'spec3': 'Яростный удар',
+        'spec0_img': 'main/img/mob/mob_1/spec_0.jpg',
+        'spec1_img': 'main/img/mob/mob_1/spec_1.jpg',
+        'spec2_img': 'main/img/mob/mob_1/spec_2.jpg',
+        'spec3_img': 'main/img/mob/mob_1/spec_3.jpg',
+    },
+    {
+        'class': 'Пещерный волк',
+        'img': 'main/img/mob/mob_2.jpg',
+        'spec1': 'укус волка',
+        'spec2': 'удар лапой',
+        'spec3': 'Удар хвостом',
+        'spec0_img': 'main/img/mob/mob_2/spec_0.jpg',
+        'spec1_img': 'spec1_img',
+        'spec2_img': 'spec2_img',
+        'spec3_img': 'spec3_img',
+    },
+]
+
+mob_stats_list = [
+    {
+        'lvl': 1,
+        'attack_pwr': 10,
+        'hp': 50,
+        'hp_max': 50,
+        'hp_before': 50,
+        'mp': 100,
+        'mp_max': 100,
+        'mp_before': 100,
+        'exp': 100,
+        'exp_to_lvl': 100,
+        'exp_before': 0,
+        'spec1_pwr': 20,
+        'spec2_pwr': 30,
+        'spec3_pwr': 40,
+        'spec1_mp': 20,
+        'spec2_mp': 30,
+        'spec3_mp': 40,
+    },
+    {
+        'lvl': 1,
+        'attack_pwr': 10,
+        'hp': 50,
+        'hp_max': 50,
+        'hp_before': 50,
+        'mp': 100,
+        'mp_max': 100,
+        'mp_before': 100,
+        'exp': 100,
+        'exp_to_lvl': 100,
+        'exp_before': 0,
+        'spec1_pwr': 20,
+        'spec2_pwr': 30,
+        'spec3_pwr': 40,
+        'spec1_mp': 20,
+        'spec2_mp': 30,
+        'spec3_mp': 40,
+    },
+    {
+        'lvl': 1,
+        'attack_pwr': 10,
+        'hp': 50,
+        'hp_max': 50,
+        'hp_before': 50,
+        'mp': 100,
+        'mp_max': 100,
+        'mp_before': 100,
+        'exp': 100,
+        'exp_to_lvl': 100,
+        'exp_before': 0,
+        'spec1_pwr': 20,
+        'spec2_pwr': 30,
+        'spec3_pwr': 40,
+        'spec1_mp': 20,
+        'spec2_mp': 30,
+        'spec3_mp': 40,
+    },
+]
 class Game:
     def __init__(self):
         self.game = False
@@ -11,108 +106,15 @@ class Mob:
     current_attack = {'name': 'продолжить'}
     content = {}
     stats = {}
-    stats_list = [
-        {
-            'lvl': 1,
-            'attack_pwr': 10,
-            'hp': 50,
-            'hp_max': 50,
-            'hp_before': 50,
-            'mp': 100,
-            'mp_max': 100,
-            'mp_before': 100,
-            'exp': 100,
-            'exp_to_lvl': 100,
-            'exp_before': 0,
-            'spec1_pwr': 20,
-            'spec2_pwr': 30,
-            'spec3_pwr': 40,
-            'spec1_mp': 20,
-            'spec2_mp': 30,
-            'spec3_mp': 40,
-        },
-        {
-            'lvl': 1,
-            'attack_pwr': 10,
-            'hp': 50,
-            'hp_max': 50,
-            'hp_before': 50,
-            'mp': 100,
-            'mp_max': 100,
-            'mp_before': 100,
-            'exp': 100,
-            'exp_to_lvl': 100,
-            'exp_before': 0,
-            'spec1_pwr': 20,
-            'spec2_pwr': 30,
-            'spec3_pwr': 40,
-            'spec1_mp': 20,
-            'spec2_mp': 30,
-            'spec3_mp': 40,
-        },
-        {
-            'lvl': 1,
-            'attack_pwr': 10,
-            'hp': 50,
-            'hp_max': 50,
-            'hp_before': 50,
-            'mp': 100,
-            'mp_max': 100,
-            'mp_before': 100,
-            'exp':100,
-            'exp_to_lvl': 100,
-            'exp_before': 0,
-            'spec1_pwr': 20,
-            'spec2_pwr': 30,
-            'spec3_pwr': 40,
-            'spec1_mp': 20,
-            'spec2_mp': 30,
-            'spec3_mp': 40,
-        },
-    ]
-    content_list = [
-        {
-            'class': 'Пещерная крыса',
-            'img': 'main/img/mob/mob_0.jpg',
-            'spec1': 'укус',
-            'spec2': 'удар хвостом',
-            'spec3': 'яростные когти',
-            'spec0_img': 'main/img/mob/mob_2/spec_0.jpg',
-            'spec1_img': 'spec1_img',
-            'spec2_img': 'spec2_img',
-            'spec3_img': 'spec3_img',
-        },
-        {
-            'class': 'Гном',
-            'img': 'main/img/mob/mob_1.jpg',
-            'spec1': 'удар дубиной',
-            'spec2': 'Бросок камнем',
-            'spec3': 'Яростный удар',
-            'spec0_img': 'main/img/mob/mob_2/spec_0.jpg',
-            'spec1_img': 'spec1_img',
-            'spec2_img': 'spec2_img',
-            'spec3_img': 'spec3_img',
-        },
-        {
-            'class': 'Пещерный волк',
-            'img': 'main/img/mob/mob_2.jpg',
-            'spec1': 'укус',
-            'spec2': 'удар лапой',
-            'spec3': 'Удар хвостом',
-            'spec0_img': 'main/img/mob/mob_2/spec_0.jpg',
-            'spec1_img': 'spec1_img',
-            'spec2_img': 'spec2_img',
-            'spec3_img': 'spec3_img',
-        },
-    ]
 
     def set_mob(self):
-        self.content = random.choice(self.content_list)
-        print(self.content_list.index(self.content))
-        self.stats = self.stats_list[self.content_list.index(self.content)]
+        self.content = random.choice(mob_content_list)
+        print(mob_content_list.index(self.content))
+        self.stats = mob_stats_list[mob_content_list.index(self.content)]
+        print(self.content)
 
     def set_lvl_mob(self, lvl):
-        lvl = lvl if lvl>0 else 1
+        lvl = lvl if lvl > 0 else 1
         for i in range(1, lvl + 1):
             self.stats = {k: int(v * 1.2) for k, v in self.stats.items()}
         self.stats['lvl'] += lvl

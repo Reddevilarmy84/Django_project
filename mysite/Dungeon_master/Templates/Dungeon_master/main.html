@@ -287,23 +287,25 @@
                 {% if dict.phase == 'hero_attack' %}
                     <div class="game">
                         <form method="get" class="game">
-                            <button  id="hero-spec-0" type="submit" name="action" value="attack_0" class="game_button">атака</button>
+                            <a href="#back-div"><button  id="hero-spec-0" type="submit" name="action" value="attack_0" class="game_button">атака</button></a>
                         </form>
                     </div>
                     <div class="game">
                         <form method="get" class="game">
-                            <button id="hero-spec-1" type="submit" name="action" value="attack_1" class="game_button">{{hero.content.spec1}}</button>
+                            <a href="#back-div"><button id="hero-spec-1" type="submit" name="action" value="attack_1" class="game_button">{{hero.content.spec1}}</button></a>
                         </form>
                     </div>
                     <div class="game">
                         <form method="get" class="game">
-                            <button id="hero-spec-2" type="submit" name="action" value="attack_2" class="game_button">{{hero.content.spec2}}</button>
+                            <a href="#back-div"><button id="hero-spec-2" type="submit" name="action" value="attack_2" class="game_button">{{hero.content.spec2}}</button></a>
                         </form>
                     </div>
+                    <a href="#back-div">
                     <div class="game">
                         <form method="get" class="game">
                             <button id="hero-spec-3" type="submit" name="action" value="attack_3" class="game_button">{{hero.content.spec3}}</button>
                         </form>
+                    </a>
                     </div>
                 {% endif %}
             </div>

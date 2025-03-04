@@ -83,6 +83,7 @@ def Dungeon_master(request, action: str = None):
                     mob.set_mob()
                     mob.set_lvl_mob(random.randint(location.stats['dificult']- 2 + hero.stats['lvl'], location.stats['dificult']+ 2 + hero.stats['lvl']))
                     print(f'моб создан')
+                    print(f'моб контент: {mob.content}')
                     for i in json:
                         if i["id"] == "config":
                             i["phase"] = "meet_mob"
@@ -99,6 +100,7 @@ def Dungeon_master(request, action: str = None):
     # отслеживание атака моба
     if phase == "mob_attack":
         mob.attack(random.randrange(4))
+        print(mob.current_attack)
         hero.stats['hp'] -= mob.current_attack['pwr']
         for i in json:
             if i["id"] == "config":
