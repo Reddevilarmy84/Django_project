@@ -164,13 +164,19 @@
                 {% endif %}
                 <!--         mob_attack    hero_attack     battle_win    battle_loose   -->
                 {% if dict.phase == 'mob_attack' or dict.phase == 'hero_attack' or dict.phase == 'battle_win' or dict.phase == 'battle_loose' %}
-                    <div class="game" style="margin: 30px">
-                        <form method="get" class="game">
-                            <button type="submit" name="action" value="This is hero" class="game_card">
-                                <img src="{% static hero.content.img %}" alt="mob" width="280px" height="280px" style="border-radius: 30px">
-                            </button>
-                        </form>
-                    </div>
+                <div class="game" style="margin: 30px">
+                    <form method="get" class="game"">
+                        <button type="submit" name="action" value="This is hero" class="game_card">
+                            <img src="{% static hero.content.img %}" alt="mob" width="280px" height="280px" style="border-radius: 30px;">
+
+                            <div style="background-color: rgba(255,0,0,0.5); border-radius: 30px; box-shadow: 10px 10px 50px darkred"></div>
+                            {% if dict.phase == 'hero_attack' and mob.current_attack.pwr != 0 or dict.phase == 'battle_loose' and mob.current_attack.pwr != 0 %}
+                            <h1 style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 100px; position: absolute; text-shadow: #e0d0a9 4px 4px 10px; bottom: 150px; left: -80px">-{{mob.current_attack.pwr}}</h1>
+                            {% endif %}
+                        </button>
+                    </form>
+                </div>
+                {% endif %}
                     <div class="game" style="margin: 30px">
                         {% if dict.phase == 'mob_attack' or dict.phase == 'hero_attack' %}
                         <h1 style="font-size: 150px">VS</h1>
@@ -182,26 +188,32 @@
                                 <h1 style="font-size: 30px">опыт: +{{mob.stats.exp}}</h1>
                             </button>
                         </form>
-
                         {% endif %}
                         {% if dict.phase == 'battle_loose' %}
                         <div class="game">
                             <form method="get" class="game">
-                                <button  id="1" type="submit" name="action" value="exit" class="game_button">Начать<br>заново</button>
+                                <button type="submit" name="action" value="exit" class="game_button">Начать<br>заново</button>
                             </form>
                         </div>
                         {% endif %}
                     </div>
+                    {% if dict.phase == 'battle_loose' or dict.phase == 'battle_win' or dict.phase == 'mob_attack' or dict.phase == 'hero_attack' %}
                     <div class="game" style="margin: 30px">
                         <form method="get" class="game">
                             <button type="submit" name="action" value="This is mob" class="game_card">
                                 <img src="{% static mob.content.img %}" alt="mob" width="280px" height="280px" style="border-radius: 30px">
+                                {% if dict.phase == 'battle_win' %}
+                                <div style="background-color: rgba(122,0,0,0.7); box-shadow: 10px 10px 50px red; height: 300px; width: 300px; position: absolute; top: 0; right: 0; border-radius: 30px"></div>
+                                {% endif %}
+                                {% if dict.phase == 'mob_attack' or dict.phase == 'battle_win' and hero.current_attack.pwr != 0 %}
+                                <h1 style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 100px; position: absolute; text-shadow: #e0d0a9 4px 4px 10px; bottom: 150px; left: 210px">{{hero.current_attack.pwr}}</h1>
+                                {% endif %}
                             </button>
                         </form>
                     </div>
-                {% endif %}
-                                <!--         meet mob                -->
-                {% if dict.phase == 'meet_mob'%}
+                    {% endif %}
+                <!--         meet mob                -->
+                    {% if dict.phase == 'meet_mob'%}
                     <div class="game" style="margin: 30px">
                         <form method="get" class="game">
                             <button type="submit" name="action" value="This is mob" class="game_card">
