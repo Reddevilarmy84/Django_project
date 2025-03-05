@@ -24,7 +24,7 @@
         {% endif %}
         {% endfor %}
             <div id="game">
-                <form method="get" class="game">
+                <form method="get" class="animation-scale">
                     <button type="submit" name="action" value="exit" class="game_button_exit">выйти из игры</button>
                 </form>
             </div>
@@ -49,7 +49,7 @@
         {% if item.id == 'config' %}
         {% if item.phase == 'title' %}
             <div id="game">
-                <form method="get" class="game">
+                <form method="get" class="animation-scale">
                     <button  id="1" type="submit" name="action" value="start_game" class="game_button">Начать игру!</button>
                 </form>
             </div>
@@ -63,16 +63,16 @@
         {% for item in json %}
         {% if item.id == 'config' %}
         {% if item.phase == 'battle' %}
-            <div class="game">
+            <div class="animation-scale">
                 атака
             </div>
-            <div class="game">
+            <div class="animation-scale">
                 спец прием 1
             </div>
-            <div class="game">
+            <div class="animation-scale">
                 спец прием 2
             </div>
-            <div class="game">
+            <div class="animation-scale">
                 спец прием 3
             </div>
         {% endif %}

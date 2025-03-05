@@ -34,7 +34,8 @@ mob_content_list = [
         'spec2': 'удар лапой',
         'spec3': 'Удар хвостом',
         'spec0_img': 'main/img/mob/mob_2/spec_0.jpg',
-        'spec1_img': 'main/img/mob/mob_2/spec_1.jpg',
+        'spec1_img': 'main/img/mob/mob_2/spec_1'
+                     '.jpg',
         'spec2_img': 'main/img/mob/mob_2/spec_2.jpg',
         'spec3_img': 'main/img/mob/mob_2/spec_3.jpg',
     },
@@ -102,6 +103,8 @@ mob_stats_list = [
 class Game:
     def __init__(self):
         self.game = False
+
+
 class Mob:
     current_attack = {'name': 'продолжить'}
     content = {}

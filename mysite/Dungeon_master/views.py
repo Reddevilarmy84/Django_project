@@ -101,7 +101,7 @@ def Dungeon_master(request, action: str = None):
 
     # отслеживание атака моба
     if phase == "mob_attack":
-        hero.current_attack['pwr'] = 0
+        hero.current_attack['pwr'] = None
         mob.attack(random.randrange(4))
         hero.stats['hp'] -= mob.current_attack['pwr']
         for i in json:
@@ -118,6 +118,7 @@ def Dungeon_master(request, action: str = None):
 
     # отслеживание атака героя
     if phase == "hero_attack":
+        mob.current_attack['pwr'] = None
         if re.match('attack', action):
             hero.attack(int(list(action)[-1]))
             print(f'херо атак {hero.current_attack}')
@@ -143,6 +144,8 @@ def Dungeon_master(request, action: str = None):
             for i in json:
                 if i["id"] == "config":
                     i["phase"] = "exploration"
+                    hero.current_attack = {}
+                    mob.current_attack = {}
 
 
     # отслеживание фазы локация пройдена

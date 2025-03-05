@@ -22,14 +22,14 @@
             background-image: url( "{% static hero.content.spec1_img %}" );
             border-radius: 20px;
             font-size: 30px;
-            width: 200px;
+            width: max(max-content, 200px);
             height: 100px;
         }
             #hero-spec-2 {
             background-image: url( "{% static hero.content.spec2_img %}" );
             border-radius: 20px;
             font-size: 30px;
-            width: 200px;
+            width: max(max-content, 200px);
             height: 100px;
         }
             #hero-spec-3 {
@@ -53,22 +53,17 @@
 <h1>{{ header }}</h1>
 {% endblock %}
 {% block content %}
+{% for dict in json %}
     <div id="back-div">
         <div id="back-tinting">
             <div id="manage-div">
-                <div class="game">
-                    <form method="get">
-                        <button type="submit" name="action" value="exit" class="game_button_exit"> выйти </button>
-                    </form>
-                </div>
-                <div class="game">
-                    <form method="get">
-                        <button type="submit" name="action" value="about" class="game_button_exit"> Об игре </button>
-                    </form>
-                </div>
+                <form method="get">
+                    <button type="submit" name="action" value="exit" class="game_button_exit animation-scale"> выйти </button>
+                </form>
+                <form method="get">
+                    <button type="submit" name="action" value="about" class="game_button_exit animation-scale"> Об игре </button>
+                </form>
             </div>
-
-            {% for dict in json %}
             <div id="title-div">
                 <div id="title-block-left">
                     <!--         chose location                -->
@@ -132,196 +127,150 @@
             <div id="body-div">
                 <!--         title                -->
                 {% if dict.phase == 'title' %}
-                    <div id="game">
-                        <form method="get" class="game">
-                            <button type="submit" name="action" value="start_game" class="game_button">Начать игру!</button>
-                        </form>
-                    </div>
+                <form method="get">
+                    <button type="submit" name="action" value="start_game" class="game_button animation-scale">Начать игру!</button>
+                </form>
                 {% endif %}
                 <!--         chose hero                -->
                 {% if dict.phase == 'choose_hero' %}
-                    <div class="game" style="margin: 30px">
-                        <form method="get" class="game">
-                            <button type="submit" name="action" value="hero_0" class="game_card">
-                                <img src="{% static 'main/img/hero/hero_0.jpg' %}" alt="hero_0" width="280px" height="280px" style="border-radius: 30px">
-                            </button>
-                        </form>
-                    </div>
-                    <div class="game" style="margin: 30px">
-                        <form method="get" class="game">
-                            <button type="submit" name="action" value="hero_1" class="game_card">
-                                <img src="{% static 'main/img/hero/hero_1.jpg' %}" alt="hero_1" width="280px" height="280px" style="border-radius: 30px">
-                            </button>
-                        </form>
-                    </div>
-                    <div class="game" style="margin: 30px">
-                        <form method="get" class="game">
-                            <button type="submit" name="action" value="hero_2" class="game_card">
-                                <img src="{% static 'main/img/hero/hero_2.jpg' %}" alt="hero_2" width="280px" height="280px" style="border-radius: 30px">
-                            </button>
-                        </form>
-                    </div>
+                <form method="get">
+                    <button type="submit" name="action" value="hero_0" class="game_card animation-scale">
+                        <img src="{% static 'main/img/hero/hero_0.jpg' %}" alt="hero_0" width="280px" height="280px" style="border-radius: 30px">
+                    </button>
+                </form>
+                <form method="get">
+                    <button type="submit" name="action" value="hero_1" class="game_card animation-scale">
+                        <img src="{% static 'main/img/hero/hero_1.jpg' %}" alt="hero_1" width="280px" height="280px" style="border-radius: 30px">
+                    </button>
+                </form>
+                <form method="get">
+                    <button type="submit" name="action" value="hero_2" class="game_card animation-scale">
+                        <img src="{% static 'main/img/hero/hero_2.jpg' %}" alt="hero_2" width="280px" height="280px" style="border-radius: 30px">
+                    </button>
+                </form>
                 {% endif %}
                 <!--         mob_attack    hero_attack     battle_win    battle_loose   -->
                 {% if dict.phase == 'mob_attack' or dict.phase == 'hero_attack' or dict.phase == 'battle_win' or dict.phase == 'battle_loose' %}
-                <div class="game" style="margin: 30px">
-                    <form method="get" class="game"">
-                        <button type="submit" name="action" value="This is hero" class="game_card">
-                            <img src="{% static hero.content.img %}" alt="mob" width="280px" height="280px" style="border-radius: 30px;">
-
-                            <div style="background-color: rgba(255,0,0,0.5); border-radius: 30px; box-shadow: 10px 10px 50px darkred"></div>
-                            {% if dict.phase == 'hero_attack' and mob.current_attack.pwr != 0 or dict.phase == 'battle_loose' and mob.current_attack.pwr != 0 %}
-                            <h1 style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 100px; position: absolute; text-shadow: #e0d0a9 4px 4px 10px; bottom: 150px; left: -80px">-{{mob.current_attack.pwr}}</h1>
-                            {% endif %}
-                        </button>
-                    </form>
-                </div>
-                {% endif %}
-                    <div class="game" style="margin: 30px">
-                        {% if dict.phase == 'mob_attack' or dict.phase == 'hero_attack' %}
-                        <h1 style="font-size: 150px">VS</h1>
-                        {% endif %}
-                        {% if dict.phase == 'battle_win' %}
-                        <form method="get" class="game">
-                            <button type="submit" name="action" value="This is mob" class="game_card">
-                                <img src="{% static 'main/img/items/win_0.jpg' %}" alt="mob" width="150px" height="150px" style="border-radius: 30px">
-                                <h1 style="font-size: 30px">опыт: +{{mob.stats.exp}}</h1>
-                            </button>
-                        </form>
-                        {% endif %}
+                <form method="get">
+                    <button type="submit" name="action" value="This is hero" class="game_card animation-scale">
+                        <img src="{% static hero.content.img %}" alt="mob" width="280px" height="280px" style="border-radius: 30px;">
                         {% if dict.phase == 'battle_loose' %}
-                        <div class="game">
-                            <form method="get" class="game">
-                                <button type="submit" name="action" value="exit" class="game_button">Начать<br>заново</button>
-                            </form>
-                        </div>
+                        <div style="background-color: rgba(122,0,0,0.7); box-shadow: 0 0 25px red; height: 300px; width: 300px; position: absolute; top: 0; right: 0; border-radius: 30px"></div>
                         {% endif %}
-                    </div>
-                    {% if dict.phase == 'battle_loose' or dict.phase == 'battle_win' or dict.phase == 'mob_attack' or dict.phase == 'hero_attack' %}
-                    <div class="game" style="margin: 30px">
-                        <form method="get" class="game">
-                            <button type="submit" name="action" value="This is mob" class="game_card">
-                                <img src="{% static mob.content.img %}" alt="mob" width="280px" height="280px" style="border-radius: 30px">
-                                {% if dict.phase == 'battle_win' %}
-                                <div style="background-color: rgba(122,0,0,0.7); box-shadow: 10px 10px 50px red; height: 300px; width: 300px; position: absolute; top: 0; right: 0; border-radius: 30px"></div>
-                                {% endif %}
-                                {% if dict.phase == 'mob_attack' or dict.phase == 'battle_win' and hero.current_attack.pwr != 0 %}
-                                <h1 style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 100px; position: absolute; text-shadow: #e0d0a9 4px 4px 10px; bottom: 150px; left: 210px">{{hero.current_attack.pwr}}</h1>
-                                {% endif %}
-                            </button>
-                        </form>
-                    </div>
-                    {% endif %}
+                        {% if dict.phase == 'hero_attack' and mob.current_attack.pwr != 0 or dict.phase == 'battle_loose' and mob.current_attack.pwr %}
+                        <h1 style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 100px; position: absolute; right: 220px; bottom: 150px; text-shadow: #e0d0a9 4px 4px 10px;">{{mob.current_attack.pwr}}</h1>
+                        {% endif %}
+                    </button>
+                </form>
+                {% endif %}
+                {% if dict.phase == 'mob_attack' or dict.phase == 'hero_attack' %}
+                <h1 style="font-size: 150px">VS</h1>
+                {% endif %}
+                {% if dict.phase == 'battle_win' %}
+                <form method="get">
+                    <button type="submit" name="action" value="This is mob" class="game_card animation-scale">
+                        <img src="{% static 'main/img/items/win_0.jpg' %}" alt="mob" width="150px" height="150px" style="border-radius: 30px">
+                        <h1 style="font-size: 30px">опыт: +{{mob.stats.exp}}</h1>
+                    </button>
+                </form>
+                {% endif %}
+                {% if dict.phase == 'battle_loose' %}
+                <form method="get">
+                    <button type="submit" name="action" value="exit" class="game_button animation-scale">Начать<br>заново</button>
+                </form>
+                {% endif %}
+                {% if dict.phase == 'battle_loose' or dict.phase == 'battle_win' or dict.phase == 'mob_attack' or dict.phase == 'hero_attack' %}
+                <form method="get">
+                    <button type="submit" name="action" value="This is mob" class="game_card animation-scale">
+                        <img src="{% static mob.content.img %}" alt="mob" width="280px" height="280px" style="border-radius: 30px">
+                        {% if dict.phase == 'battle_win' %}
+                        <div style="background-color: rgba(122,0,0,0.7); box-shadow: 10px 10px 50px red; height: 300px; width: 300px; position: absolute; top: 0; right: 0; border-radius: 30px"></div>
+                        {% endif %}
+                        {% if dict.phase == 'mob_attack' or dict.phase == 'battle_win' and hero.current_attack.pwr %}
+                        <h1 style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 100px; position: absolute; left: 220px; bottom: 150px; text-shadow: #e0d0a9 4px 4px 10px;">{{hero.current_attack.pwr}}</h1>
+                        {% endif %}
+                    </button>
+                </form>
+                {% endif %}
                 <!--         meet mob                -->
-                    {% if dict.phase == 'meet_mob'%}
-                    <div class="game" style="margin: 30px">
-                        <form method="get" class="game">
-                            <button type="submit" name="action" value="This is mob" class="game_card">
-                                <img src="{% static mob.content.img %}" alt="mob" width="280px" height="280px" style="border-radius: 30px">
-                            </button>
-                        </form>
-                    </div>
+                {% if dict.phase == 'meet_mob'%}
+                <form method="get">
+                    <button type="submit" name="action" value="This is mob" class="game_card animation-scale">
+                        <img src="{% static mob.content.img %}" alt="mob" width="280px" height="280px" style="border-radius: 30px">
+                    </button>
+                </form>
                 {% endif %}
                 <!--         chose location                -->
                 {% if dict.phase == 'choose_location' %}
-                    <div class="game" style="margin: 30px">
-                        <form method="get" class="game">
-                            <button id="1" type="submit" name="action" value="cave_0" class="game_card">
-                                <img src="{% static 'main/img/locations/loc_1.jpg' %}" alt="пещера" width="280px" height="280px" style="border-radius: 30px">
-                            </button>
-                        </form>
-                    </div>
-                    <div class="game" style="margin: 30px">
-                        <form method="get" class="game">
-                            <button id="1" type="submit" name="action" value="cave_1" class="game_card">
-                                <img src="{% static 'main/img/locations/loc_2.jpg' %}" alt="пещера" width="280px" height="280px" style="border-radius: 30px">
-                            </button>
-                        </form>
-                    </div>
-                    <div class="game" style="margin: 30px">
-                        <form method="get" class="game">
-                            <button id="1" type="submit" name="action" value="cave_2" class="game_card">
-                                <img src="{% static 'main/img/locations/loc_3.jpg' %}" alt="пещера" width="280px" height="280px" style="border-radius: 30px">
-                            </button>
-                        </form>
-                    </div>
+                <form method="get">
+                    <button type="submit" name="action" value="cave_0" class="game_card animation-scale">
+                        <img src="{% static 'main/img/locations/loc_1.jpg' %}" alt="пещера" width="280px" height="280px" style="border-radius: 30px">
+                    </button>
+                </form>
+                <form method="get">
+                    <button type="submit" name="action" value="cave_1" class="game_card animation-scale">
+                        <img src="{% static 'main/img/locations/loc_2.jpg' %}" alt="пещера" width="280px" height="280px" style="border-radius: 30px">
+                    </button>
+                </form>
+                <form method="get">
+                    <button type="submit" name="action" value="cave_2" class="game_card animation-scale">
+                        <img src="{% static 'main/img/locations/loc_3.jpg' %}" alt="пещера" width="280px" height="280px" style="border-radius: 30px">
+                    </button>
+                </form>
                 {% endif %}
                 <!--         exploration                -->
                 {% if dict.phase == 'exploration' and loc.path_traveled == 0 %}
-                    <div class="game">
-                        <form method="get" class="game">
-                            <button  id="1" type="submit" name="action" value="do_step" class="game_button">Начать путешествие</button>
-                        </form>
-                    </div>
+                <form method="get">
+                    <button type="submit" name="action" value="do_step" class="game_button animation-scale">Начать путешествие</button>
+                </form>
                 {% else %}
                 <!--         begin exploration                -->
                 {% if dict.phase == 'exploration' %}
-                    <div class="game">
-                        <form method="get" class="game">
-                            <button  id="1" type="submit" name="action" value="do_step" class="game_button">Идти вперед</button>
-                        </form>
-                    </div>
+                <form method="get">
+                    <button type="submit" name="action" value="do_step" class="game_button animation-scale">Идти вперед</button>
+                </form>
                 {% endif %}
                 {% endif %}
                 <!--         exploration completed              -->
                 {% if dict.phase == 'exploration_completed' %}
-                    <div id="game">
-                        <form method="get" class="game">
-                            <button  id="1" type="submit" name="action" value="complete" class="game_button">Завершить исследование</button>
-                        </form>
-                    </div>
+                <form method="get">
+                    <button type="submit" name="action" value="complete" class="game_button animation-scale">Завершить исследование</button>
+                </form>
                 {% endif %}
-
             </div>
             <div id="foot-div">
                 <!--         meet mob                -->
                 {% if dict.phase == 'meet_mob' %}
-                    <div id="game">
-                        <form method="get" class="game">
-                            <button  id="1" type="submit" name="action" value="enter_the_battle" class="game_button">Вступить в бой</button>
-                        </form>
-                    </div>
+                <form method="get">
+                    <button  type="submit" name="action" value="enter_the_battle" class="game_button animation-scale">Вступить в бой</button>
+                </form>
                 {% endif %}
                 {% if dict.phase == 'mob_attack' %}
-                    <div class="game">
-                        <form method="get" class="game">
-                            <button  id="mob-attack" type="submit" name="action" value="" class="game_button">{{mob.current_attack.name}}</button>
-                        </form>
-                    </div>
+                <form method="get">
+                    <button id="mob-attack" type="submit" name="action" value="" class="game_button animation-scale">{{mob.current_attack.name}}</button>
+                </form>
                 {% endif %}
                 {% if dict.phase == 'battle_win' %}
-                    <div class="game">
-                        <form method="get" class="game">
-                            <button  id="1" type="submit" name="action" value="do_step" class="game_button">Идти дальше</button>
-                        </form>
-                    </div>
+                <form method="get">
+                    <button type="submit" name="action" value="do_step" class="game_button animation-scale">Идти дальше</button>
+                </form>
                 {% endif %}
                 {% if dict.phase == 'hero_attack' %}
-                    <div class="game">
-                        <form method="get" class="game">
-                            <a href="#back-div"><button  id="hero-spec-0" type="submit" name="action" value="attack_0" class="game_button">атака</button></a>
-                        </form>
-                    </div>
-                    <div class="game">
-                        <form method="get" class="game">
-                            <a href="#back-div"><button id="hero-spec-1" type="submit" name="action" value="attack_1" class="game_button">{{hero.content.spec1}}</button></a>
-                        </form>
-                    </div>
-                    <div class="game">
-                        <form method="get" class="game">
-                            <a href="#back-div"><button id="hero-spec-2" type="submit" name="action" value="attack_2" class="game_button">{{hero.content.spec2}}</button></a>
-                        </form>
-                    </div>
-                    <a href="#back-div">
-                    <div class="game">
-                        <form method="get" class="game">
-                            <button id="hero-spec-3" type="submit" name="action" value="attack_3" class="game_button">{{hero.content.spec3}}</button>
-                        </form>
-                    </a>
-                    </div>
+                <form method="get" class="animation-scale">
+                    <button id="hero-spec-0" type="submit" name="action" value="attack_0" class="game_button animation-scale">атака</button>
+                </form>
+                <form method="get">
+                    <button id="hero-spec-1" type="submit" name="action" value="attack_1" class="game_button animation-scale">{{hero.content.spec1}}</button>
+                </form>
+                <form method="get">
+                    <button id="hero-spec-2" type="submit" name="action" value="attack_2" class="game_button animation-scale">{{hero.content.spec2}}</button>
+                </form>
+                <form method="get">
+                    <button id="hero-spec-3" type="submit" name="action" value="attack_3" class="game_button animation-scale">{{hero.content.spec3}}</button>
+                </form>
                 {% endif %}
             </div>
-            {% endfor %}
         </div>
     </div>
+{% endfor %}
 {% endblock %}
