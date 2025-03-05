@@ -15,36 +15,47 @@
             background-image: url( "{% static hero.content.spec0_img %}" );
             border-radius: 20px;
             font-size: 30px;
-            width: 200px;
+            width: 250px;
             height: 100px;
+            border: rgba(0, 0, 0, 0.8) solid 2px;
+            box-shadow: #0e0d0d 2px 2px 5px;
         }
             #hero-spec-1 {
             background-image: url( "{% static hero.content.spec1_img %}" );
             border-radius: 20px;
             font-size: 30px;
-            width: max(max-content, 200px);
+            width: 250px;
             height: 100px;
+            border: rgba(0, 0, 0, 0.8) solid 2px;
+            box-shadow: #0e0d0d 2px 2px 5px;
         }
             #hero-spec-2 {
             background-image: url( "{% static hero.content.spec2_img %}" );
             border-radius: 20px;
             font-size: 30px;
-            width: max(max-content, 200px);
+            width: 250px;
             height: 100px;
+            border: rgba(0, 0, 0, 0.8) solid 2px;
+            box-shadow: #0e0d0d 2px 2px 5px;
         }
             #hero-spec-3 {
             background-image: url( "{% static hero.content.spec3_img %}" );
             border-radius: 20px;
             font-size: 30px;
-            width: max(max-content, 200px);
+            width: 250px;
             height: 100px;
+            border: rgba(0, 0, 0, 0.8) solid 2px;
+            box-shadow: #0e0d0d 2px 2px 5px;
         }
             #mob-attack {
             background-image: url( "{% static mob.current_attack.img %}" );
+            background-size: cover;
             border-radius: 20px;
             font-size: 30px;
             width: 400px;
             height: 100px;
+            border: rgba(0, 0, 0, 0.8) solid 2px;
+            box-shadow: #0e0d0d 2px 2px 5px;
             }
         </style>
     {% endblock %}
@@ -127,20 +138,20 @@
             <div id="body-div">
                 <!--         title                -->
                 {% if dict.phase == 'title' %}
-                <form method="get">
+                <a href="#back-div" style="display: block"><form method="get">
                     <button type="submit" name="action" value="start_game" class="game_button animation-scale">Начать игру!</button>
-                </form>
+                </form></a>
                 {% endif %}
                 <!--         chose hero                -->
                 {% if dict.phase == 'choose_hero' %}
                 <form method="get">
-                    <button type="submit" name="action" value="hero_0" class="game_card animation-scale">
-                        <img src="{% static 'main/img/hero/hero_0.jpg' %}" alt="hero_0" width="280px" height="280px" style="border-radius: 30px">
+                    <button type="submit" name="action" value="hero_1" class="game_card animation-scale">
+                        <img src="{% static 'main/img/hero/hero_1.jpg' %}" alt="hero_0" width="280px" height="280px" style="border-radius: 30px">
                     </button>
                 </form>
                 <form method="get">
-                    <button type="submit" name="action" value="hero_1" class="game_card animation-scale">
-                        <img src="{% static 'main/img/hero/hero_1.jpg' %}" alt="hero_1" width="280px" height="280px" style="border-radius: 30px">
+                    <button type="submit" name="action" value="hero_0" class="game_card animation-scale">
+                        <img src="{% static 'main/img/hero/hero_0.jpg' %}" alt="hero_1" width="280px" height="280px" style="border-radius: 30px">
                     </button>
                 </form>
                 <form method="get">
@@ -157,7 +168,7 @@
                         {% if dict.phase == 'battle_loose' %}
                         <div style="background-color: rgba(122,0,0,0.7); box-shadow: 0 0 25px red; height: 300px; width: 300px; position: absolute; top: 0; right: 0; border-radius: 30px"></div>
                         {% endif %}
-                        {% if dict.phase == 'hero_attack' and mob.current_attack.pwr != 0 or dict.phase == 'battle_loose' and mob.current_attack.pwr %}
+                        {% if dict.phase == 'hero_attack' and mob.current_attack.pwr or dict.phase == 'battle_loose' and mob.current_attack.pwr %}
                         <h1 style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 100px; position: absolute; right: 220px; bottom: 150px; text-shadow: #e0d0a9 4px 4px 10px;">{{mob.current_attack.pwr}}</h1>
                         {% endif %}
                     </button>
@@ -186,7 +197,7 @@
                         {% if dict.phase == 'battle_win' %}
                         <div style="background-color: rgba(122,0,0,0.7); box-shadow: 10px 10px 50px red; height: 300px; width: 300px; position: absolute; top: 0; right: 0; border-radius: 30px"></div>
                         {% endif %}
-                        {% if dict.phase == 'mob_attack' or dict.phase == 'battle_win' and hero.current_attack.pwr %}
+                        {% if dict.phase == 'mob_attack' and hero.current_attack.pwr or dict.phase == 'battle_win' and hero.current_attack.pwr %}
                         <h1 style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 100px; position: absolute; left: 220px; bottom: 150px; text-shadow: #e0d0a9 4px 4px 10px;">{{hero.current_attack.pwr}}</h1>
                         {% endif %}
                     </button>
