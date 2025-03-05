@@ -142,37 +142,43 @@
                     <button type="submit" name="action" value="start_game" class="game_button animation-scale">Начать игру!</button>
                 </form></a>
                 {% endif %}
-                <!--         chose hero                -->
+                <!--chose hero-->
                 {% if dict.phase == 'choose_hero' %}
+                <!--chose hero hero 1-->
                 <form method="get">
                     <button type="submit" name="action" value="hero_1" class="game_card animation-scale">
                         <img src="{% static 'main/img/hero/hero_1.jpg' %}" alt="hero_0" width="280px" height="280px" style="border-radius: 30px">
                     </button>
                 </form>
+                <!--chose hero hero 2-->
                 <form method="get">
                     <button type="submit" name="action" value="hero_0" class="game_card animation-scale">
                         <img src="{% static 'main/img/hero/hero_0.jpg' %}" alt="hero_1" width="280px" height="280px" style="border-radius: 30px">
                     </button>
                 </form>
+                <!--chose hero hero 3-->
                 <form method="get">
                     <button type="submit" name="action" value="hero_2" class="game_card animation-scale">
                         <img src="{% static 'main/img/hero/hero_2.jpg' %}" alt="hero_2" width="280px" height="280px" style="border-radius: 30px">
                     </button>
                 </form>
                 {% endif %}
-                <!--         mob_attack    hero_attack     battle_win    battle_loose   -->
+                <!--mob_attack    hero_attack     battle_win    battle_loose-->
                 {% if dict.phase == 'mob_attack' or dict.phase == 'hero_attack' or dict.phase == 'battle_win' or dict.phase == 'battle_loose' %}
                 <form method="get">
                     <button type="submit" name="action" value="This is hero" class="game_card animation-scale">
+                        <!--аватар героя и бары хп мп и exp-->
                         <img src="{% static hero.content.img %}" alt="mob" width="280px" height="280px" style="border-radius: 30px;">
                         {% if dict.phase == 'battle_loose' %}
                         <div style="background-color: rgba(122,0,0,0.7); box-shadow: 0 0 25px red; height: 300px; width: 300px; position: absolute; top: 0; right: 0; border-radius: 30px"></div>
                         {% endif %}
+                        <!--урон от моба на аватаре героя-->
                         {% if dict.phase == 'hero_attack' and mob.current_attack.pwr or dict.phase == 'battle_loose' and mob.current_attack.pwr %}
                         <h1 style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 100px; position: absolute; right: 220px; bottom: 150px; text-shadow: #e0d0a9 4px 4px 10px;">{{mob.current_attack.pwr}}</h1>
                         {% endif %}
                     </button>
                 </form>
+                <!--блок VS-->
                 {% endif %}
                 {% if dict.phase == 'mob_attack' or dict.phase == 'hero_attack' %}
                 <h1 style="font-size: 150px">VS</h1>
