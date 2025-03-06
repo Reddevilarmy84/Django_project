@@ -4,139 +4,131 @@ import random
 
 path_to_json_DM = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'Dungeon_master.json')
 
-mob_content_list = [
-    {
-        'class': 'Пещерная крыса',
-        'img': 'main/img/mob/mob_0.jpg',
-        'spec1': 'укус крысы',
-        'spec2': 'удар хвостом',
-        'spec3': 'яростные когти',
-        'spec0_img': 'main/img/mob/mob_0/spec_0.jpg',
-        'spec1_img': 'main/img/mob/mob_0/spec_1.jpg',
-        'spec2_img': 'main/img/mob/mob_0/spec_2.jpg',
-        'spec3_img': 'main/img/mob/mob_0/spec_3.jpg',
-    },
-    {
-        'class': 'Гном',
-        'img': 'main/img/mob/mob_1.jpg',
-        'spec1': 'удар дубиной',
-        'spec2': 'Бросок камнем',
-        'spec3': 'Яростный удар',
-        'spec0_img': 'main/img/mob/mob_1/spec_0.jpg',
-        'spec1_img': 'main/img/mob/mob_1/spec_1.jpg',
-        'spec2_img': 'main/img/mob/mob_1/spec_2.jpg',
-        'spec3_img': 'main/img/mob/mob_1/spec_3.jpg',
-    },
-    {
-        'class': 'Пещерный волк',
-        'img': 'main/img/mob/mob_2.jpg',
-        'spec1': 'укус волка',
-        'spec2': 'удар лапой',
-        'spec3': 'Удар хвостом',
-        'spec0_img': 'main/img/mob/mob_2/spec_0.jpg',
-        'spec1_img': 'main/img/mob/mob_2/spec_1'
-                     '.jpg',
-        'spec2_img': 'main/img/mob/mob_2/spec_2.jpg',
-        'spec3_img': 'main/img/mob/mob_2/spec_3.jpg',
-    },
-]
 
-mob_stats_list = [
-    {
-        'lvl': 1,
-        'attack_pwr': 10,
-        'hp': 50,
-        'hp_max': 50,
-        'hp_before': 50,
-        'mp': 100,
-        'mp_max': 100,
-        'mp_before': 100,
-        'exp': 100,
-        'exp_to_lvl': 100,
-        'exp_before': 0,
-        'spec1_pwr': 20,
-        'spec2_pwr': 30,
-        'spec3_pwr': 40,
-        'spec1_mp': 20,
-        'spec2_mp': 30,
-        'spec3_mp': 40,
-    },
-    {
-        'lvl': 1,
-        'attack_pwr': 10,
-        'hp': 50,
-        'hp_max': 50,
-        'hp_before': 50,
-        'mp': 100,
-        'mp_max': 100,
-        'mp_before': 100,
-        'exp': 100,
-        'exp_to_lvl': 100,
-        'exp_before': 0,
-        'spec1_pwr': 20,
-        'spec2_pwr': 30,
-        'spec3_pwr': 40,
-        'spec1_mp': 20,
-        'spec2_mp': 30,
-        'spec3_mp': 40,
-    },
-    {
-        'lvl': 1,
-        'attack_pwr': 10,
-        'hp': 50,
-        'hp_max': 50,
-        'hp_before': 50,
-        'mp': 100,
-        'mp_max': 100,
-        'mp_before': 100,
-        'exp': 100,
-        'exp_to_lvl': 100,
-        'exp_before': 0,
-        'spec1_pwr': 20,
-        'spec2_pwr': 30,
-        'spec3_pwr': 40,
-        'spec1_mp': 20,
-        'spec2_mp': 30,
-        'spec3_mp': 40,
-    },
-]
 class Game:
     def __init__(self):
         self.game = False
 
-
 class Mob:
-    current_attack = {'name': 'продолжить'}
+    current_attack = {}
     content = {}
     stats = {}
+    content_list = [
+        {
+            'class': 'Пещерная крыса',
+            'img': 'main/img/mob/mob_0.jpg',
+            'spec1': 'укус крысы',
+            'spec2': 'удар хвостом',
+            'spec3': 'яростные когти',
+            'spec0_img': 'main/img/mob/mob_0/spec_0.jpg',
+            'spec1_img': 'main/img/mob/mob_0/spec_1.jpg',
+            'spec2_img': 'main/img/mob/mob_0/spec_2.jpg',
+            'spec3_img': 'main/img/mob/mob_0/spec_3.jpg',
+        },
+        {
+            'class': 'Гном',
+            'img': 'main/img/mob/mob_1.jpg',
+            'spec1': 'удар дубиной',
+            'spec2': 'Бросок камнем',
+            'spec3': 'Яростный удар',
+            'spec0_img': 'main/img/mob/mob_1/spec_0.jpg',
+            'spec1_img': 'main/img/mob/mob_1/spec_1.jpg',
+            'spec2_img': 'main/img/mob/mob_1/spec_2.jpg',
+            'spec3_img': 'main/img/mob/mob_1/spec_3.jpg',
+        },
+        {
+            'class': 'Пещерный волк',
+            'img': 'main/img/mob/mob_2.jpg',
+            'spec1': 'укус волка',
+            'spec2': 'удар лапой',
+            'spec3': 'Удар хвостом',
+            'spec0_img': 'main/img/mob/mob_2/spec_0.jpg',
+            'spec1_img': 'main/img/mob/mob_2/spec_1'
+                         '.jpg',
+            'spec2_img': 'main/img/mob/mob_2/spec_2.jpg',
+            'spec3_img': 'main/img/mob/mob_2/spec_3.jpg',
+        },
+    ]
+    stats_list = [
+        {
+            'lvl': 1,
+            'attack_pwr': 10,
+            'hp': 50,
+            'hp_max': 50,
+            'hp_before': 50,
+            'mp': 100,
+            'mp_max': 100,
+            'mp_before': 100,
+            'exp': 100,
+            'exp_to_lvl': 100,
+            'exp_before': 0,
+            'spec1_pwr': 20,
+            'spec2_pwr': 30,
+            'spec3_pwr': 40,
+            'spec1_mp': 20,
+            'spec2_mp': 30,
+            'spec3_mp': 40,
+        },
+        {
+            'lvl': 1,
+            'attack_pwr': 10,
+            'hp': 50,
+            'hp_max': 50,
+            'hp_before': 50,
+            'mp': 100,
+            'mp_max': 100,
+            'mp_before': 100,
+            'exp': 100,
+            'exp_to_lvl': 100,
+            'exp_before': 0,
+            'spec1_pwr': 20,
+            'spec2_pwr': 30,
+            'spec3_pwr': 40,
+            'spec1_mp': 20,
+            'spec2_mp': 30,
+            'spec3_mp': 40,
+        },
+        {
+            'lvl': 1,
+            'attack_pwr': 10,
+            'hp': 50,
+            'hp_max': 50,
+            'hp_before': 50,
+            'mp': 100,
+            'mp_max': 100,
+            'mp_before': 100,
+            'exp': 100,
+            'exp_to_lvl': 100,
+            'exp_before': 0,
+            'spec1_pwr': 20,
+            'spec2_pwr': 30,
+            'spec3_pwr': 40,
+            'spec1_mp': 20,
+            'spec2_mp': 30,
+            'spec3_mp': 40,
+        },
+    ]
 
     def set_mob(self):
-        self.content = random.choice(mob_content_list)
-        print(mob_content_list.index(self.content))
-        self.stats = mob_stats_list[mob_content_list.index(self.content)]
-        print(self.content)
+        self.content = dict(random.choice(self.content_list).items())
+        self.stats = dict(self.stats_list[self.content_list.index(self.content)].items())
 
-    def set_lvl_mob(self, lvl):
-        lvl = lvl if lvl > 0 else 1
+    def set_lvl_mob(self, lvl: int):
+        lvl_before = self.stats['lvl']
         for i in range(1, lvl + 1):
             self.stats = {k: int(v * 1.2) for k, v in self.stats.items()}
-        self.stats['lvl'] += lvl
-        self.stats['hp'] = self.stats['hp_max']
-        self.stats['mp'] = self.stats['mp_max']
+        self.stats['lvl'] = lvl_before + lvl
+
 
     def attack(self, num):
-        keys = ['id', 'pwr', 'name', 'img', 'mp_before', 'mp']
-        if num != 0 and self.stats['mp'] >= self.stats[f'spec{num}_mp']:
-            values = [num, self.stats[f'spec{num}_pwr'], self.content[f'spec{num}'], self.content[f'spec{num}_img'], self.stats['mp'], self.stats['mp']-self.stats[f'spec{num}_mp']]
-            print('Спец атака')
+        keys = ['pwr', 'name', 'img', 'mp_before', 'mp']
+        if num and self.stats['mp'] >= self.stats[f'spec{num}_mp']:
+            values = [self.stats[f'spec{num}_pwr'], self.content[f'spec{num}'], self.content[f'spec{num}_img'], self.stats['mp'], self.stats['mp']-self.stats[f'spec{num}_mp']]
         else:
-            values = [0, self.stats[f'attack_pwr'], 'Атака', self.content['spec0_img'],
+            values = [self.stats[f'attack_pwr'], 'Атака', self.content['spec0_img'],
                       self.stats['mp'], self.stats['mp']]
-            print('обычная атака')
         self.current_attack = dict(zip(keys, values))
-        print(self.current_attack)
         self.stats['mp'] = self.current_attack['mp']
-
 
 
     def hp_bar(self):
@@ -144,9 +136,6 @@ class Mob:
 
     def mp_bar(self):
         return 65 if int(self.stats['mp'] / self.stats['mp_max'] * 300) <= 65 else int(self.stats['mp'] / self.stats['mp_max'] * 300)
-
-    def exp_bar(self):
-        return 65 if int(self.stats['exp'] / self.stats['exp_to_lvl'] * 300) <= 65 else int(self.stats['exp'] / self.stats['exp_to_lvl'] * 300)
 
 
 class Hero:
@@ -252,31 +241,26 @@ class Hero:
 
     def up_lvl(self, lvl):
         exp_before = self.stats['exp']
+        lvl_before = self.stats['lvl']
         for i in range(1, lvl+1):
             self.stats = {k:int(v*1.2) for k, v in self.stats.items()}
-        self.stats['lvl'] += lvl
+        self.stats['lvl'] = lvl_before + lvl
+        self.stats['exp'] = exp_before
         self.stats['hp'] = self.stats['hp_max']
         self.stats['mp'] = self.stats['mp_max']
-        self.stats['exp'] = exp_before
 
     def choose_hero(self, num):
-        self.stats = self.stats_list[num]
-        self.content = self.content_list[num]
-        self.stats['hp'] = self.stats['hp_max']
-        self.stats['mp'] = self.stats['mp_max']
-        self.stats['exp'] = 0
+        self.stats = dict(self.stats_list[num].items())
+        self.content = dict(self.content_list[num].items())
 
     def attack(self, num):
-        keys = ['id', 'pwr', 'name', 'img', 'mp_before', 'mp']
-        if num != 0 and self.stats['mp'] >= self.stats[f'spec{num}_mp']:
-            values = [num, self.stats[f'spec{num}_pwr'], self.content[f'spec{num}'], self.content[f'spec{num}_img'], self.stats['mp'], self.stats['mp']-self.stats[f'spec{num}_mp']]
-            print('Спец атака')
+        keys = ['pwr', 'name', 'img', 'mp_before', 'mp']
+        if num and self.stats['mp'] >= self.stats[f'spec{num}_mp']:
+            values = [self.stats[f'spec{num}_pwr'], self.content[f'spec{num}'], self.content[f'spec{num}_img'], self.stats['mp'], self.stats['mp']-self.stats[f'spec{num}_mp']]
         else:
-            values = [0, self.stats[f'attack_pwr'], 'Атака', None,
+            values = [self.stats[f'attack_pwr'], 'Атака', None,
                       self.stats['mp'], self.stats['mp']]
-            print('обычная атака')
         self.current_attack = dict(zip(keys, values))
-        print(self.current_attack)
         self.stats['mp'] = self.current_attack['mp']
 
     def hp_bar(self):
@@ -291,9 +275,7 @@ class Hero:
 
 class Location:
     content = {'img': 'main/img/locations/loc_0.jpg'}
-    stats = {
-
-    }
+    stats = {}
     content_list = [
         {
             'name': 'Пещера пиратов',

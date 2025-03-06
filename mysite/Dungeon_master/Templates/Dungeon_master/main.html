@@ -13,50 +13,19 @@
         }
             #hero-spec-0 {
             background-image: url( "{% static hero.content.spec0_img %}" );
-            border-radius: 20px;
-            font-size: 30px;
-            width: 250px;
-            height: 100px;
-            border: rgba(0, 0, 0, 0.8) solid 2px;
-            box-shadow: #0e0d0d 2px 2px 5px;
         }
             #hero-spec-1 {
             background-image: url( "{% static hero.content.spec1_img %}" );
-            border-radius: 20px;
-            font-size: 30px;
-            width: 250px;
-            height: 100px;
-            border: rgba(0, 0, 0, 0.8) solid 2px;
-            box-shadow: #0e0d0d 2px 2px 5px;
         }
             #hero-spec-2 {
             background-image: url( "{% static hero.content.spec2_img %}" );
-            border-radius: 20px;
-            font-size: 30px;
-            width: 250px;
-            height: 100px;
-            border: rgba(0, 0, 0, 0.8) solid 2px;
-            box-shadow: #0e0d0d 2px 2px 5px;
         }
             #hero-spec-3 {
             background-image: url( "{% static hero.content.spec3_img %}" );
-            border-radius: 20px;
-            font-size: 30px;
-            width: 250px;
-            height: 100px;
-            border: rgba(0, 0, 0, 0.8) solid 2px;
-            box-shadow: #0e0d0d 2px 2px 5px;
         }
             #mob-attack {
             background-image: url( "{% static mob.current_attack.img %}" );
-            background-size: cover;
-            border-radius: 20px;
-            font-size: 30px;
-            width: 400px;
-            height: 100px;
-            border: rgba(0, 0, 0, 0.8) solid 2px;
-            box-shadow: #0e0d0d 2px 2px 5px;
-            }
+        }
         </style>
     {% endblock %}
 
@@ -168,10 +137,7 @@
                 <form method="get">
                     <button type="submit" name="action" value="This is hero" class="game_card animation-scale">
                         <!--аватар героя и бары хп мп и exp-->
-                        <img src="{% static hero.content.img %}" alt="mob" width="280px" height="280px" style="border-radius: 30px;">
-                        {% if dict.phase == 'battle_loose' %}
-                        <div style="background-color: rgba(122,0,0,0.7); box-shadow: 0 0 25px red; height: 300px; width: 300px; position: absolute; top: 0; right: 0; border-radius: 30px"></div>
-                        {% endif %}
+                        <img src="{% static hero.content.img %}" alt="mob" width="280px" height="280px">
                         <!--урон от моба на аватаре героя-->
                         {% if dict.phase == 'hero_attack' and mob.current_attack.pwr or dict.phase == 'battle_loose' and mob.current_attack.pwr %}
                         <h1 style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 100px; position: absolute; right: 220px; bottom: 150px; text-shadow: #e0d0a9 4px 4px 10px;">{{mob.current_attack.pwr}}</h1>
@@ -264,7 +230,7 @@
                 {% endif %}
                 {% if dict.phase == 'mob_attack' %}
                 <form method="get">
-                    <button id="mob-attack" type="submit" name="action" value="" class="game_button animation-scale">{{mob.current_attack.name}}</button>
+                    <button id="mob-attack" type="submit" name="action" value="" class="skill_button animation-scale">{{mob.current_attack.name}}</button>
                 </form>
                 {% endif %}
                 {% if dict.phase == 'battle_win' %}
@@ -273,17 +239,17 @@
                 </form>
                 {% endif %}
                 {% if dict.phase == 'hero_attack' %}
-                <form method="get" class="animation-scale">
-                    <button id="hero-spec-0" type="submit" name="action" value="attack_0" class="game_button animation-scale">атака</button>
+                <form method="get">
+                    <button id="hero-spec-0" type="submit" name="action" value="attack_0" class="skill_button animation-scale">атака</button>
                 </form>
                 <form method="get">
-                    <button id="hero-spec-1" type="submit" name="action" value="attack_1" class="game_button animation-scale">{{hero.content.spec1}}</button>
+                    <button id="hero-spec-1" type="submit" name="action" value="attack_1" class="skill_button animation-scale">{{hero.content.spec1}}</button>
                 </form>
                 <form method="get">
-                    <button id="hero-spec-2" type="submit" name="action" value="attack_2" class="game_button animation-scale">{{hero.content.spec2}}</button>
+                    <button id="hero-spec-2" type="submit" name="action" value="attack_2" class="skill_button animation-scale">{{hero.content.spec2}}</button>
                 </form>
                 <form method="get">
-                    <button id="hero-spec-3" type="submit" name="action" value="attack_3" class="game_button animation-scale">{{hero.content.spec3}}</button>
+                    <button id="hero-spec-3" type="submit" name="action" value="attack_3" class="skill_button animation-scale">{{hero.content.spec3}}</button>
                 </form>
                 {% endif %}
             </div>

@@ -95,6 +95,20 @@
     padding: 20px;
 }
 
+.skill_button {
+    font-weight: bold;
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: #0e0d0d;
+    color: white;
+    font-size: 30px;
+    background-size: cover;
+    border-radius: 20px;
+    width: 245px;
+    height: 140px;
+    border: rgba(0, 0, 0, 0.8) solid 2px;
+    box-shadow: #0e0d0d 2px 2px 5px;
+}
+
 .game_button_exit {
     font-weight: bold;
     -webkit-text-stroke-width: 0.2px;
@@ -107,13 +121,10 @@
 }
 
 .game_card {
-    height: 300px;
-    width: 300px;
-    background-color: rgba(255, 255, 255, 0.1);
+    height: 290px;
+    width: 290px;
     border: none;
-    color: white;
-    font-size: 15px;
-    border-radius: 30px;
-    padding: 5px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0);
     box-shadow: 1px 1px 5px black;
 }
