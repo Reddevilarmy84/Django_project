@@ -148,4 +148,4 @@ def Dungeon_master(request, action: str = None):
         'mob': mob,
         'location': location,
     }
-    return render(request, 'Dungeon_master/main.html', context)
+    return render(request, 'Dungeon_master/battle.html', context)
