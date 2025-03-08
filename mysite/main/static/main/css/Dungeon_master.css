@@ -11,32 +11,32 @@
 }
 
 #title-block-left {
-    width: 33%;
+    width: 20%;
     display: flex;
     justify-content: left;
     align-items: center;
 }
 
 #title-block-center {
-    width: 33%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 #title-block-right {
-    width: 33%;
+    width: 20%;
     display: flex;
     justify-content: right;
     align-items: center;
 }
 
 #manage-div {
-    padding: 10px;
-    height: 3vh;
+    padding: 20px 40px 0;
+
+    height: 3.5vh;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 20px;
     border: #ffffff 2px;
 }
@@ -48,6 +48,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 20px;
 }
 
 #foot-div {
@@ -149,7 +150,7 @@
     background-color: rgba(255, 255, 255, 0.1);
     border: none;
     color: white;
-    font-size: 50px;
+    font-size: 90px;
     font-family: "Comic Sans MS";
     border-radius: 30px;
     padding: 20px;
@@ -183,13 +184,13 @@
 }
 
 .game_card {
-    height: 500px;
-    width: 500px;
+    height: 400px;
+    width: 400px;
     border: none;
     background-color: rgba(0, 0, 0, 0);
 }
 
-h2 {
+.DM-h2 {
     color: #eeeeee;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #0e0d0d;
@@ -200,7 +201,7 @@ h2 {
     text-shadow: #eeeeee 0 0 40px;
 }
 
-h3 {
+.DM-h3 {
     color: #eeeeee;
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: #0e0d0d;
@@ -211,7 +212,7 @@ h3 {
     text-shadow: #eeeeee 0 0 20px;
 }
 
-h4 {
+.DM-h4 {
     color: #eeeeee;
     font-weight: bold;
     font-family: "Comic Sans MS";

@@ -56,12 +56,16 @@
     <div id="back-div">
         <div id="back-tinting">
             <div id="manage-div">
-                <form method="get">
-                    <button type="submit" name="action" value="exit" class="game_button_exit animation-scale"><h4>выйти</h4></button>
-                </form>
-                <form method="get">
-                    <button type="submit" name="action" value="about" class="game_button_exit animation-scale"><h4>Об игре</h4</button>
-                </form>
+                <h3 class="DM-h3">{{hero.content.name}}</h3>
+                <div style="display: flex; justify-content: center;align-items: center; padding-top: 20px">
+                    <form method="get">
+                        <button type="submit" name="action" value="exit" class="game_button_exit animation-scale"><h4 class="DM-h4" >выйти</h4></button>
+                    </form>
+                    <form method="get">
+                        <button type="submit" name="action" value="about" class="game_button_exit animation-scale"><h4 class="DM-h4" >Об игре</h4</button>
+                    </form>
+                </div>
+                <h3 class="DM-h3">{{mob.content.name}}</h3>
             </div>
             <div id="title-div">
                 <div id="title-block-left">
@@ -74,7 +78,6 @@
                             <div style="border-radius: 20px; height: 30px; margin: 2px; width: {{hero.mp_bar}}px; background-color: #0020a2; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px"">MP:{{hero.stats.mp}}</div>
                             <div style="border-radius: 20px; height: 30px; margin: 2px; width: {{hero.exp_bar}}px; background-color: #6e6e6e; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px"">EXP:{{hero.stats.exp}}/{{hero.stats.exp_to_lvl}}</div>
                             <div style="border-radius: 20px; height: 30px; margin: 2px; width: 45px; color: #e0d0a9; font-size: 40px; font-weight: bolder; display: flex; position: relative; left: -140px; bottom: 100px; -webkit-text-stroke-color: #0e0d0d; -webkit-text-stroke-width: 1.5px; align-items: center; padding-left: 5px"">{{hero.stats.lvl}}</div>
-                            <h4>hp_before:{{hero.stats.hp_before}}</h4>
                         </div>
                     </div>
                     {% endif %}
@@ -82,33 +85,33 @@
                 <div id="title-block-center">
                     <!--         battle loose                -->
                     {% if dict.phase == 'battle_loose' %}
-                    <h2 style="-webkit-text-stroke-color: #000000; -webkit-text-stroke-width: 0.5px; font-weight: bolder">Герой погиб</h2>
+                    <h2 class="DM-h2" style="-webkit-text-stroke-color: #000000; -webkit-text-stroke-width: 0.5px; font-weight: bolder">Герой погиб</h2>
                     {% endif %}
                     <!--         battle win                -->
                     {% if dict.phase == 'battle_win' %}
-                    <h2 style="-webkit-text-stroke-color: #000000; -webkit-text-stroke-width: 0.5px; font-weight: bolder">Герой победил</h2>
+                    <h2 class="DM-h2" style="-webkit-text-stroke-color: #000000; -webkit-text-stroke-width: 0.5px; font-weight: bolder">Герой победил</h2>
                     {% endif %}
                     <!--         chose hero                -->
                     {% if dict.phase == 'choose_hero' %}
-                    <h2 style="-webkit-text-stroke-color: #000000; -webkit-text-stroke-width: 0.5px; font-weight: bolder">Выбери героя</h2>
+                    <h2 class="DM-h2" style="-webkit-text-stroke-color: #000000; -webkit-text-stroke-width: 0.5px; font-weight: bolder">Выбери героя</h2>
                     {% endif %}
                     <!--         chose location                -->
                     {% if dict.phase == 'choose_location' %}
-                    <h2 style="-webkit-text-stroke-color: #000000; -webkit-text-stroke-width: 0.5px; font-weight: bolder">Выбери локацию</h2>
+                    <h2 class="DM-h2" style="-webkit-text-stroke-color: #000000; -webkit-text-stroke-width: 0.5px; font-weight: bolder">Выбери локацию</h2>
                     {% endif %}
                     <!--         exploration                -->
                     {% if dict.phase == 'exploration' and location.path_traveled != 0 %}
-                    <h2 style="-webkit-text-stroke-color: #000000; -webkit-text-stroke-width: 0.5px; font-weight: bolder">пройдено: {{location.stats.completed}} из {{location.stats.length}}</h2>
+                    <h2 class="DM-h2" style="-webkit-text-stroke-color: #000000; -webkit-text-stroke-width: 0.5px; font-weight: bolder">пройдено: {{location.stats.completed}} из {{location.stats.length}}</h2>
                     {% endif %}
                     <!--         meet mob                -->
                     {% if dict.phase == 'meet_mob' %}
-                    <h2 style="-webkit-text-stroke-color: #000000; -webkit-text-stroke-width: 0.5px; font-weight: bolder">Вам встретилась на пути {{mob.content.class}}</h2>
+                    <h2 class="DM-h2" style="-webkit-text-stroke-color: #000000; -webkit-text-stroke-width: 0.5px; font-weight: bolder">Вам встретился на пути {{mob.content.class}}</h2>
                     {% endif %}
                     {% if dict.phase == 'mob_attack' %}
-                    <h2 style="-webkit-text-stroke-color: #000000; -webkit-text-stroke-width: 0.5px; font-weight: bolder">{{mob.content.class}} атакует!</h2>
+                    <h2 class="DM-h2" style="-webkit-text-stroke-color: #000000; -webkit-text-stroke-width: 0.5px; font-weight: bolder">{{mob.content.class}} атакует!</h2>
                     {% endif %}
                     {% if dict.phase == 'hero_attack' %}
-                    <h2 style="-webkit-text-stroke-color: #000000; -webkit-text-stroke-width: 0.5px; font-weight: bolder">{{hero.content.name}} атакует!</h2>
+                    <h2 class="DM-h2" style="-webkit-text-stroke-color: #000000; -webkit-text-stroke-width: 0.5px; font-weight: bolder">{{hero.content.name}} атакует!</h2>
                     {% endif %}
                 </div>
                 <div id="title-block-right">
@@ -118,7 +121,6 @@
                             <div style="border-radius: 20px; height: 30px; margin: 4px; width: {{mob.hp_bar}}px; background-color: #ff0000; color: #e0d0a9; display: flex; align-items: center; justify-content: flex-end; padding-right: 5px">HP:{{mob.stats.hp}}</div>
                             <div style="border-radius: 20px; height: 30px; margin: 4px; width: {{mob.mp_bar}}px; background-color: #0020a2; color: #e0d0a9; display: flex; align-items: center; justify-content: flex-end; padding-right: 5px"">MP:{{mob.stats.mp}}</div>
                             <div style="border-radius: 20px; height: 30px; margin: 2px; width: 45px; color: #e0d0a9; font-size: 40px; font-weight: bolder; display: flex; position: relative; left: 160px; bottom: 70px; -webkit-text-stroke-color: #0e0d0d; -webkit-text-stroke-width: 1.5px; align-items: center; padding-left: 5px"">{{mob.stats.lvl}}</div>
-
                         </div>
                         <img src="{% static mob.content.img %}" width="140px" height="140px" alt="Моб" style="border-radius: 20px">
                     </div>
@@ -160,16 +162,20 @@
                     <button type="submit" name="action" value="This is hero" class="game_card animation-scale">
                         <!--аватар героя без анимации-->
                         {% if dict.phase == 'mob_attack' or dict.phase == 'battle_win' or dict.phase == 'battle_loose' %}
-                            <img src="{% static hero.content.img %}" alt="mob" width="400px" height="400px">
+                            <img src="{% static hero.content.img %}" alt="mob" width="400px" height="400px" style="border-radius: 30px">
                         {% endif %}
                         {% if dict.phase == 'hero_attack' and mob.current_attack.pwr == None %}
-                            <img src="{% static hero.content.img %}" alt="mob" width="400px" height="400px">
+                            <img src="{% static hero.content.img %}" alt="mob" width="400px" height="400px" style="border-radius: 30px">
+                        {% endif %}
+                                                <!-- phase == 'battle_win'      MOB RED TINTING           -->
+                        {% if dict.phase == 'battle_loose' %}
+                        <div style="background-color: rgba(122,0,0,0.7); box-shadow: 0px 0px 50px red; height: 400px; width: 400px; position: absolute; top: 0px; right: 0px; border-radius: 30px"></div>
                         {% endif %}
                         <!--аватар героя с анимацией-->
                         {% if dict.phase == 'hero_attack' and mob.current_attack.pwr %}
-                            <img class="animation-shake-card" src="{% static hero.content.img %}" alt="mob" width="400px" height="400px">
+                            <img class="animation-shake-card" src="{% static hero.content.img %}" alt="mob" width="400px" height="400px" style="border-radius: 30px">
                         <!--урон от моба на аватаре героя-->
-                        <h1 class="animation-damage" style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 140px; position: absolute; right: 300px; bottom: 280px; text-shadow: #e0d0a9 4px 4px 10px;">-{{mob.current_attack.pwr}}</h1>
+                        <h1 class="animation-damage" style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 140px; position: absolute; right: 300px; bottom: 230px; text-shadow: #e0d0a9 4px 4px 10px;">-{{mob.current_attack.pwr}}</h1>
                         {% endif %}
                     </button>
                 </form>
@@ -196,20 +202,19 @@
                 {% if dict.phase == 'battle_loose' or dict.phase == 'battle_win' or dict.phase == 'mob_attack' or dict.phase == 'hero_attack' %}
                 <form method="get">
                     <button type="submit" name="action" value="This is mob" class="game_card animation-scale">
-                        {% if dict.phase == 'hero_attack' or dict.phase == 'battle_win' or dict.phase == 'mob_attack' %}
+                        {% if dict.phase == 'hero_attack' or dict.phase == 'battle_win' or dict.phase == 'battle_loose' or dict.phase == 'mob_attack' %}
 
-                        {% if dict.phase == 'hero_attack' or dict.phase == 'battle_win' %}
+                        {% if dict.phase != 'mob_attack' %}
                             <img src="{% static mob.content.img %}" alt="mob" width="400px" height="400px" style="border-radius: 30px">
                         {% endif %}
 
                         {% if dict.phase == 'mob_attack' and hero.current_attack.pwr == None %}
                             <img src="{% static mob.content.img %}" alt="mob" width="400px" height="400px" style="border-radius: 30px">
                         {% endif %}
-
                         {% endif %}
                         <!-- phase == 'battle_win'      MOB RED TINTING           -->
                         {% if dict.phase == 'battle_win' %}
-                        <div style="background-color: rgba(122,0,0,0.7); box-shadow: 0px 0px 50px red; height: 400px; width: 400px; position: absolute; top: 50; right: 50; border-radius: 30px"></div>
+                            <div style="background-color: rgba(122,0,0,0.7); box-shadow: 0px 0px 50px red; height: 400px; width: 400px; position: absolute; top: 0px; right: 0px; border-radius: 30px"></div>
                         {% endif %}
                         <!--       MOB DAMAGED NUMBER and card animation          -->
                         {% if dict.phase == 'mob_attack' and hero.current_attack.pwr %}
@@ -217,7 +222,7 @@
                             <img src="{% static mob.content.img %}" alt="mob" width="400px" height="400px" style="border-radius: 30px">
                             <!--  анимация тонировка аватара красным          -->
                         </div>
-                        <h1 class="animation-damage" style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 140px; position: absolute; left: 300px; bottom: 280px; text-shadow: #e0d0a9 4px 4px 10px;">-{{hero.current_attack.pwr}}</h1>
+                        <h1 class="animation-damage" style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 140px; position: absolute; left: 300px; bottom: 230px; text-shadow: #e0d0a9 4px 4px 10px;">-{{hero.current_attack.pwr}}</h1>
                         {% endif %}
                     </button>
                 </form>
@@ -235,19 +240,19 @@
                 <form method="get">
                     <button type="submit" name="action" value="cave_0" class="game_card animation-scale">
                         <img src="{% static 'main/img/locations/loc_1.jpg' %}" alt="пещера" width="400px" height="400px" style="border-radius: 30px">
-                        <h2 style="position: relative; bottom: 420px">Тёмная пещера</h2>
+                        <h2 class="DM-h2" style="position: relative; bottom: 420px">Тёмная пещера</h2>
                     </button>
                 </form>
                 <form method="get">
                     <button type="submit" name="action" value="cave_1" class="game_card animation-scale">
                         <img src="{% static 'main/img/locations/loc_2.jpg' %}" alt="пещера" width="400px" height="400px" style="border-radius: 30px">
-                        <h2 style="position: relative; bottom: 420px;">Катакомбы</h2>
+                        <h2 class="DM-h2" style="position: relative; bottom: 420px;">Катакомбы</h2>
                     </button>
                 </form>
                 <form method="get">
                     <button type="submit" name="action" value="cave_2" class="game_card animation-scale">
                         <img src="{% static 'main/img/locations/loc_3.jpg' %}" alt="пещера" width="400px" height="400px" style="border-radius: 30px">
-                        <h2 style="position: relative; bottom: 420px;">Магическая пещера</h2>
+                        <h2 class="DM-h2" style="position: relative; bottom: 420px;">Магическая пещера</h2>
                     </button>
                 </form>
                 {% endif %}
