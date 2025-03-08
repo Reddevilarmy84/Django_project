@@ -137,11 +137,18 @@
                 {% if dict.phase == 'mob_attack' or dict.phase == 'hero_attack' or dict.phase == 'battle_win' or dict.phase == 'battle_loose' %}
                 <form method="get">
                     <button type="submit" name="action" value="This is hero" class="game_card animation-scale">
-                        <!--аватар героя и бары хп мп и exp-->
-                        <img src="{% static hero.content.img %}" alt="mob" width="400px" height="400px">
-                        <!--урон от моба на аватаре героя-->
+                        <!--аватар героя без анимации-->
+                        {% if dict.phase == 'mob_attack' or dict.phase == 'battle_win' or dict.phase == 'battle_loose' %}
+                            <img src="{% static hero.content.img %}" alt="mob" width="400px" height="400px">
+                        {% endif %}
+                        {% if dict.phase == 'hero_attack' and mob.current_attack.pwr == None %}
+                            <img src="{% static hero.content.img %}" alt="mob" width="400px" height="400px">
+                        {% endif %}
+                        <!--аватар героя с анимацией-->
                         {% if dict.phase == 'hero_attack' and mob.current_attack.pwr %}
-                        <h1 style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 200px; position: absolute; right: 300px; bottom: 150px; text-shadow: #e0d0a9 4px 4px 10px;">{{mob.current_attack.pwr}}</h1>
+                            <img class="animation-shake-card" src="{% static hero.content.img %}" alt="mob" width="400px" height="400px">
+                        <!--урон от моба на аватаре героя-->
+                        <h1 style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 140px; position: absolute; right: 300px; bottom: 280px; text-shadow: #e0d0a9 4px 4px 10px;">{{mob.current_attack.pwr}}</h1>
                         {% endif %}
                     </button>
                 </form>
@@ -158,26 +165,38 @@
                     </button>
                 </form>
                 {% endif %}
+                <!--'battle_loose'-->
                 {% if dict.phase == 'battle_loose' %}
                 <form method="get">
                     <button type="submit" name="action" value="exit" class="game_button animation-scale">Начать<br>заново</button>
                 </form>
                 {% endif %}
+                <!--отображение карточки моба-->
                 {% if dict.phase == 'battle_loose' or dict.phase == 'battle_win' or dict.phase == 'mob_attack' or dict.phase == 'hero_attack' %}
                 <form method="get">
                     <button type="submit" name="action" value="This is mob" class="game_card animation-scale">
+                        {% if dict.phase == 'hero_attack' or dict.phase == 'battle_win' or dict.phase == 'mob_attack' %}
+
                         {% if dict.phase == 'hero_attack' or dict.phase == 'battle_win' %}
-                        <img src="{% static mob.content.img %}" alt="mob" width="400px" height="400px" style="border-radius: 30px">
+                            <img src="{% static mob.content.img %}" alt="mob" width="400px" height="400px" style="border-radius: 30px">
                         {% endif %}
+
+                        {% if dict.phase == 'mob_attack' and hero.current_attack.pwr == None %}
+                            <img src="{% static mob.content.img %}" alt="mob" width="400px" height="400px" style="border-radius: 30px">
+                        {% endif %}
+
+                        {% endif %}
+                        <!-- phase == 'battle_win'      MOB RED TINTING           -->
                         {% if dict.phase == 'battle_win' %}
-                        <!--       MOB RED TINTING           -->
                         <div style="background-color: rgba(122,0,0,0.7); box-shadow: 0px 0px 50px red; height: 400px; width: 400px; position: absolute; top: 50; right: 50; border-radius: 30px"></div>
                         {% endif %}
                         <!--       MOB DAMAGED NUMBER and card animation          -->
                         {% if dict.phase == 'mob_attack' and hero.current_attack.pwr %}
-                        <img class="animation-shake-card" src="{% static mob.content.img %}" alt="mob" width="400px" height="400px" style="border-radius: 30px">
-                        <div style="background-color: rgba(255,0,0,0.0); box-shadow: 0px 0px 50px rgba(255,0,0,0.0); height: 400px; width: 400px; position: absolute; top: 50px; right: 50px; border-radius: 30px"></div>
-                        <h1 style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 200px; position: absolute; left: 320px; bottom: 150px; text-shadow: #e0d0a9 4px 4px 10px;">{{hero.current_attack.pwr}}</h1>
+                        <div class="animation-shake-card">
+                            <img src="{% static mob.content.img %}" alt="mob" width="400px" height="400px" style="border-radius: 30px">
+                            <!--  анимация тонировка аватара красным          -->
+                        </div>
+                        <h1 style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 140px; position: absolute; left: 300px; bottom: 280px; text-shadow: #e0d0a9 4px 4px 10px;">{{hero.current_attack.pwr}}</h1>
                         {% endif %}
                     </button>
                 </form>
