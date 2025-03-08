@@ -30,6 +30,25 @@
     #mob-attack {
     background-image: url( "{% static mob.current_attack.img %}" );
 }
+    .animation-bar {
+    animation-duration: 3s;
+    animation-name: damage;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    border: none;
+    cursor: pointer;
+}
+
+@keyframes damage {
+    0% {
+        width: {{hero.stats.hp_before}}px;
+    }
+
+    100% {
+        width: {{hero.hp_bar}}px;
+    }
+}
 </style>
 </head>
 <body>
@@ -51,10 +70,11 @@
                     <div style="display: flex; width: 400px">
                         <img src="{% static hero.content.img %}" width="140px" height="140px" alt="герой" style="border-radius: 20px; margin-right: 5px">
                         <div style="margin-top: 5px; display: flex; flex-direction: column; align-items: flex-start">
-                            <div style="border-radius: 20px; height: 30px; margin: 2px; width: {{hero.hp_bar}}px; background-color: #ff0000; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px">HP:{{hero.stats.hp}}</div>
+                            <div class="animation-bar" style="border-radius: 20px; height: 30px; width: {{hero.hp_bar}}px; margin: 2px; background-color: #ff0000; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px">HP:{{hero.stats.hp}}</div>
                             <div style="border-radius: 20px; height: 30px; margin: 2px; width: {{hero.mp_bar}}px; background-color: #0020a2; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px"">MP:{{hero.stats.mp}}</div>
                             <div style="border-radius: 20px; height: 30px; margin: 2px; width: {{hero.exp_bar}}px; background-color: #6e6e6e; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px"">EXP:{{hero.stats.exp}}/{{hero.stats.exp_to_lvl}}</div>
                             <div style="border-radius: 20px; height: 30px; margin: 2px; width: 45px; color: #e0d0a9; font-size: 40px; font-weight: bolder; display: flex; position: relative; left: -140px; bottom: 100px; -webkit-text-stroke-color: #0e0d0d; -webkit-text-stroke-width: 1.5px; align-items: center; padding-left: 5px"">{{hero.stats.lvl}}</div>
+                            <h4>hp_before:{{hero.stats.hp_before}}</h4>
                         </div>
                     </div>
                     {% endif %}
@@ -98,6 +118,7 @@
                             <div style="border-radius: 20px; height: 30px; margin: 4px; width: {{mob.hp_bar}}px; background-color: #ff0000; color: #e0d0a9; display: flex; align-items: center; justify-content: flex-end; padding-right: 5px">HP:{{mob.stats.hp}}</div>
                             <div style="border-radius: 20px; height: 30px; margin: 4px; width: {{mob.mp_bar}}px; background-color: #0020a2; color: #e0d0a9; display: flex; align-items: center; justify-content: flex-end; padding-right: 5px"">MP:{{mob.stats.mp}}</div>
                             <div style="border-radius: 20px; height: 30px; margin: 2px; width: 45px; color: #e0d0a9; font-size: 40px; font-weight: bolder; display: flex; position: relative; left: 160px; bottom: 70px; -webkit-text-stroke-color: #0e0d0d; -webkit-text-stroke-width: 1.5px; align-items: center; padding-left: 5px"">{{mob.stats.lvl}}</div>
+
                         </div>
                         <img src="{% static mob.content.img %}" width="140px" height="140px" alt="Моб" style="border-radius: 20px">
                     </div>
@@ -148,7 +169,7 @@
                         {% if dict.phase == 'hero_attack' and mob.current_attack.pwr %}
                             <img class="animation-shake-card" src="{% static hero.content.img %}" alt="mob" width="400px" height="400px">
                         <!--урон от моба на аватаре героя-->
-                        <h1 style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 140px; position: absolute; right: 300px; bottom: 280px; text-shadow: #e0d0a9 4px 4px 10px;">{{mob.current_attack.pwr}}</h1>
+                        <h1 class="animation-damage" style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 140px; position: absolute; right: 300px; bottom: 280px; text-shadow: #e0d0a9 4px 4px 10px;">-{{mob.current_attack.pwr}}</h1>
                         {% endif %}
                     </button>
                 </form>
@@ -196,7 +217,7 @@
                             <img src="{% static mob.content.img %}" alt="mob" width="400px" height="400px" style="border-radius: 30px">
                             <!--  анимация тонировка аватара красным          -->
                         </div>
-                        <h1 style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 140px; position: absolute; left: 300px; bottom: 280px; text-shadow: #e0d0a9 4px 4px 10px;">{{hero.current_attack.pwr}}</h1>
+                        <h1 class="animation-damage" style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 140px; position: absolute; left: 300px; bottom: 280px; text-shadow: #e0d0a9 4px 4px 10px;">-{{hero.current_attack.pwr}}</h1>
                         {% endif %}
                     </button>
                 </form>
@@ -214,16 +235,19 @@
                 <form method="get">
                     <button type="submit" name="action" value="cave_0" class="game_card animation-scale">
                         <img src="{% static 'main/img/locations/loc_1.jpg' %}" alt="пещера" width="400px" height="400px" style="border-radius: 30px">
+                        <h2 style="position: relative; bottom: 420px">Тёмная пещера</h2>
                     </button>
                 </form>
                 <form method="get">
                     <button type="submit" name="action" value="cave_1" class="game_card animation-scale">
                         <img src="{% static 'main/img/locations/loc_2.jpg' %}" alt="пещера" width="400px" height="400px" style="border-radius: 30px">
+                        <h2 style="position: relative; bottom: 420px;">Катакомбы</h2>
                     </button>
                 </form>
                 <form method="get">
                     <button type="submit" name="action" value="cave_2" class="game_card animation-scale">
                         <img src="{% static 'main/img/locations/loc_3.jpg' %}" alt="пещера" width="400px" height="400px" style="border-radius: 30px">
+                        <h2 style="position: relative; bottom: 420px;">Магическая пещера</h2>
                     </button>
                 </form>
                 {% endif %}

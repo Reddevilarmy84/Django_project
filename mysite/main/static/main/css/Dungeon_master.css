@@ -119,6 +119,29 @@
 
 }
 
+.animation-damage {
+    animation-duration: 0.5s;
+    animation-name: damage;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    border: none;
+    cursor: pointer;
+}
+
+@keyframes damage {
+    0% {
+        scale: 0.1;
+    }
+
+    50% {
+        scale: 1;
+    }
+
+    100% {
+        scale: 1;
+    }
+}
+
 .game_button {
     font-weight: bolder;
     -webkit-text-stroke-width: 2px;
@@ -168,8 +191,32 @@
 
 h2 {
     color: #eeeeee;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #0e0d0d;
     font-weight: bold;
     font-family: "Comic Sans MS";
     text-align: center;
     font-size: 50px;
+    text-shadow: #eeeeee 0 0 40px;
 }
+
+h3 {
+    color: #eeeeee;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #0e0d0d;
+    font-weight: bold;
+    font-family: "Comic Sans MS";
+    text-align: center;
+    font-size: 30px;
+    text-shadow: #eeeeee 0 0 20px;
+}
+
+h4 {
+    color: #eeeeee;
+    font-weight: bold;
+    font-family: "Comic Sans MS";
+    text-align: center;
+    font-size: 20px;
+    text-shadow: #eeeeee 0 0 20px;
+}
+

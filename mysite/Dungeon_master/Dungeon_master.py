@@ -308,6 +308,7 @@ class Mob:
     def hp_bar(self):
         return 65 if int(self.stats['hp'] / self.stats['hp_max'] * 300) <= 65 else int(self.stats['hp'] / self.stats['hp_max'] * 300)
 
+
     def mp_bar(self):
         return 65 if int(self.stats['mp'] / self.stats['mp_max'] * 300) <= 65 else int(self.stats['mp'] / self.stats['mp_max'] * 300)
 
@@ -315,14 +316,14 @@ class Mob:
 class Hero:
     current_attack = {}
     content = {}
-    stats = {}
+    stats = {'hp': 0, 'mp': 0, 'exp': 0}
     stats_list = [
         {
             'lvl': 1,
             'attack_pwr': 10,
             'hp': 100,
             'hp_max': 100,
-            'hp_before': 50,
+            'hp_before': 300,
             'mp': 300,
             'mp_max': 300,
             'mp_before': 100,
@@ -341,7 +342,7 @@ class Hero:
             'attack_pwr': 10,
             'hp': 300,
             'hp_max': 300,
-            'hp_before': 50,
+            'hp_before': 300,
             'mp': 100,
             'mp_max': 100,
             'mp_before': 100,
@@ -358,7 +359,7 @@ class Hero:
         {
             'lvl': 1,
             'attack_pwr': 10,
-            'hp': 200,
+            'hp': 300,
             'hp_max': 200,
             'hp_before': 200,
             'mp': 200,
@@ -438,7 +439,11 @@ class Hero:
         self.stats['mp'] = self.current_attack['mp']
 
     def hp_bar(self):
-        return 70 if int( self.stats['hp'] / self.stats['hp_max'] * 300 ) <= 70 else int( self.stats['hp'] / self.stats['hp_max'] * 300 )
+        try:
+            bar = 70 if int( self.stats['hp'] / self.stats['hp_max'] * 300 ) <= 70 else int( self.stats['hp'] / self.stats['hp_max'] * 300 )
+        except:
+            bar = 70
+        return bar
 
     def mp_bar(self):
         return 70 if int( self.stats['mp'] / self.stats['mp_max'] * 300 ) <= 70 else int( self.stats['mp'] / self.stats['mp_max'] * 300 )

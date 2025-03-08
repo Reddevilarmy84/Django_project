@@ -90,6 +90,7 @@ def Dungeon_master(request, action: str = None):
     if phase == "mob_attack":
         hero.current_attack['pwr'] = None
         mob.attack(random.randrange(4))
+        hero.stats['hp_before'] = int(hero.stats['hp'] / hero.stats['hp_max'] * 300) #получаем целое число
         hero.stats['hp'] -= mob.current_attack['pwr']
         for i in json:
             if i["id"] == "config":
@@ -104,6 +105,7 @@ def Dungeon_master(request, action: str = None):
     # отслеживание атака героя
     if phase == "hero_attack":
         mob.current_attack['pwr'] = None
+        hero.stats['hp_before'] = int(hero.stats['hp'] / hero.stats['hp_max'] * 300) #получаем целое число
         if re.match('attack', action):
             hero.attack(int(list(action)[-1]))
             print(f'херо атак {hero.current_attack}')
@@ -117,6 +119,7 @@ def Dungeon_master(request, action: str = None):
                 while hero.stats['exp'] >= hero.stats['exp_to_lvl']:
                     hero.stats['exp'] -= hero.stats['exp_to_lvl']
                     hero.up_lvl(1)
+                hero.stats['hp_before'] = int(hero.stats['hp'] / hero.stats['hp_max'] * 300)  # получаем целое число
                 for i in json:
                     if i["id"] == "config":
                         i["phase"] = "battle_win"
