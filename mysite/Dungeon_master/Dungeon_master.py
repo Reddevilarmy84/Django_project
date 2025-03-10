@@ -388,7 +388,7 @@ class Hero:
     content_list = [
         {
             'name': 'Магнус',
-            'class': 'маг',
+            'class': 'маг стихий',
             'img': 'main/img/hero/hero_0.jpg',
             'spec1': 'огненный шар',
             'spec2': 'ледяной шторм',
@@ -400,7 +400,7 @@ class Hero:
         },
         {
             'name': 'Ахилес',
-            'class': 'воин',
+            'class': 'доблестный рыцарь',
             'img': 'main/img/hero/hero_1.jpg',
             'spec1': 'удар щитом',
             'spec2': 'ярость',
@@ -412,14 +412,15 @@ class Hero:
         },
         {
             'name': 'Раймонд',
-            'class': 'вор',
+            'class': 'Теневой страж',
             'img': 'main/img/hero/hero_2.jpg',
             'spec1': 'удар в спину',
-            'spec2': 'выстрел из арбалета',
+            'spec2': 'выстрел из лука',
             'spec3': 'атака тени',
-            'spec1_img': '',
-            'spec2_img': '',
-            'spec3_img': '',
+            'spec0_img': 'main/img/hero/hero_2/spec_0.jpg',
+            'spec1_img': 'main/img/hero/hero_2/spec_1.jpg',
+            'spec2_img': 'main/img/hero/hero_2/spec_2.jpg',
+            'spec3_img': 'main/img/hero/hero_2/spec_3.jpg',
         },
     ]
 
