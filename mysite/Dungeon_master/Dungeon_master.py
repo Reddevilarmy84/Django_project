@@ -299,7 +299,7 @@ class Mob:
     def set_lvl_mob(self, lvl: int):
         lvl_before = self.stats['lvl']
         for i in range(1, lvl + 1):
-            self.stats = {k: int(int(v) * 1.2) for k, v in self.stats.items()}
+            self.stats = {k: int(v+(v*0.25)) for k, v in self.stats.items()}
         self.stats['lvl'] = lvl_before + lvl
 
 
@@ -325,6 +325,7 @@ class Mob:
 class Hero:
     current_attack = {}
     content = {}
+    potions = {'heal': 0, 'mana': 0, 'fury': 0}
     stats = {'hp': 0, 'mp': 0, 'exp': 0}
     stats_list = [
         {
@@ -332,7 +333,7 @@ class Hero:
             'attack_pwr': 10,
             'hp': 200,
             'hp_max': 200,
-            'hp_before': 300,
+            'hp_before': 200,
             'mp': 500,
             'mp_max': 500,
             'mp_before': 500,
@@ -369,8 +370,8 @@ class Hero:
             'lvl': 1,
             'attack_pwr': 10,
             'hp': 300,
-            'hp_max': 200,
-            'hp_before': 200,
+            'hp_max': 300,
+            'hp_before': 300,
             'mp': 200,
             'mp_max': 200,
             'mp_before': 200,
@@ -385,6 +386,7 @@ class Hero:
             'spec3_mp': 40,
         },
 ]
+
     content_list = [
         {
             'name': 'Магнус',
@@ -428,9 +430,10 @@ class Hero:
         exp_before = self.stats['exp']
         lvl_before = self.stats['lvl']
         for i in range(1, lvl+1):
-            self.stats = {k:int(v*1.2) for k, v in self.stats.items()}
+            self.stats = {k:int(v+(v*0.24)) for k, v in self.stats.items()}
         self.stats['lvl'] = lvl_before + lvl
         self.stats['exp'] = exp_before
+        self.stats['exp_to_lvl'] = int(self.stats['exp_to_lvl']*1.3)
         self.stats['hp'] = self.stats['hp_max']
         self.stats['mp'] = self.stats['mp_max']
 

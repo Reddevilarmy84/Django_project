@@ -35,6 +35,20 @@ def Dungeon_master(request, action: str = None):
         print(f"фаза не найдена")
         phase = None
 
+    if action == 'potion_heal':
+        print(hero.stats['hp'], hero.stats['hp_max'])
+        if hero.stats['hp'] < hero.stats['hp_max']:
+            hero.potions['heal'] -= 1
+            hero.stats['hp'] += int(hero.stats['hp_max']/2)
+            hero.stats['hp'] = hero.stats['hp'] if hero.stats['hp'] <= hero.stats['hp_max'] else hero.stats['hp_max']
+
+    if action == 'potion_mana':
+        print(hero.stats['mp'], hero.stats['mp_max'])
+        if hero.stats['mp'] < hero.stats['mp_max']:
+            hero.potions['mana'] -= 1
+            hero.stats['mp'] += int(hero.stats['mp_max'] / 2)
+            hero.stats['mp'] = hero.stats['mp'] if hero.stats['mp'] <= hero.stats['mp_max'] else hero.stats['mp_max']
+
     #отслеживание фазы title
     if phase == "title":
         if action == "start_game":
@@ -46,6 +60,7 @@ def Dungeon_master(request, action: str = None):
     if phase == "choose_hero":
         if re.match('hero', action):
             hero.choose_hero(int(list(action)[-1]))
+            hero.potions['heal'], hero.potions['mana'], hero.potions['fury'] = 3, 3, 3
             for i in json:
                 if i["id"] == "config":
                     i["phase"] = "choose_location"

@@ -78,6 +78,32 @@
                             <div style="border-radius: 20px; height: 30px; margin: 2px; width: {{hero.mp_bar}}px; background-color: #0020a2; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px"">MP:{{hero.stats.mp}}</div>
                             <div style="border-radius: 20px; height: 30px; margin: 2px; width: {{hero.exp_bar}}px; background-color: #6e6e6e; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px"">EXP:{{hero.stats.exp}}/{{hero.stats.exp_to_lvl}}</div>
                             <div style="border-radius: 20px; height: 30px; margin: 2px; width: 45px; color: #e0d0a9; font-size: 40px; font-weight: bolder; display: flex; position: relative; left: -140px; bottom: 100px; -webkit-text-stroke-color: #0e0d0d; -webkit-text-stroke-width: 1.5px; align-items: center; padding-left: 5px"">{{hero.stats.lvl}}</div>
+                            <div style="display: flex; flex-direction: column; position: absolute; left: 30px; top: 250px">
+                                {% if hero.potions.heal %}
+                                <form method="get">
+                                    <button style="background-color: rgba(0, 0, 0, 0); border: none; display: flex" name="action" value="potion_heal">
+                                        <img src="{% static 'main/img/items/potion_0.jpg' %}" height="100px" width="100px" style="border-radius: 10px; box-shadow: #ff0000 0 0 10px;">
+                                        <h4 class="DM-h3" style="position: relative; top: 10px; left: -30px">{{hero.potions.heal}}</h4>
+                                    </button>
+                                </form>
+                                {% endif %}
+                                {% if hero.potions.mana %}
+                                <form method="get">
+                                        <button style="background-color: rgba(0, 0, 0, 0); border: none; display: flex" name="action" value="potion_mana">
+                                        <img src="{% static 'main/img/items/potion_1.jpg' %}" height="100px" width="100px" style="border-radius: 10px; box-shadow: #0022ff 0 0 10px;">
+                                    <h4 class="DM-h3" style="position: relative; top: 10px; left: -30px">{{hero.potions.mana}}</h4>
+                                    </button>
+                                </form>
+                                {% endif %}
+                                {% if hero.potions.fury %}
+                                <form method="get">
+                                    <button style="background-color: rgba(0, 0, 0, 0); border: none; display: flex" name="action" value="potion_fury">
+                                        <img src="{% static 'main/img/items/potion_2.jpg' %}" height="100px" width="100px" style="border-radius: 10px; box-shadow: #1aff00 0 0 10px;">
+                                        <h4 class="DM-h3" style="position: relative; top: 10px; left: -30px">{{hero.potions.fury}}</h4>
+                                    </button>
+                                </form>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                     {% endif %}
