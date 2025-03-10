@@ -462,8 +462,10 @@ class Hero:
         return 70 if int( self.stats['mp'] / self.stats['mp_max'] * 300 ) <= 70 else int( self.stats['mp'] / self.stats['mp_max'] * 300 )
 
     def exp_bar(self):
-        return 90 if int( self.stats['exp'] / self.stats['exp_to_lvl'] * 300 ) <= 90 else int( self.stats['exp'] / self.stats['exp_to_lvl'] * 300 )
+        return 70 if int( self.stats['exp'] / self.stats['exp_to_lvl'] * 300 ) <= 70 else int( self.stats['exp'] / self.stats['exp_to_lvl'] * 300 )
 
+    def exp_bar_value(self):
+        return int( self.stats['exp'] / self.stats['exp_to_lvl'] * 100 )
 
 class Location:
     content = {'img': f'main/img/locations/loc_1.jpg'}

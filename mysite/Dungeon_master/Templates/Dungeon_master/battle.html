@@ -71,12 +71,12 @@
                 <div id="title-block-left">
                     <!--         chose location                -->
                     {% if dict.phase == 'choose_location' or dict.phase == 'battle' or dict.phase == 'mob_attack' or dict.phase == 'hero_attack' or dict.phase == 'battle_win' or dict.phase == 'battle_loose' %}
-                    <div style="display: flex; width: 400px">
-                        <img src="{% static hero.content.img %}" width="140px" height="140px" alt="герой" style="border-radius: 20px; margin-right: 5px">
+                    <div style="display: flex;">
+                        <img src="{% static hero.content.img %}" width="140px" height="140px" alt="герой" style="border-radius: 20px; box-shadow: #ffffff 0 0 5px; margin-right: 5px">
                         <div style="margin-top: 5px; display: flex; flex-direction: column; align-items: flex-start">
                             <div class="animation-bar" style="border-radius: 20px; height: 30px; width: {{hero.hp_bar}}px; margin: 2px; background-color: #ff0000; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px">HP:{{hero.stats.hp}}</div>
                             <div style="border-radius: 20px; height: 30px; margin: 2px; width: {{hero.mp_bar}}px; background-color: #0020a2; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px"">MP:{{hero.stats.mp}}</div>
-                            <div style="border-radius: 20px; height: 30px; margin: 2px; width: {{hero.exp_bar}}px; background-color: #6e6e6e; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px"">EXP:{{hero.stats.exp}}/{{hero.stats.exp_to_lvl}}</div>
+                            <div style="border-radius: 20px; height: 30px; margin: 2px; width: {{hero.exp_bar}}px; background-color: #6e6e6e; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px"">EXP:{{hero.exp_bar_value}} %</div>
                             <div style="border-radius: 20px; height: 30px; margin: 2px; width: 45px; color: #e0d0a9; font-size: 40px; font-weight: bolder; display: flex; position: relative; left: -140px; bottom: 100px; -webkit-text-stroke-color: #0e0d0d; -webkit-text-stroke-width: 1.5px; align-items: center; padding-left: 5px"">{{hero.stats.lvl}}</div>
                             <div style="display: flex; flex-direction: column; position: absolute; left: 30px; top: 250px">
                                 {% if hero.potions.heal %}
@@ -111,19 +111,20 @@
                 <div id="title-block-center">
                     <!--         battle loose                -->
                     {% if dict.phase == 'battle_loose' %}
-                    <h2 class="DM-h2" style="-webkit-text-stroke-color: #000000; -webkit-text-stroke-width: 0.5px; font-weight: bolder">Герой погиб</h2>
+                    <h2 class="DM-h2" style="-webkit-text-stroke-color: #000000; -webkit-text-stroke-width: 0.5px; font-weight: bolder">
+                        {{hero.content.name}} погиб</h2>
                     {% endif %}
                     <!--         battle win                -->
                     {% if dict.phase == 'battle_win' %}
-                    <h2 class="DM-h2" style="-webkit-text-stroke-color: #000000; -webkit-text-stroke-width: 0.5px; font-weight: bolder">Герой победил</h2>
+                    <h2 class="DM-h2" style="-webkit-text-stroke-color: #000000; -webkit-text-stroke-width: 0.5px; font-weight: bolder">{{hero.content.name}} победил {{mob.content.name}}</h2>
                     {% endif %}
                     <!--         chose hero                -->
                     {% if dict.phase == 'choose_hero' %}
-                    <h2 class="DM-h2" style="-webkit-text-stroke-color: #000000; -webkit-text-stroke-width: 0.5px; font-weight: bolder">Выбери героя</h2>
+                    <h2 class="DM-h2" style="-webkit-text-stroke-color: #000000; -webkit-text-stroke-width: 0.5px; font-weight: bolder">Выбери отважного героя</h2>
                     {% endif %}
                     <!--         chose location                -->
                     {% if dict.phase == 'choose_location' %}
-                    <h2 class="DM-h2" style="-webkit-text-stroke-color: #000000; -webkit-text-stroke-width: 0.5px; font-weight: bolder">Выбери локацию</h2>
+                    <h2 class="DM-h2" style="-webkit-text-stroke-color: #000000; -webkit-text-stroke-width: 0.5px; font-weight: bolder">Выбери свой путь</h2>
                     {% endif %}
                     <!--         exploration                -->
                     {% if dict.phase == 'exploration' and location.path_traveled != 0 %}
@@ -131,10 +132,10 @@
                     {% endif %}
                     <!--         meet mob                -->
                     {% if dict.phase == 'meet_mob' %}
-                    <h2 class="DM-h2" style="-webkit-text-stroke-color: #000000; -webkit-text-stroke-width: 0.5px; font-weight: bolder">Вам встретился на пути {{mob.content.name}}</h2>
+                    <h2 class="DM-h2" style="-webkit-text-stroke-color: #000000; -webkit-text-stroke-width: 0.5px; font-weight: bolder">{{hero.content.name}} встретил на пути {{mob.content.name}}</h2>
                     {% endif %}
                     {% if dict.phase == 'mob_attack' %}
-                    <h2 class="DM-h2" style="-webkit-text-stroke-color: #000000; -webkit-text-stroke-width: 0.5px; font-weight: bolder">{{mob.content.class}} атакует!</h2>
+                    <h2 class="DM-h2" style="-webkit-text-stroke-color: #000000; -webkit-text-stroke-width: 0.5px; font-weight: bolder">{{mob.content.name}} атакует!</h2>
                     {% endif %}
                     {% if dict.phase == 'hero_attack' %}
                     <h2 class="DM-h2" style="-webkit-text-stroke-color: #000000; -webkit-text-stroke-width: 0.5px; font-weight: bolder">{{hero.content.name}} атакует!</h2>
@@ -148,7 +149,7 @@
                             <div style="border-radius: 20px; height: 30px; margin: 4px; width: {{mob.mp_bar}}px; background-color: #0020a2; color: #e0d0a9; display: flex; align-items: center; justify-content: flex-end; padding-right: 5px"">MP:{{mob.stats.mp}}</div>
                             <div style="border-radius: 20px; height: 30px; margin: 2px; width: 45px; color: #e0d0a9; font-size: 40px; font-weight: bolder; display: flex; position: relative; left: 160px; bottom: 70px; -webkit-text-stroke-color: #0e0d0d; -webkit-text-stroke-width: 1.5px; align-items: center; padding-left: 5px"">{{mob.stats.lvl}}</div>
                         </div>
-                        <img src="{% static mob.content.img %}" width="140px" height="140px" alt="Моб" style="border-radius: 20px">
+                        <img src="{% static mob.content.img %}" width="140px" height="140px" alt="Моб" style="border-radius: 20px; box-shadow: #ffffff 0 0 5px">
                     </div>
                     {% endif %}
                 </div>

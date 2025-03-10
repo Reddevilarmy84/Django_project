@@ -112,6 +112,9 @@ def Dungeon_master(request, action: str = None):
                 i["phase"] = "hero_attack"
         if hero.stats['hp'] <= 0:
             hero.stats['hp'] = 0
+            hero.potions['heal'] = 0
+            hero.potions['mana'] = 0
+            hero.potions['fury'] = 0
             for i in json:
                 if i["id"] == "config":
                     i["phase"] = "battle_loose"
@@ -156,6 +159,9 @@ def Dungeon_master(request, action: str = None):
                 if i["id"] == "config":
                     i["phase"] = "choose_location"
             location.stats['completed'] = 0
+
+
+
     print(f'Фаза: {phase} Действие: {action}')
     dict_to_json(json, path_to_json_DM)
     context = {
