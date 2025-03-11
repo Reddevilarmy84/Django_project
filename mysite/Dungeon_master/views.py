@@ -54,7 +54,7 @@ def Dungeon_master(request, action: str = None):
         hero.potions['fury'] = hero.potions['fury'] - 1 if not hero.fury else hero.potions['fury']
         hero.fury = 10 if not hero.fury and hero.potions['fury'] else hero.fury
 
-    hero.fury = hero.fury - 1 if hero.fury and phase == "hero_attack" and action != 'fury' else hero.fury
+    hero.fury = hero.fury - 1 if hero.fury and phase == "hero_attack" and re.match('attack', action) else hero.fury
 
     #отслеживание фазы title
     if phase == "title":

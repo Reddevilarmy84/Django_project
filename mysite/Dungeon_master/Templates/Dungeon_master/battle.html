@@ -95,7 +95,7 @@
                                     </button>
                                 </form>
                                 {% endif %}
-                                {% if hero.potions.fury %}
+                                {% if hero.potions.fury or hero.fury %}
                                 {% if hero.fury %}
                                 <form method="get">
                                     <button style="background-color: rgba(0, 0, 0, 0); border: none; display: flex" name="action" value="fury">
