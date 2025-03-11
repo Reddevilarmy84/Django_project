@@ -28,6 +28,7 @@ def Dungeon_master(request, action: str = None):
         mob.content.clear()
         hero.current_attack.clear()
         mob.current_attack.clear()
+        hero.fury = False
 
     try:
         phase = [i['phase'] for i in json if i["id"] == "config"][0]
@@ -48,6 +49,12 @@ def Dungeon_master(request, action: str = None):
             hero.potions['mana'] -= 1
             hero.stats['mp'] += int(hero.stats['mp_max'] / 2)
             hero.stats['mp'] = hero.stats['mp'] if hero.stats['mp'] <= hero.stats['mp_max'] else hero.stats['mp_max']
+
+    if action == 'potion_fury':
+        hero.potions['fury'] = hero.potions['fury'] - 1 if not hero.fury else hero.potions['fury']
+        hero.fury = 10 if not hero.fury and hero.potions['fury'] else hero.fury
+
+    hero.fury = hero.fury - 1 if hero.fury and phase == "hero_attack" and action != 'fury' else hero.fury
 
     #отслеживание фазы title
     if phase == "title":
@@ -126,7 +133,7 @@ def Dungeon_master(request, action: str = None):
         hero.stats['hp_before'] = int(hero.stats['hp'] / hero.stats['hp_max'] * 300) #получаем целое число
         if re.match('attack', action):
             hero.attack(int(list(action)[-1]))
-            print(f'херо атак {hero.current_attack}')
+            hero.current_attack['pwr'] = int(hero.current_attack['pwr']*1.3) if hero.fury else hero.current_attack['pwr']
             mob.stats['hp'] -= hero.current_attack['pwr']
             for i in json:
                 if i["id"] == "config":
@@ -159,6 +166,7 @@ def Dungeon_master(request, action: str = None):
                 if i["id"] == "config":
                     i["phase"] = "choose_location"
             location.stats['completed'] = 0
+            hero.fury = False
 
 
 

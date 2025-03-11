@@ -386,6 +386,7 @@ class Hero:
             'spec3_mp': 40,
         },
 ]
+    fury = False
 
     content_list = [
         {
