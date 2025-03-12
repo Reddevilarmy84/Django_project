@@ -1,18 +1,19 @@
+from .Dungeon_master import dict_to_json, json_to_dict, path_to_json_DM, Hero, Mob, Location, Game
 from django.shortcuts import render
-from .Dungeon_master import dict_to_json, json_to_dict, path_to_json_DM, Colors, Hero, Mob, Location, Game
-import re
 import random
-
-hero = Hero()
+import re
 mob = Mob()
-location = Location()
+hero = Hero()
 game = Game()
+location = Location()
+
 
 def Dungeon_master(request, action: str = None):
     action = request.GET.get('action', action)
     phase = game.phase
     if action == "exit":
         game.phase = 'title'
+        phase = 'title'
         hero.stats.clear()
         mob.stats.clear()
         hero.content.clear()
