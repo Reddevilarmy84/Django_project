@@ -222,7 +222,7 @@
                     </div>
                 {% endif %}
                 {% if game.phase == 'battle_win' %}
-                <form method="get">
+                <form method="get" >
                     <button type="submit" name="action" value="This is win" class="game_card animation-scale">
                         <img src="{% static 'main/img/items/win_0.jpg' %}" alt="mob" width="300px" height="300px" style="border-radius: 30px">
                         <h1 style="font-size: 30px; color: #80ff00">опыт: +{{mob.stats.exp}}</h1>
