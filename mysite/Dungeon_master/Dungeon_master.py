@@ -6,8 +6,7 @@ path_to_json_DM = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'Dung
 
 
 class Game:
-    def __init__(self):
-        self.game = False
+    phase = 'title'
 
 class Mob:
     current_attack = {}
