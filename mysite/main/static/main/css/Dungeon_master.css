@@ -1,4 +1,6 @@
-
+* {
+    box-sizing: border-box;
+}
 
 #back-tinting {
     background-color: rgba(0, 0, 0, 0.7);

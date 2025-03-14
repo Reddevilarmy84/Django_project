@@ -320,12 +320,33 @@ class Mob:
     def mp_bar(self):
         return 65 if int(self.stats['mp'] / self.stats['mp_max'] * 300) <= 65 else int(self.stats['mp'] / self.stats['mp_max'] * 300)
 
+    def half_damage_pwr(self):
+        return int(self.current_attack['pwr']/2)
 
 class Hero:
     current_attack = {}
     content = {}
-    potions = {'heal': 0, 'mana': 0, 'fury': 0}
-    stats = {'hp': 0, 'mp': 0, 'exp': 0}
+    potions = {'heal': 0, 'mana': 0, 'fury': 0, 'shield': 0, 'spikes': 0}
+    condition = {'heal': False, 'mana': False, 'fury': False, 'shield': False, 'spikes': False}
+    stats = {
+            'lvl': 1,
+            'attack_pwr': 10,
+            'hp': 200,
+            'hp_max': 200,
+            'hp_before': 200,
+            'mp': 500,
+            'mp_max': 500,
+            'mp_before': 500,
+            'exp': 0,
+            'exp_to_lvl': 200,
+            'exp_before': 0,
+            'spec1_pwr': 20,
+            'spec2_pwr': 30,
+            'spec3_pwr': 40,
+            'spec1_mp': 20,
+            'spec2_mp': 30,
+            'spec3_mp': 40,
+        }
     stats_list = [
         {
             'lvl': 1,
@@ -385,7 +406,6 @@ class Hero:
             'spec3_mp': 40,
         },
 ]
-    fury = False
 
     content_list = [
         {
@@ -466,6 +486,10 @@ class Hero:
 
     def exp_bar_value(self):
         return int( self.stats['exp'] / self.stats['exp_to_lvl'] * 100 )
+
+    def fury_damage(self):
+        return int(self.current_attack['pwr']*1.3)
+
 
 class Location:
     content = {'img': f'main/img/locations/loc_1.jpg'}
