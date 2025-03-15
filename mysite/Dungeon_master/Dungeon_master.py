@@ -1,12 +1,21 @@
 import os
 import json
 import random
+import datetime
 
 path_to_json_DM = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'Dungeon_master.json')
 
 
 class Game:
-    phase = 'title'
+    def __init__(self):
+        self.phase = 'title'
+        self.action = None
+        self.now = datetime.datetime.now()
+    def date_time(self):
+        return self.now.strftime("%d/%m/%Y %H:%M")
+
+    def __repr__(self):
+        return f"Game(phase={self.phase}, action={self.action}, now={self.now})"
 
 class Mob:
     current_attack = {}

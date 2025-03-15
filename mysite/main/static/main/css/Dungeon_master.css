@@ -6,6 +6,16 @@
     background-color: rgba(0, 0, 0, 0.7);
 }
 
+#manage-div {
+    padding: 20px 40px 0;
+    height: 3.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 420px;
+    border: #ffffff 2px;
+}
+
 #title-div {
     padding: 20px;
     height: 15vh;
@@ -32,16 +42,6 @@
     display: flex;
     justify-content: right;
     align-items: center;
-}
-
-#manage-div {
-    padding: 20px 40px 0;
-    height: 3.5vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    border: #ffffff 2px;
 }
 
 #body-div {

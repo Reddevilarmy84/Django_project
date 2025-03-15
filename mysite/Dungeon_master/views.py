@@ -16,6 +16,7 @@ def Dungeon_master(request, action: str = None):
     location = Location() if not location else location
     action = request.GET.get('action', action)
     phase = game.phase
+    game.action = action
     if action == "exit":
         hero = Hero() if not hero else hero
         mob = Mob() if not mob else mob
@@ -148,8 +149,6 @@ def Dungeon_master(request, action: str = None):
         hero.condition['spikes'] = hero.condition['spikes'] - 1 if hero.condition['spikes'] and re.search(
             'mob_attack', action) else hero.condition['spikes']
     context = {
-        'title': 'MadJunior: Повелитель Пещер',
-        'header': 'Повелитель Пещер',
         'game': game,
         'hero': hero,
         'mob': mob,
