@@ -352,9 +352,9 @@ class Hero:
             'spec1_pwr': 20,
             'spec2_pwr': 30,
             'spec3_pwr': 40,
-            'spec1_mp': 20,
-            'spec2_mp': 30,
-            'spec3_mp': 40,
+            'spec1_mp': 22,
+            'spec2_mp': 35,
+            'spec3_mp': 48,
         }
     stats_list = [
         {
@@ -372,9 +372,9 @@ class Hero:
             'spec1_pwr': 20,
             'spec2_pwr': 30,
             'spec3_pwr': 40,
-            'spec1_mp': 20,
-            'spec2_mp': 30,
-            'spec3_mp': 40,
+            'spec1_mp': 22,
+            'spec2_mp': 35,
+            'spec3_mp': 48,
         },
         {
             'lvl': 1,
@@ -391,9 +391,9 @@ class Hero:
             'spec1_pwr': 20,
             'spec2_pwr': 30,
             'spec3_pwr': 40,
-            'spec1_mp': 20,
-            'spec2_mp': 30,
-            'spec3_mp': 40,
+            'spec1_mp': 22,
+            'spec2_mp': 35,
+            'spec3_mp': 48,
         },
         {
             'lvl': 1,
@@ -410,9 +410,9 @@ class Hero:
             'spec1_pwr': 20,
             'spec2_pwr': 30,
             'spec3_pwr': 40,
-            'spec1_mp': 20,
-            'spec2_mp': 30,
-            'spec3_mp': 40,
+            'spec1_mp': 22,
+            'spec2_mp': 35,
+            'spec3_mp': 48,
         },
 ]
 

@@ -412,16 +412,16 @@
                 {% endif %}
                 {% if game.phase == 'hero_attack' %}
                 <form method="get">
-                    <button id="hero-spec-0" type="submit" name="action" value="attack_0" class="skill_button animation-scale">атака</button>
+                    <button id="hero-spec-0" type="submit" name="action" value="attack_0" class="skill_button animation-scale"><span style="color: red; position: absolute; left: 10px; top: 5px">{{hero.stats.attack_pwr}}</span>атака</button>
                 </form>
                 <form method="get">
-                    <button id="hero-spec-1" type="submit" name="action" value="attack_1" class="skill_button animation-scale">{{hero.content.spec1}}</button>
+                    <button id="hero-spec-1" type="submit" name="action" value="attack_1" class="skill_button animation-scale"><span style="color: red; position: absolute; left: 10px; top: 5px">{{hero.stats.spec1_pwr}}</span>{{hero.content.spec1}}<span style="color: #9ab1ff; position: absolute; right: 10px; top: 5px">{{hero.stats.spec1_mp}}</span></button>
                 </form>
                 <form method="get">
-                    <button id="hero-spec-2" type="submit" name="action" value="attack_2" class="skill_button animation-scale">{{hero.content.spec2}}</button>
+                    <button id="hero-spec-2" type="submit" name="action" value="attack_2" class="skill_button animation-scale"><span style="color: red; position: absolute; left: 10px; top: 5px">{{hero.stats.spec2_pwr}}</span>{{hero.content.spec2}}<span style="color: #9ab1ff; position: absolute; right: 10px; top: 5px">{{hero.stats.spec2_mp}}</span></button>
                 </form>
                 <form method="get">
-                    <button id="hero-spec-3" type="submit" name="action" value="attack_3" class="skill_button animation-scale">{{hero.content.spec3}}</button>
+                    <button id="hero-spec-3" type="submit" name="action" value="attack_3" class="skill_button animation-scale"><span style="color: red; position: absolute; left: 10px; top: 5px">{{hero.stats.spec3_pwr}}</span>{{hero.content.spec3}}<span style="color: #9ab1ff; position: absolute; right: 10px; top: 5px">{{hero.stats.spec3_mp}}</span></button>
                 </form>
                 {% endif %}
             </div>
