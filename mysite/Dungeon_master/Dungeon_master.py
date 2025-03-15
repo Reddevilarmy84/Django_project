@@ -131,9 +131,9 @@ class Mob:
             'exp': 100,
             'exp_to_lvl': 100,
             'exp_before': 0,
-            'spec1_pwr': 20,
-            'spec2_pwr': 30,
-            'spec3_pwr': 40,
+            'spec1_pwr': 15,
+            'spec2_pwr': 20,
+            'spec3_pwr': 30,
             'spec1_mp': 20,
             'spec2_mp': 30,
             'spec3_mp': 40,
@@ -151,9 +151,9 @@ class Mob:
             'exp': 100,
             'exp_to_lvl': 100,
             'exp_before': 0,
-            'spec1_pwr': 20,
-            'spec2_pwr': 30,
-            'spec3_pwr': 40,
+            'spec1_pwr': 15,
+            'spec2_pwr': 20,
+            'spec3_pwr': 30,
             'spec1_mp': 20,
             'spec2_mp': 30,
             'spec3_mp': 40,
@@ -171,9 +171,9 @@ class Mob:
             'exp': 100,
             'exp_to_lvl': 100,
             'exp_before': 0,
-            'spec1_pwr': 20,
-            'spec2_pwr': 30,
-            'spec3_pwr': 40,
+            'spec1_pwr': 15,
+            'spec2_pwr': 20,
+            'spec3_pwr': 30,
             'spec1_mp': 20,
             'spec2_mp': 30,
             'spec3_mp': 40,
@@ -191,9 +191,9 @@ class Mob:
             'exp': 100,
             'exp_to_lvl': 100,
             'exp_before': 0,
-            'spec1_pwr': 20,
-            'spec2_pwr': 30,
-            'spec3_pwr': 40,
+            'spec1_pwr': 15,
+            'spec2_pwr': 20,
+            'spec3_pwr': 30,
             'spec1_mp': 20,
             'spec2_mp': 30,
             'spec3_mp': 40,
@@ -211,9 +211,9 @@ class Mob:
             'exp': 100,
             'exp_to_lvl': 100,
             'exp_before': 0,
-            'spec1_pwr': 20,
-            'spec2_pwr': 30,
-            'spec3_pwr': 40,
+            'spec1_pwr': 15,
+            'spec2_pwr': 20,
+            'spec3_pwr': 30,
             'spec1_mp': 20,
             'spec2_mp': 30,
             'spec3_mp': 40,
@@ -231,9 +231,9 @@ class Mob:
             'exp': 100,
             'exp_to_lvl': 100,
             'exp_before': 0,
-            'spec1_pwr': 20,
-            'spec2_pwr': 30,
-            'spec3_pwr': 40,
+            'spec1_pwr': 15,
+            'spec2_pwr': 20,
+            'spec3_pwr': 30,
             'spec1_mp': 20,
             'spec2_mp': 30,
             'spec3_mp': 40,
@@ -251,9 +251,9 @@ class Mob:
             'exp': 100,
             'exp_to_lvl': 100,
             'exp_before': 0,
-            'spec1_pwr': 20,
-            'spec2_pwr': 30,
-            'spec3_pwr': 40,
+            'spec1_pwr': 15,
+            'spec2_pwr': 20,
+            'spec3_pwr': 30,
             'spec1_mp': 20,
             'spec2_mp': 30,
             'spec3_mp': 40,
@@ -271,9 +271,9 @@ class Mob:
             'exp': 100,
             'exp_to_lvl': 100,
             'exp_before': 0,
-            'spec1_pwr': 20,
-            'spec2_pwr': 30,
-            'spec3_pwr': 40,
+            'spec1_pwr': 15,
+            'spec2_pwr': 20,
+            'spec3_pwr': 30,
             'spec1_mp': 20,
             'spec2_mp': 30,
             'spec3_mp': 40,
@@ -291,9 +291,9 @@ class Mob:
             'exp': 100,
             'exp_to_lvl': 100,
             'exp_before': 0,
-            'spec1_pwr': 20,
-            'spec2_pwr': 30,
-            'spec3_pwr': 40,
+            'spec1_pwr': 15,
+            'spec2_pwr': 20,
+            'spec3_pwr': 30,
             'spec1_mp': 20,
             'spec2_mp': 30,
             'spec3_mp': 40,
@@ -397,7 +397,7 @@ class Hero:
         },
         {
             'lvl': 1,
-            'attack_pwr': 10,
+            'attack_pwr': 25,
             'hp': 300,
             'hp_max': 300,
             'hp_before': 300,
@@ -407,9 +407,9 @@ class Hero:
             'exp': 0,
             'exp_to_lvl': 200,
             'exp_before': 0,
-            'spec1_pwr': 20,
-            'spec2_pwr': 30,
-            'spec3_pwr': 40,
+            'spec1_pwr': 35,
+            'spec2_pwr': 60,
+            'spec3_pwr': 100,
             'spec1_mp': 22,
             'spec2_mp': 35,
             'spec3_mp': 48,
@@ -499,7 +499,6 @@ class Hero:
     def fury_damage(self):
         return int(self.current_attack['pwr']*1.3)
 
-
 class Location:
     content = {'img': f'main/img/locations/loc_1.jpg'}
     stats = {}
@@ -542,6 +541,17 @@ class Location:
         },
 
     ]
+
+class Loot:
+    loot = ['heal', 'heal', 'heal', 'mana', 'mana', 'fury', 'shield', 'spikes', 'gold', 'gold', 'gold', 'gold', 'gold']
+    bount = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    def bounty(self, luck: int = 0):
+        self.bount.clear()
+        for i in range(0, 5):
+            if random.randrange(100) < 10 + luck:
+                self.bount.append(random.choice(self.loot))
+
+
 
 
 class Colors:

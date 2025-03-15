@@ -8,7 +8,7 @@
 
 #manage-div {
     padding: 20px 40px 0;
-    height: 3.5vh;
+    height: 5vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -47,7 +47,7 @@
 #body-div {
     font-size: 40px;
     color: white;
-    height: 50vh;
+    height: 55vh;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -1,4 +1,4 @@
-from .Dungeon_master import dict_to_json, json_to_dict, path_to_json_DM, Hero, Mob, Location, Game
+from .Dungeon_master import dict_to_json, json_to_dict, path_to_json_DM, Hero, Mob, Location, Game, Loot
 from django.shortcuts import render
 import random
 import re
@@ -7,9 +7,11 @@ mob = None
 hero = None
 game = None
 location = None
+loot = None
 
 def Dungeon_master(request, action: str = None):
-    global hero, mob, game, location
+    global hero, mob, game, location, loot
+    loot = Loot() if not loot else loot
     hero = Hero() if not hero else hero
     mob = Mob() if not mob else mob
     game = Game() if not game else game
@@ -18,6 +20,7 @@ def Dungeon_master(request, action: str = None):
     phase = game.phase
     game.action = action
     if action == "exit":
+        loot = Loot() if not loot else loot
         hero = Hero() if not hero else hero
         mob = Mob() if not mob else mob
         game = Game() if not game else game
@@ -119,11 +122,14 @@ def Dungeon_master(request, action: str = None):
                     hero.up_lvl(1)
                 hero.stats['hp_before'] = int(hero.stats['hp'] / hero.stats['hp_max'] * 300)  # получаем целое число
                 game.phase = "battle_win"
+                loot.bounty(40)
+                print(loot.bount)
     # отслеживание герой победил
     if phase == "battle_win" and action == "do_step":
         game.phase = "exploration"
         hero.current_attack.clear()
         mob.current_attack.clear()
+
     # отслеживание фазы локация пройдена
     if phase == "exploration_completed" and action == "complete":
         game.phase = "choose_location"
@@ -153,5 +159,6 @@ def Dungeon_master(request, action: str = None):
         'hero': hero,
         'mob': mob,
         'location': location,
+        'loot': loot,
     }
     return render(request, 'Dungeon_master/battle.html', context)

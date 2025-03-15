@@ -12,20 +12,30 @@
     #back-div {
     background-image: url( "{% static location.content.img %}" );
     background-size: cover;
-        background-position: center;
+    background-position: center;
     height: 100vh;
 }
     #hero-spec-0 {
     background-image: url( "{% static hero.content.spec0_img %}" );
+
 }
     #hero-spec-1 {
     background-image: url( "{% static hero.content.spec1_img %}" );
+    {% if hero.stats.mp < hero.stats.spec1_mp %}
+    opacity: 0.5;
+    {% endif %}
 }
     #hero-spec-2 {
     background-image: url( "{% static hero.content.spec2_img %}" );
+    {% if hero.stats.mp < hero.stats.spec2_mp %}
+    opacity: 0.5;
+    {% endif %}
 }
     #hero-spec-3 {
     background-image: url( "{% static hero.content.spec3_img %}" );
+    {% if hero.stats.mp < hero.stats.spec3_mp %}
+    opacity: 0.5;
+    {% endif %}
 }
     #mob-attack {
     background-image: url( "{% static mob.current_attack.img %}" );
@@ -290,10 +300,13 @@
                     </div>
                 {% endif %}
                 {% if game.phase == 'battle_win' %}
+
                 <form method="get" >
-                    <button type="submit" name="action" value="This is win" class="game_card animation-scale">
-                        <img src="{% static 'main/img/items/win_0.jpg' %}" alt="mob" width="300px" height="300px" style="border-radius: 30px">
-                        <h1 style="font-size: 30px; color: #80ff00">опыт: +{{mob.stats.exp}}</h1>
+                    <h3 class="DM-h3">Награда:</h3>
+                    <button type="submit" name="action" value="This is win" class="game_card animation-scale" style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 30px">
+                        {% for item in loot.bount %}
+                        <div class="animation-scale" style="height: 100px; width: 100px; border: #e0d0a9 solid 2px; border-radius: 10px"><h3 class="DM-h3">{{item}}</h3></div>
+                        {% endfor %}
                     </button>
                 </form>
                 {% endif %}
@@ -411,22 +424,33 @@
                 </form>
                 {% endif %}
                 {% if game.phase == 'hero_attack' %}
+                    <form method="get">
+                        <button id="hero-spec-0" type="submit" name="action" value="attack_0" class="skill_button animation-scale"><span style="color: red; position: absolute; left: 10px; top: 5px">{{hero.stats.attack_pwr}}</span>атака</button>
+                    </form>
                 <form method="get">
-                    <button id="hero-spec-0" type="submit" name="action" value="attack_0" class="skill_button animation-scale"><span style="color: red; position: absolute; left: 10px; top: 5px">{{hero.stats.attack_pwr}}</span>атака</button>
-                </form>
-                <form method="get">
+                    {% if hero.stats.mp < hero.stats.spec1_mp %}
+                    <button id="hero-spec-1" type="submit" name="action" value="" class="skill_button animation-scale"><span style="color: red; position: absolute; left: 10px; top: 5px">{{hero.stats.spec1_pwr}}</span>Не достаточно МП<span style="color: #ff0000; position: absolute; right: 10px; top: 5px">{{hero.stats.spec1_mp}}</span></button>
+                    {% else %}
                     <button id="hero-spec-1" type="submit" name="action" value="attack_1" class="skill_button animation-scale"><span style="color: red; position: absolute; left: 10px; top: 5px">{{hero.stats.spec1_pwr}}</span>{{hero.content.spec1}}<span style="color: #9ab1ff; position: absolute; right: 10px; top: 5px">{{hero.stats.spec1_mp}}</span></button>
+                    {% endif %}
                 </form>
                 <form method="get">
+                    {% if hero.stats.mp < hero.stats.spec2_mp %}
+                    <button id="hero-spec-2" type="submit" name="action" value="" class="skill_button animation-scale"><span style="color: red; position: absolute; left: 10px; top: 5px">{{hero.stats.spec2_pwr}}</span>Не достаточно МП<span style="color: #ff0000; position: absolute; right: 10px; top: 5px">{{hero.stats.spec2_mp}}</span></button>
+                    {% else %}
                     <button id="hero-spec-2" type="submit" name="action" value="attack_2" class="skill_button animation-scale"><span style="color: red; position: absolute; left: 10px; top: 5px">{{hero.stats.spec2_pwr}}</span>{{hero.content.spec2}}<span style="color: #9ab1ff; position: absolute; right: 10px; top: 5px">{{hero.stats.spec2_mp}}</span></button>
+                    {% endif %}
                 </form>
                 <form method="get">
+                    {% if hero.stats.mp < hero.stats.spec3_mp %}
+                    <button id="hero-spec-3" type="submit" name="action" value="" class="skill_button animation-scale"><span style="color: red; position: absolute; left: 10px; top: 5px">{{hero.stats.spec3_pwr}}</span>Не достаточно МП<span style="color: #ff0000; position: absolute; right: 10px; top: 5px">{{hero.stats.spec3_mp}}</span></button>
+                    {% else %}
                     <button id="hero-spec-3" type="submit" name="action" value="attack_3" class="skill_button animation-scale"><span style="color: red; position: absolute; left: 10px; top: 5px">{{hero.stats.spec3_pwr}}</span>{{hero.content.spec3}}<span style="color: #9ab1ff; position: absolute; right: 10px; top: 5px">{{hero.stats.spec3_mp}}</span></button>
+                    {% endif %}
                 </form>
                 {% endif %}
             </div>
         </div>
     </div>
-    <h4>{{ game.now }}, phase: {{ game.phase }}, action: {{ game.action }}</h4>
 </body>
 </html>
