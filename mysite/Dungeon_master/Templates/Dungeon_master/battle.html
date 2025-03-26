@@ -93,6 +93,13 @@
                             <div style="border-radius: 20px; height: 30px; margin: 2px; width: 45px; color: #e0d0a9; font-size: 40px; font-weight: bolder; display: flex; position: relative; left: -140px; bottom: 100px; -webkit-text-stroke-color: #0e0d0d; -webkit-text-stroke-width: 1.5px; align-items: center; padding-left: 5px"">{{hero.stats.lvl}}</div>
                             <div style="display: flex; flex-direction: column; position: absolute; left: 30px; top: 250px">
 <!--POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS -->
+                                 <!--POTIONS GOLD-->
+                                <form method="get">
+                                    <button style="background-color: rgba(0, 0, 0, 0); border: none; display: flex; position: relative" name="action" value="">
+                                        <img src="{% static 'main/img/items/gold.jpg' %}" height="100px" width="100px" style="border-radius: 10px; box-shadow: #ff8000 0 0 10px; border: #ff7300 solid 2px; ">
+                                        <h3 class="DM-h3" style="position: absolute; top: 25px; right: 10px">{{hero.potions.gold}}</h3>
+                                    </button>
+                                </form>
                                 <!--POTIONS HEAL-->
                                 {% if game.phase == 'hero_attack' or game.phase == 'mob_attack' %}
                                 {% if hero.potions.heal or hero.condition.heal %}
@@ -106,7 +113,7 @@
                                 {% else %}
                                 <form method="get">
                                     <button style="background-color: rgba(0, 0, 0, 0); border: none; display: flex" name="action" value="potion_heal">
-                                        <img src="{% static 'main/img/items/potion_0.jpg' %}" height="100px" width="100px" style="border-radius: 10px; box-shadow: #22ff00 0 0 10px;">
+                                        <img src="{% static 'main/img/items/potion_0.jpg' %}" height="100px" width="100px" style="border-radius: 10px; box-shadow: #ff0000 0 0 10px;">
                                         <h3 class="DM-h3" style="position: relative; top: 10px; left: -30px">{{hero.potions.heal}}</h3>
                                     </button>
                                 </form>
@@ -160,7 +167,7 @@
                                 {% else %}
                                 <form method="get">
                                     <button style="background-color: rgba(0, 0, 0, 0); border: none; display: flex" name="action" value="potion_shield">
-                                        <img src="{% static 'main/img/items/potion_3.jpg' %}" height="100px" width="100px" style="border-radius: 10px; box-shadow: #22ff00 0 0 10px;">
+                                        <img src="{% static 'main/img/items/potion_3.jpg' %}" height="100px" width="100px" style="border-radius: 10px; box-shadow: #f8cd00 0 0 10px;">
                                         <h3 class="DM-h3" style="position: relative; top: 10px; left: -30px">{{hero.potions.shield}}</h3>
                                     </button>
                                 </form>
@@ -178,7 +185,7 @@
                                 {% else %}
                                 <form method="get">
                                     <button style="background-color: rgba(0, 0, 0, 0); border: none; display: flex" name="action" value="potion_spikes">
-                                        <img src="{% static 'main/img/items/potion_4.jpg' %}" height="100px" width="100px" style="border-radius: 10px; box-shadow: #22ff00 0 0 10px;">
+                                        <img src="{% static 'main/img/items/potion_4.jpg' %}" height="100px" width="100px" style="border-radius: 10px; box-shadow: #bb00f1 0 0 10px;">
                                         <h3 class="DM-h3" style="position: relative; top: 10px; left: -30px">{{hero.potions.spikes}}</h3>
                                     </button>
                                 </form>
@@ -276,7 +283,7 @@
                         {% if game.phase == 'hero_attack' and mob.current_attack.pwr == None %}
                             <img src="{% static hero.content.img %}" alt="mob" width="400px" height="400px" style="border-radius: 30px">
                         {% endif %}
-                        <!-- phase == 'battle_win'      MOB RED TINTING           -->
+                        <!-- phase == 'battle_win'      HERO RED TINTING           -->
                         {% if game.phase == 'battle_loose' %}
                             <div style="background-color: rgba(122,0,0,0.7); box-shadow: 0px 0px 50px red; height: 400px; width: 400px; position: absolute; top: 0px; right: 0px; border-radius: 30px"></div>
                         {% endif %}
@@ -292,7 +299,7 @@
                         {% endif %}
                     </button>
                 </form>
-                <!--блок VS-->
+                <!--блок VS, Reward-->
                 {% endif %}
                 {% if game.phase == 'mob_attack' or game.phase == 'hero_attack' %}
                     <div style="display: flex; width: 399px; height: 300px; align-items: center; justify-content: center">
@@ -300,17 +307,19 @@
                     </div>
                 {% endif %}
                 {% if game.phase == 'battle_win' %}
-
+    <!--Reward-->
                 <form method="get" >
-                    <h3 class="DM-h3">Награда:</h3>
                     <button type="submit" name="action" value="This is win" class="game_card animation-scale" style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 30px">
                         {% for item in loot.bount %}
-                        <div class="animation-scale" style="height: 100px; width: 100px; border: #e0d0a9 solid 2px; border-radius: 10px"><h3 class="DM-h3">{{item}}</h3></div>
+                            <div style="position: relative">
+                               <img src="{% static item.img %}" alt="{{ item.name }}" height="120px" width="120px" style="border-radius: 15px; box-shadow: 0 0 15px white">
+                               <h3 class="DM-h3" style="position: absolute; bottom: -30px; right: 10px">{{ item.quantity }}</h3>
+                            </div>
                         {% endfor %}
                     </button>
                 </form>
                 {% endif %}
-                <!--'battle_loose'-->
+    <!--'battle_loose'-->
                 {% if game.phase == 'battle_loose' %}
                 <form method="get">
                     <button type="submit" name="action" value="exit" class="game_button animation-scale">Начать<br>заново</button>

@@ -122,8 +122,19 @@ def Dungeon_master(request, action: str = None):
                     hero.up_lvl(1)
                 hero.stats['hp_before'] = int(hero.stats['hp'] / hero.stats['hp_max'] * 300)  # получаем целое число
                 game.phase = "battle_win"
-                loot.bounty(40)
+                loot.bounty(10)
                 print(loot.bount)
+                current_keys = []
+                current_values = []
+                for item in loot.bount:
+                    current_keys.append(item['name'])
+                for item in loot.bount:
+                    current_values.append(item['quantity'])
+                current_potions = dict(zip(current_keys, current_values))
+                for i in current_potions.keys():
+                    hero.potions[i] += current_potions[i]
+                print(current_potions)
+                print(hero.potions)
     # отслеживание герой победил
     if phase == "battle_win" and action == "do_step":
         game.phase = "exploration"

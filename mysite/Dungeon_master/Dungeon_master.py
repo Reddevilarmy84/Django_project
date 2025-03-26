@@ -335,7 +335,7 @@ class Mob:
 class Hero:
     current_attack = {}
     content = {}
-    potions = {'heal': 0, 'mana': 0, 'fury': 0, 'shield': 0, 'spikes': 0}
+    potions = {'heal': 0, 'mana': 0, 'fury': 0, 'shield': 0, 'spikes': 0, 'gold': 0}
     condition = {'heal': False, 'mana': False, 'fury': False, 'shield': False, 'spikes': False}
     stats = {
             'lvl': 1,
@@ -543,16 +543,55 @@ class Location:
     ]
 
 class Loot:
-    loot = ['heal', 'heal', 'heal', 'mana', 'mana', 'fury', 'shield', 'spikes', 'gold', 'gold', 'gold', 'gold', 'gold']
-    bount = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    loot = [
+        {
+            'name': 'heal',
+            'img': "main/img/items/potion_0.jpg",
+            'quantity': 1,
+        },
+        {
+            'name': 'mana',
+            'img': "main/img/items/potion_1.jpg",
+            'quantity': 1,
+        },
+        {
+            'name': 'fury',
+            'img': "main/img/items/potion_2.jpg",
+            'quantity': 1,
+        },
+        {
+            'name': 'shield',
+            'img': 'main/img/items/potion_3.jpg',
+            'quantity': 1,
+        },
+        {
+            'name': 'spikes',
+            'img': 'main/img/items/potion_4.jpg',
+            'quantity': 1,
+        },
+        {
+            'name': 'gold',
+            'img': 'main/img/items/gold.jpg',
+            'quantity': 200,
+        },
+    ]
+    bount = []
     def bounty(self, luck: int = 0):
         self.bount.clear()
-        for i in range(0, 5):
-            if random.randrange(100) < 10 + luck:
-                self.bount.append(random.choice(self.loot))
-
-
-
+        # шанс получить зелье лечения или маны
+        if random.randrange(100) < 40 + luck:
+            self.bount.append(random.choice(self.loot[0:2]))
+        # шанс получить зелье ярости
+        if random.randrange(100) < 25 + luck:
+            self.bount.append(random.choice(self.loot[2:3]))
+        # шанс получить зелье щита или шипов
+        if random.randrange(100) < 10 + luck:
+            self.bount.append(random.choice(self.loot[3:5]))
+        # шанс получить золото
+        if random.randrange(100) < 70 + luck:
+            gold = self.loot[5]
+            gold['quantity'] = random.randrange(500)
+            self.bount.append(gold)
 
 class Colors:
     black = '\033[30m'
