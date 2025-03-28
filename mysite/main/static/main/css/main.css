@@ -59,12 +59,13 @@
 }
 
 #navigation {
-    margin-top: 0.3vh;
     display: flex;
     position: sticky;
     top: -0.8vw;
     background-color: rgba(255, 0, 0, 0.5);
-    border: rgba(0, 0, 0, 1) solid 0.2vw;
+    border-left: rgba(0, 0, 0, 1) solid 0.2vw;
+    border-right: rgba(0, 0, 0, 1) solid 0.2vw;
+    border-bottom: rgba(0, 0, 0, 1) solid 0.2vw;
 }
 
 .navButton {
@@ -90,9 +91,9 @@ nav a {
 #main {
     padding: 2vw;
     background-color: rgba(50, 50, 50, 0.8);
-    margin-top: 0.2vh;
     min-height: 55vh;
-    border: rgba(0, 0, 0, 1) solid 0.2vw;
+    border-left: rgba(0, 0, 0, 1) solid 0.2vw;
+    border-right: rgba(0, 0, 0, 1) solid 0.2vw;
 }
 
 .content {
@@ -105,7 +106,6 @@ nav a {
 }
 
 #footer {
-    margin-top: 0.2vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -159,105 +159,7 @@ h5 {
     transform: scale(1.1);
 }
 
-.film-card {
-    width: 14vw;
-    border: rgba(0, 0, 0, 1) solid 0.2vw;
-    border-radius: 1vw;
-    background-color: rgba(50, 50, 50, 0.8);
-    cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 1) 0vw 0vw 1vw;
-    transition: all 0.3s;
-    text-decoration: none;
-}
 
-.film-card:hover {
-    background-color: rgba(56, 255, 0, 0.2);
-}
-
-.film-card img {
-    height: 50%;
-    width: 100%;
-}
-
-.film-card h5 {
-    padding: 0.8vw 0;
-}
-/* оптимизировать */
-.form {
-    display: flex;
-    flex-wrap: wrap;
-    margin: auto;
-    padding: 2vw;
-    height: max-content;
-    width: 20vw;
-    background-color: rgba(50, 50, 50, 0.8);
-    border: rgba(0, 0, 0, 1) solid 0.2vw;
-    border-radius: 2vw;
-    box-shadow: rgba(0, 0, 0, 1) 1vw 1vw 1vw;
-}
-
-.input {
-    padding: 0.7vw;
-    width: 16vw;
-    margin: 0.05vw;
-    border: rgba(0, 0, 0, 1) solid 0.15vw;
-    border-radius: 2vw;
-    font-family: "Comic Sans MS";
-    font-size: 1vw;
-}
-
-.button {
-    margin: auto;
-    margin-top: 1.5vw;
-    height: max-content;
-    width: max-content;
-    background-color: rgb(255, 0, 0);
-    text-align: center;
-    padding: 1vw;
-    border-radius: 2vw;
-    border: rgba(0, 0, 0, 1) solid 0.15vw;
-    box-shadow: rgba(0, 0, 0, 1) 0.1vw 0.1vw 0.3vw;
-    font-family: "Comic Sans MS";
-    font-size: 1.5vw;
-    text-align: center;
-    color: rgb(200, 200, 200);
-    transition: all 0.3s;
-    cursor: pointer;
-}
-
-.button:hover {
-    transform: scale(1.02);
-}
-.button a{
-    text-decoration: none;
-}
-
-#submit-button {
-    padding: 0.4vw;
-    position: relative;
-    top: 0.2vw;
-    font-family: "Comic Sans MS";
-    font-size: 1.5vw;
-    border-radius: 1.5vw;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-#submit-button:hover {
-    background-color: #80ff00;
-}
-
-.param_form {
-    margin: 1.62vw;
-    display: inline-block;
-    text-align: center;
-    height: min-content;
-    width: max-content;
-    border: rgba(0, 0, 0, 1) solid 0.2vw;
-    border-radius: 2vw;
-    background-color: rgba(50, 50, 50, 0.8);
-    box-shadow: rgba(0, 0, 0, 1) 1vw 1vw 1vw;
-}
 
 .trade_card_green {
     transition: all 0.3s;

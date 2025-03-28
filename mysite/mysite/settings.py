@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'Parser_lord_films',
     'blog',
     'kish',
     'main',

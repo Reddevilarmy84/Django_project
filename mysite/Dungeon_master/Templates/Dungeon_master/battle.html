@@ -16,28 +16,33 @@
     height: 100vh;
 }
     #hero-spec-0 {
+    box-shadow: #b5b3b3 0 0 15px;
     background-image: url( "{% static hero.content.spec0_img %}" );
 
 }
     #hero-spec-1 {
     background-image: url( "{% static hero.content.spec1_img %}" );
+    box-shadow: #b5b3b3 0 0 15px;
     {% if hero.stats.mp < hero.stats.spec1_mp %}
     opacity: 0.5;
     {% endif %}
 }
     #hero-spec-2 {
     background-image: url( "{% static hero.content.spec2_img %}" );
+    box-shadow: #b5b3b3 0 0 15px;
     {% if hero.stats.mp < hero.stats.spec2_mp %}
     opacity: 0.5;
     {% endif %}
 }
     #hero-spec-3 {
     background-image: url( "{% static hero.content.spec3_img %}" );
+    box-shadow: #b5b3b3 0 0 15px;
     {% if hero.stats.mp < hero.stats.spec3_mp %}
     opacity: 0.5;
     {% endif %}
 }
     #mob-attack {
+    box-shadow: #b5b3b3 0 0 15px;
     background-image: url( "{% static mob.current_attack.img %}" );
 }
     .animation-bar {
@@ -89,28 +94,32 @@
                         <div style="margin-top: 5px; display: flex; flex-direction: column; align-items: flex-start">
                             <div class="animation-bar" style="border-radius: 20px; height: 30px; width: {{hero.hp_bar}}px; margin: 2px; background-color: #ff0000; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px">HP:{{hero.stats.hp}}</div>
                             <div style="border-radius: 20px; height: 30px; margin: 2px; width: {{hero.mp_bar}}px; background-color: #0020a2; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px"">MP:{{hero.stats.mp}}</div>
-                            <div style="border-radius: 20px; height: 30px; margin: 2px; width: {{hero.exp_bar}}px; background-color: #6e6e6e; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px"">EXP:{{hero.exp_bar_value}} %</div>
+                            <div style="border-radius: 20px; height: 30px; margin: 2px; width: {{hero.exp_bar}}px; background-color: #6e6e6e; color: #e0d0a9; display: flex; align-items: center; padding-left: 5px"">EXP:{{hero.exp_bar_value}}</div>
                             <div style="border-radius: 20px; height: 30px; margin: 2px; width: 45px; color: #e0d0a9; font-size: 40px; font-weight: bolder; display: flex; position: relative; left: -140px; bottom: 100px; -webkit-text-stroke-color: #0e0d0d; -webkit-text-stroke-width: 1.5px; align-items: center; padding-left: 5px"">{{hero.stats.lvl}}</div>
-                            <div style="display: flex; flex-direction: column; position: absolute; left: 30px; top: 250px">
+                            <div id="hero-items">
 <!--POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS -->
                                  <!--POTIONS GOLD-->
-                                    <button style="background-color: rgba(0, 0, 0, 0); border: none; position: relative" name="action" value="">
-                                        <img src="{% static 'main/img/items/gold.jpg' %}" height="100px" width="100px" style="border-radius: 10px; box-shadow: #ff8000 0 0 10px; border: #ff7300 solid 2px; ">
-                                        <h3 class="DM-h3" style="position: absolute; top: 25px; right: 20px">{{hero.potions.gold}}</h3>
+                                <form method="get">
+                                    <button name="action" value="">
+                                        <img src="{% static 'main/img/items/gold.jpg' %}" style="box-shadow: #ff8000 0 0 10px; border: #ff7300 solid 2px; ">
+                                        <h3 class="DM-h3">{{hero.potions.gold}}</h3>
                                     </button>
+                                </form>
                                 <!--POTIONS HEAL-->
                                 {% if game.phase == 'hero_attack' or game.phase == 'mob_attack' %}
                                 {% if hero.potions.heal or hero.condition.heal %}
                                 {% if hero.condition.heal %}
-
-                                    <img src="{% static 'main/img/items/potion_0_active.jpg' %}" height="100px" width="100px" style="border-radius: 10px; box-shadow: #ff0000 0 0 10px; border: #ff0000 solid 2px;">
-                                    <h3 class="DM-h3">{{hero.condition.heal}}</h3>
-
+                                <form method="get">
+                                    <button name="action" value="potion_heal">
+                                        <img src="{% static 'main/img/items/potion_0_active.jpg' %}" style="box-shadow: #ff0000 0 0 10px; border: #ff0000 solid 2px;">
+                                        <h3 class="DM-h3">{{hero.condition.heal}}</h3>
+                                    </button>
+                                </form>
                                 {% else %}
                                 <form method="get">
-                                    <button style="background-color: rgba(0, 0, 0, 0); border: none; display: flex" name="action" value="potion_heal">
-                                        <img src="{% static 'main/img/items/potion_0.jpg' %}" height="100px" width="100px" style="border-radius: 10px; box-shadow: #ff0000 0 0 10px;">
-                                        <h3 class="DM-h3" style="position: relative; top: 10px; left: -30px">{{hero.potions.heal}}</h3>
+                                    <button name="action" value="potion_heal">
+                                        <img src="{% static 'main/img/items/potion_0.jpg' %}" style="box-shadow: #ff0000 0 0 10px;">
+                                        <h3 class="DM-h3">{{hero.potions.heal}}</h3>
                                     </button>
                                 </form>
                                 {% endif %}
@@ -118,15 +127,17 @@
                                 <!--POTIONS MANA-->
                                 {% if hero.potions.mana or hero.condition.mana %}
                                 {% if hero.condition.mana %}
-                                    <button style="background-color: rgba(0, 0, 0, 0); border: none; display: flex" name="action" value="mana">
-                                        <img src="{% static 'main/img/items/potion_1_active.jpg' %}" height="100px" width="100px" style="border-radius: 10px; box-shadow: #0022ff 0 0 10px; border: #0048ff solid 2px; ">
-                                        <h3 class="DM-h3" style="position: relative; top: 10px; left: -30px">{{hero.condition.mana}}</h3>
+                                <form method="get">
+                                    <button name="action" value="mana">
+                                        <img src="{% static 'main/img/items/potion_1_active.jpg' %}" style="box-shadow: #0022ff 0 0 10px; border: #0048ff solid 2px; ">
+                                        <h3 class="DM-h3">{{hero.condition.mana}}</h3>
                                     </button>
+                                </form>
                                 {% else %}
                                 <form method="get">
-                                    <button style="background-color: rgba(0, 0, 0, 0); border: none; display: flex" name="action" value="potion_mana">
-                                        <img src="{% static 'main/img/items/potion_1.jpg' %}" height="100px" width="100px" style="border-radius: 10px; box-shadow: #002aff 0 0 10px; border: #0033ff solid 2px; ">
-                                        <h3 class="DM-h3" style="position: relative; top: 10px; left: -30px">{{hero.potions.mana}}</h3>
+                                    <button name="action" value="potion_mana">
+                                        <img src="{% static 'main/img/items/potion_1.jpg' %}" style="box-shadow: #002aff 0 0 10px; border: #0033ff solid 2px; ">
+                                        <h3 class="DM-h3">{{hero.potions.mana}}</h3>
                                     </button>
                                 </form>
                                 {% endif %}
@@ -134,15 +145,17 @@
                                 <!--POTIONS FURY-->
                                 {% if hero.potions.fury or hero.condition.fury %}
                                 {% if hero.condition.fury %}
-                                    <button style="background-color: rgba(0, 0, 0, 0); border: none; display: flex" name="action" value="fury">
-                                        <img src="{% static 'main/img/items/potion_2_active.jpg' %}" height="100px" width="100px" style="border-radius: 10px; border: #40ff00 solid 2px; box-shadow: #1aff00 0 0 10px;">
-                                        <h3 class="DM-h3" style="position: relative; top: 10px; right: 45px">{{hero.condition.fury}}</h3>
+                                <form method="get">
+                                    <button name="action" value="fury">
+                                        <img src="{% static 'main/img/items/potion_2_active.jpg' %}" style="border: #40ff00 solid 2px; box-shadow: #1aff00 0 0 10px;">
+                                        <h3 class="DM-h3">{{hero.condition.fury}}</h3>
                                     </button>
+                                </form>
                                 {% else %}
                                 <form method="get">
-                                    <button style="background-color: rgba(0, 0, 0, 0); border: none; display: flex" name="action" value="potion_fury">
-                                        <img src="{% static 'main/img/items/potion_2.jpg' %}" height="100px" width="100px" style="border-radius: 10px; box-shadow: #22ff00 0 0 10px;">
-                                        <h3 class="DM-h3" style="position: relative; top: 10px; left: -30px">{{hero.potions.fury}}</h3>
+                                    <button name="action" value="potion_fury">
+                                        <img src="{% static 'main/img/items/potion_2.jpg' %}" style="box-shadow: #22ff00 0 0 10px;">
+                                        <h3 class="DM-h3">{{hero.potions.fury}}</h3>
                                     </button>
                                 </form>
                                 {% endif %}
@@ -150,15 +163,17 @@
                                 <!--POTIONS SHIELD-->
                                 {% if hero.potions.shield or hero.condition.shield %}
                                 {% if hero.condition.shield %}
-                                    <button style="background-color: rgba(0, 0, 0, 0); border: none; display: flex" name="action" value="shield">
-                                        <img src="{% static 'main/img/items/potion_3_active.jpg' %}" height="100px" width="100px" style="border-radius: 10px; border: #ffdd00 solid 2px; box-shadow: #ffdd00 0 0 10px;">
-                                        <h3 class="DM-h3" style="position: relative; top: 10px; right: 45px">{{hero.condition.shield}}</h3>
+                                <form method="get">
+                                    <button name="action" value="shield">
+                                        <img src="{% static 'main/img/items/potion_3_active.jpg' %}" style="border: #ffdd00 solid 2px; box-shadow: #ffdd00 0 0 10px;">
+                                        <h3 class="DM-h3">{{hero.condition.shield}}</h3>
                                     </button>
+                                </form>
                                 {% else %}
                                 <form method="get">
-                                    <button style="background-color: rgba(0, 0, 0, 0); border: none; display: flex" name="action" value="potion_shield">
-                                        <img src="{% static 'main/img/items/potion_3.jpg' %}" height="100px" width="100px" style="border-radius: 10px; box-shadow: #f8cd00 0 0 10px;">
-                                        <h3 class="DM-h3" style="position: relative; top: 10px; left: -30px">{{hero.potions.shield}}</h3>
+                                    <button name="action" value="potion_shield">
+                                        <img src="{% static 'main/img/items/potion_3.jpg' %}" style="box-shadow: #f8cd00 0 0 10px;">
+                                        <h3 class="DM-h3">{{hero.potions.shield}}</h3>
                                     </button>
                                 </form>
                                 {% endif %}
@@ -166,15 +181,17 @@
                                 <!--POTIONS SPIKES-->
                                 {% if hero.potions.spikes or hero.condition.spikes %}
                                 {% if hero.condition.spikes %}
-                                    <button style="background-color: rgba(0, 0, 0, 0); border: none; display: flex" name="action" value="spikes">
-                                        <img src="{% static 'main/img/items/potion_4_active.jpg' %}" height="100px" width="100px" style="border-radius: 10px; border: #a100ff solid 2px; box-shadow: #a100ff 0 0 10px;">
-                                        <h3 class="DM-h3" style="position: relative; top: 10px; right: 45px">{{hero.condition.spikes}}</h3>
+                                <form method="get">
+                                    <button name="action" value="spikes">
+                                        <img src="{% static 'main/img/items/potion_4_active.jpg' %}" style=" border: #a100ff solid 2px; box-shadow: #a100ff 0 0 10px;">
+                                        <h3 class="DM-h3">{{hero.condition.spikes}}</h3>
                                     </button>
+                                </form>
                                 {% else %}
                                 <form method="get">
-                                    <button style="background-color: rgba(0, 0, 0, 0); border: none; display: flex" name="action" value="potion_spikes">
-                                        <img src="{% static 'main/img/items/potion_4.jpg' %}" height="100px" width="100px" style="border-radius: 10px; box-shadow: #bb00f1 0 0 10px;">
-                                        <h3 class="DM-h3" style="position: relative; top: 10px; left: -30px">{{hero.potions.spikes}}</h3>
+                                    <button name="action" value="potion_spikes">
+                                        <img src="{% static 'main/img/items/potion_4.jpg' %}" style="box-shadow: #bb00f1 0 0 10px;">
+                                        <h3 class="DM-h3">{{hero.potions.spikes}}</h3>
                                     </button>
                                 </form>
                                 {% endif %}
@@ -244,19 +261,19 @@
                 <!--chose hero hero 1-->
                 <form method="get">
                     <button type="submit" name="action" value="hero_0" class="game_card animation-scale">
-                        <img src="{% static 'main/img/hero/hero_0.jpg' %}" alt="hero_0" width="400px" height="400px" style="border-radius: 30px">
+                        <img src="{% static 'main/img/hero/hero_0.jpg' %}" alt="hero_0">
                     </button>
                 </form>
                 <!--chose hero hero 2-->
                 <form method="get">
                     <button type="submit" name="action" value="hero_1" class="game_card animation-scale">
-                        <img src="{% static 'main/img/hero/hero_1.jpg' %}" alt="hero_1" width="400px" height="400px" style="border-radius: 30px">
+                        <img src="{% static 'main/img/hero/hero_1.jpg' %}" alt="hero_1">
                     </button>
                 </form>
                 <!--chose hero hero 3-->
                 <form method="get">
                     <button type="submit" name="action" value="hero_2" class="game_card animation-scale">
-                        <img src="{% static 'main/img/hero/hero_2.jpg' %}" alt="hero_2" width="400px" height="400px" style="border-radius: 30px">
+                        <img src="{% static 'main/img/hero/hero_2.jpg' %}" alt="hero_2">
                     </button>
                 </form>
                 {% endif %}
@@ -266,10 +283,10 @@
                     <button type="submit" name="action" value="This is hero" class="game_card animation-scale">
                         <!--аватар героя без анимации-->
                         {% if game.phase == 'mob_attack' or game.phase == 'battle_win' or game.phase == 'battle_loose' %}
-                            <img src="{% static hero.content.img %}" alt="mob" width="400px" height="400px" style="border-radius: 30px">
+                            <img src="{% static hero.content.img %}" alt="mob">
                         {% endif %}
                         {% if game.phase == 'hero_attack' and mob.current_attack.pwr == None %}
-                            <img src="{% static hero.content.img %}" alt="mob" width="400px" height="400px" style="border-radius: 30px">
+                            <img src="{% static hero.content.img %}" alt="mob">
                         {% endif %}
                         <!-- phase == 'battle_win'      HERO RED TINTING           -->
                         {% if game.phase == 'battle_loose' %}
@@ -277,7 +294,7 @@
                         {% endif %}
                         <!--аватар героя с анимацией-->
                         {% if game.phase == 'hero_attack' and mob.current_attack.pwr %}
-                            <img class="animation-shake-card" src="{% static hero.content.img %}" alt="mob" width="400px" height="400px" style="border-radius: 30px">
+                            <img class="animation-shake-card" src="{% static hero.content.img %}" alt="mob">
                         <!--урон от моба на аватаре героя-->
                         {% if hero.condition.shield %}
                             <h1 style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 70px; position: absolute; left: -170px; top: -110px; text-shadow: #e0d0a9 4px 4px 10px;">Парирование<br>атаки<br>-{{mob.half_damage_pwr}}</h1>
@@ -299,8 +316,8 @@
                 <form method="get" >
                     <button type="submit" name="action" value="This is win" class="game_card animation-scale" style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 30px">
                         {% for item in loot.bount %}
-                            <div style="position: relative">
-                               <img src="{% static item.img %}" alt="{{ item.name }}" height="120px" width="120px" style="border-radius: 15px; box-shadow: 0 0 15px white">
+                            <div class="loot">
+                               <img src="{% static item.img %}" alt="{{ item.name }}">
                                <h3 class="DM-h3" style="position: absolute; bottom: -30px; right: 10px">{{ item.quantity }}</h3>
                             </div>
                         {% endfor %}
@@ -320,35 +337,35 @@
                         {% if game.phase == 'hero_attack' or game.phase == 'battle_win' or game.phase == 'battle_loose' or game.phase == 'mob_attack' %}
 
                         {% if game.phase != 'mob_attack' %}
-                            <img src="{% static mob.content.img %}" alt="mob" width="400px" height="400px" style="border-radius: 30px">
+                            <img src="{% static mob.content.img %}" alt="mob">
                         {% if game.phase == 'hero_attack' and hero.condition.spikes and game.phase != 'battle_win' and mob.current_attack.pwr %}
                             <h2 style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 70px; position: absolute; left: 180px; top: -130px; text-shadow: #e0d0a9 4px 4px 10px;">отражение урона<br>-{{ mob.half_damage_pwr }}</h2>
                         {% endif %}
                         {% endif %}
 
                         {% if game.phase == 'mob_attack' and hero.current_attack.pwr == None %}
-                            <img src="{% static mob.content.img %}" alt="mob" width="400px" height="400px" style="border-radius: 30px">
+                            <img src="{% static mob.content.img %}" alt="mob">
                         {% endif %}
                         {% endif %}
                         <!-- phase == 'battle_win'      MOB RED TINTING           -->
                         {% if game.phase == 'battle_win' %}
                             <div style="background-color: rgba(122,0,0,0.7); box-shadow: 0px 0px 50px red; height: 400px; width: 400px; position: absolute; top: 0px; right: 0px; border-radius: 30px"></div>
                         {% if hero.condition.fury %}
-                        <h2 style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 80px; position: absolute; left: 250px; top: -130px; text-shadow: #ffffff 4px 4px 20px;">яростная<br>атака<br>-{{ hero.fury_damage }}</h2>
+                            <h2 style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 80px; position: absolute; left: 250px; top: -130px; text-shadow: #ffffff 4px 4px 20px;">яростная<br>атака<br>-{{ hero.fury_damage }}</h2>
                         {% else %}
-                        <h2 style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 140px; position: absolute; left: 300px; bottom: 230px; text-shadow: #ffffff 4px 4px 20px;">-{{hero.current_attack.pwr}}</h2>
+                            <h2 style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 140px; position: absolute; left: 300px; bottom: 230px; text-shadow: #ffffff 4px 4px 20px;">-{{hero.current_attack.pwr}}</h2>
                         {% endif %}
                         {% endif %}
                         <!--       MOB DAMAGED NUMBER and card animation          -->
                         {% if game.phase == 'mob_attack' and hero.current_attack.pwr%}
-                        <div class="animation-shake-card">
-                            <img src="{% static mob.content.img %}" alt="mob" width="400px" height="400px" style="border-radius: 30px">
-                            <!--  анимация тонировка аватара красным          -->
-                        </div>
+                            <div class="animation-shake-card">
+                                <img src="{% static mob.content.img %}" alt="mob">
+                                <!--  анимация тонировка аватара красным          -->
+                            </div>
                         {% if hero.condition.fury %}
-                        <h2 style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 80px; position: absolute; left: 250px; top: -130px; text-shadow: #ffffff 4px 4px 20px;">яростная<br>атака<br>-{{ hero.fury_damage }}</h2>
+                            <h2 style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 80px; position: absolute; left: 250px; top: -130px; text-shadow: #ffffff 4px 4px 20px;">яростная<br>атака<br>-{{ hero.fury_damage }}</h2>
                         {% else %}
-                        <h2 style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 140px; position: absolute; left: 300px; bottom: 230px; text-shadow: #e0d0a9 4px 4px 10px;">-{{hero.current_attack.pwr}}</h2>
+                            <h2 style="color: red; -webkit-text-stroke-width: 5px; -webkit-text-stroke-color: #0e0d0d; font-weight: bolder; font-size: 140px; position: absolute; left: 300px; bottom: 230px; text-shadow: #e0d0a9 4px 4px 10px;">-{{hero.current_attack.pwr}}</h2>
                         {% endif %}
                         {% endif %}
                     </button>
@@ -358,7 +375,7 @@
                 {% if game.phase == 'meet_mob'%}
                 <form method="get">
                     <button type="submit" name="action" value="This is mob" class="game_card animation-scale">
-                        <img src="{% static mob.content.img %}" alt="mob" width="400px" height="400px" style="border-radius: 30px">
+                        <img src="{% static mob.content.img %}" alt="mob">
                     </button>
                 </form>
                 {% endif %}
@@ -366,19 +383,19 @@
                 {% if game.phase == 'choose_location' %}
                 <form method="get">
                     <button type="submit" name="action" value="cave_0" class="game_card animation-scale">
-                        <img src="{% static 'main/img/locations/loc_1.jpg' %}" alt="пещера" width="400px" height="400px" style="border-radius: 30px">
+                        <img src="{% static 'main/img/locations/loc_1.jpg' %}" alt="пещера">
                         <h2 class="DM-h2" style="position: relative; bottom: 420px">Тёмная пещера</h2>
                     </button>
                 </form>
                 <form method="get">
                     <button type="submit" name="action" value="cave_1" class="game_card animation-scale">
-                        <img src="{% static 'main/img/locations/loc_2.jpg' %}" alt="пещера" width="400px" height="400px" style="border-radius: 30px">
+                        <img src="{% static 'main/img/locations/loc_2.jpg' %}" alt="пещера">
                         <h2 class="DM-h2" style="position: relative; bottom: 420px;">Катакомбы</h2>
                     </button>
                 </form>
                 <form method="get">
                     <button type="submit" name="action" value="cave_2" class="game_card animation-scale">
-                        <img src="{% static 'main/img/locations/loc_3.jpg' %}" alt="пещера" width="400px" height="400px" style="border-radius: 30px">
+                        <img src="{% static 'main/img/locations/loc_3.jpg' %}" alt="пещера">
                         <h2 class="DM-h2" style="position: relative; bottom: 420px;">Магическая пещера</h2>
                     </button>
                 </form>
@@ -422,27 +439,27 @@
                 {% endif %}
                 {% if game.phase == 'hero_attack' %}
                     <form method="get">
-                        <button id="hero-spec-0" type="submit" name="action" value="attack_0" class="skill_button animation-scale"><span style="color: red; position: absolute; left: 10px; top: 5px">{{hero.stats.attack_pwr}}</span>атака</button>
+                        <button id="hero-spec-0" type="submit" name="action" value="hero_attack_0" class="skill_button animation-scale"><span style="color: red; position: absolute; left: 10px; top: 5px">{{hero.stats.attack_pwr}}</span>атака</button>
                     </form>
                 <form method="get">
                     {% if hero.stats.mp < hero.stats.spec1_mp %}
                     <button id="hero-spec-1" type="submit" name="action" value="" class="skill_button animation-scale"><span style="color: red; position: absolute; left: 10px; top: 5px">{{hero.stats.spec1_pwr}}</span>Не достаточно МП<span style="color: #ff0000; position: absolute; right: 10px; top: 5px">{{hero.stats.spec1_mp}}</span></button>
                     {% else %}
-                    <button id="hero-spec-1" type="submit" name="action" value="attack_1" class="skill_button animation-scale"><span style="color: red; position: absolute; left: 10px; top: 5px">{{hero.stats.spec1_pwr}}</span>{{hero.content.spec1}}<span style="color: #9ab1ff; position: absolute; right: 10px; top: 5px">{{hero.stats.spec1_mp}}</span></button>
+                    <button id="hero-spec-1" type="submit" name="action" value="hero_attack_1" class="skill_button animation-scale"><span style="color: red; position: absolute; left: 10px; top: 5px">{{hero.stats.spec1_pwr}}</span>{{hero.content.spec1}}<span style="color: #9ab1ff; position: absolute; right: 10px; top: 5px">{{hero.stats.spec1_mp}}</span></button>
                     {% endif %}
                 </form>
                 <form method="get">
                     {% if hero.stats.mp < hero.stats.spec2_mp %}
-                    <button id="hero-spec-2" type="submit" name="action" value="" class="skill_button animation-scale"><span style="color: red; position: absolute; left: 10px; top: 5px">{{hero.stats.spec2_pwr}}</span>Не достаточно МП<span style="color: #ff0000; position: absolute; right: 10px; top: 5px">{{hero.stats.spec2_mp}}</span></button>
+                        <button id="hero-spec-2" type="submit" name="action" value="" class="skill_button animation-scale"><span style="color: red; position: absolute; left: 10px; top: 5px">{{hero.stats.spec2_pwr}}</span>Не достаточно МП<span style="color: #ff0000; position: absolute; right: 10px; top: 5px">{{hero.stats.spec2_mp}}</span></button>
                     {% else %}
-                    <button id="hero-spec-2" type="submit" name="action" value="attack_2" class="skill_button animation-scale"><span style="color: red; position: absolute; left: 10px; top: 5px">{{hero.stats.spec2_pwr}}</span>{{hero.content.spec2}}<span style="color: #9ab1ff; position: absolute; right: 10px; top: 5px">{{hero.stats.spec2_mp}}</span></button>
+                        <button id="hero-spec-2" type="submit" name="action" value="hero_attack_2" class="skill_button animation-scale"><span style="color: red; position: absolute; left: 10px; top: 5px">{{hero.stats.spec2_pwr}}</span>{{hero.content.spec2}}<span style="color: #9ab1ff; position: absolute; right: 10px; top: 5px">{{hero.stats.spec2_mp}}</span></button>
                     {% endif %}
                 </form>
                 <form method="get">
                     {% if hero.stats.mp < hero.stats.spec3_mp %}
-                    <button id="hero-spec-3" type="submit" name="action" value="" class="skill_button animation-scale"><span style="color: red; position: absolute; left: 10px; top: 5px">{{hero.stats.spec3_pwr}}</span>Не достаточно МП<span style="color: #ff0000; position: absolute; right: 10px; top: 5px">{{hero.stats.spec3_mp}}</span></button>
+                        <button id="hero-spec-3" type="submit" name="action" value="" class="skill_button animation-scale"><span style="color: red; position: absolute; left: 10px; top: 5px">{{hero.stats.spec3_pwr}}</span>Не достаточно МП<span style="color: #ff0000; position: absolute; right: 10px; top: 5px">{{hero.stats.spec3_mp}}</span></button>
                     {% else %}
-                    <button id="hero-spec-3" type="submit" name="action" value="attack_3" class="skill_button animation-scale"><span style="color: red; position: absolute; left: 10px; top: 5px">{{hero.stats.spec3_pwr}}</span>{{hero.content.spec3}}<span style="color: #9ab1ff; position: absolute; right: 10px; top: 5px">{{hero.stats.spec3_mp}}</span></button>
+                        <button id="hero-spec-3" type="submit" name="action" value="hero_attack_3" class="skill_button animation-scale"><span style="color: red; position: absolute; left: 10px; top: 5px">{{hero.stats.spec3_pwr}}</span>{{hero.content.spec3}}<span style="color: #9ab1ff; position: absolute; right: 10px; top: 5px">{{hero.stats.spec3_mp}}</span></button>
                     {% endif %}
                 </form>
                 {% endif %}

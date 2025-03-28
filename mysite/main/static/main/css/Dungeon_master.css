@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    user-select: none;
 }
 
 #back-tinting {
@@ -29,6 +30,36 @@
     display: flex;
     justify-content: left;
     align-items: center;
+}
+
+#hero-items {
+    width: 110px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: absolute;
+    left: 30px;
+    top: 250px;
+}
+
+#hero-items button {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    display: flex;
+    position: relative;
+}
+
+#hero-items img {
+    position: absolute;
+    border-radius: 10px;
+    height: 100px;
+    width: 100px;
+}
+
+#hero-items h3 {
+    position: relative;
+    top: 20px;
+    left: 10px;
 }
 
 #title-block-center {
@@ -128,8 +159,6 @@
     animation-name: damage;
     animation-iteration-count: 1;
     animation-direction: alternate;
-    border: none;
-    cursor: pointer;
 }
 
 @keyframes damage {
@@ -138,7 +167,7 @@
     }
 
     50% {
-        scale: 1;
+        scale: 3.3;
     }
 
     100% {
@@ -192,6 +221,26 @@
     border: none;
     background-color: rgba(0, 0, 0, 0);
 }
+
+.game_card img {
+    height: 400px;
+    width: 400px;
+    border-radius: 30px;
+    box-shadow: #eeeeee 0 0 15px;
+}
+
+.loot {
+    position: relative;
+}
+
+.loot img{
+     height: 120px;
+     width: 120px;
+     border-radius: 15px;
+     box-shadow: 0 0 15px white;
+}
+
+
 
 .DM-h2 {
     color: #eeeeee;

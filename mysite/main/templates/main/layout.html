@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
     <link rel="stylesheet" href="{% static 'main/css/Dungeon_master.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/Parser_lord_films.css' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'main/img/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'main/img/favicon-16x16.png' %}">
     <script type="text/javascript" src="{% static 'main/JC/main.js' %}"></script>
@@ -52,10 +53,10 @@
                     <a href="{% url 'contact' %}">Вспомагательные материалы</a>
                 </div>
                 <div class="navButton">
-                    <a href="{% url 'kish' %}">Проект "Король и шут"</a>
+                    <a href="{% url 'kish' %}" target="_blank">Проект "Король и шут"</a>
                 </div>
                 <div class="navButton">
-                    <a href="{% url 'parser' %}">Пaрсинг LordFilms</a>
+                    <a href="{% url 'Parser_lord_films' %}">Пaрсинг LordFilms</a>
                 </div>
                 <div class="navButton">
                     <a href="{% url 'blog_home' %}">Блог</a>
@@ -64,7 +65,7 @@
                     <a href="{% url 'trading_view' %}">Парсинг Trading view</a>
                 </div>
                 <div class="navButton">
-                    <a href="{% url 'Dungeon_master' %}">Повелитель пещер</a>
+                    <a href="{% url 'Dungeon_master' %}" target="_blank">Повелитель пещер</a>
                 </div>
             </nav>
             <main id="main">

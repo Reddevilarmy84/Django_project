@@ -109,7 +109,7 @@ def Dungeon_master(request, action: str = None):
     if phase == "hero_attack":
         mob.current_attack['pwr'] = None
         hero.stats['hp_before'] = int(hero.stats['hp'] / hero.stats['hp_max'] * 300) #получаем целое число
-        if re.match('attack', action):
+        if re.match('hero_attack', action):
             hero.attack(int(list(action)[-1]))
             hero.current_attack['pwr'] = int(hero.current_attack['pwr']*1.3) if hero.condition['fury'] else hero.current_attack['pwr']
             mob.stats['hp'] -= hero.current_attack['pwr']
@@ -123,7 +123,6 @@ def Dungeon_master(request, action: str = None):
                 hero.stats['hp_before'] = int(hero.stats['hp'] / hero.stats['hp_max'] * 300)  # получаем целое число
                 game.phase = "battle_win"
                 loot.bounty(10)
-                print(loot.bount)
                 current_keys = []
                 current_values = []
                 for item in loot.bount:
@@ -133,8 +132,8 @@ def Dungeon_master(request, action: str = None):
                 current_potions = dict(zip(current_keys, current_values))
                 for i in current_potions.keys():
                     hero.potions[i] += current_potions[i]
-                print(current_potions)
-                print(hero.potions)
+                loot.bount.append({'name': 'exp', 'img': 'main/img/items/exp.jpg', 'quantity': mob.stats['exp']})
+                print(loot.bount)
     # отслеживание герой победил
     if phase == "battle_win" and action == "do_step":
         game.phase = "exploration"
@@ -145,7 +144,7 @@ def Dungeon_master(request, action: str = None):
     if phase == "exploration_completed" and action == "complete":
         game.phase = "choose_location"
         location.stats['completed'] = 0
-        hero.fury = False
+        hero.condition = dict((k, False) for k, v in hero.condition.items())
     # обработка бонуса за состояния и алгоритмы убывания состояния
     if phase == 'hero_attack' or phase =='mob_attack':
         # восстанавливаем 20% хп каждый ход пока действует состояние хил
@@ -160,7 +159,7 @@ def Dungeon_master(request, action: str = None):
         hero.stats['mp'] = hero.stats['mp_max'] if hero.stats['mp'] > hero.stats['mp_max'] else hero.stats['mp']
         hero.condition['heal'] = hero.condition['heal'] - 1 if hero.condition['heal'] and re.search('attack', action) else hero.condition['heal']
         hero.condition['mana'] = hero.condition['mana'] - 1 if hero.condition['mana'] and re.search('attack', action) else hero.condition['mana']
-        hero.condition['fury'] = hero.condition['fury'] - 1 if hero.condition['fury'] and re.search('attack', action) else hero.condition['fury']
+        hero.condition['fury'] = hero.condition['fury'] - 1 if hero.condition['fury'] and re.search('hero_attack', action) else hero.condition['fury']
         hero.condition['shield'] = hero.condition['shield'] - 1 if hero.condition['shield'] and re.search(
             'mob_attack', action) else hero.condition['shield']
         hero.condition['spikes'] = hero.condition['spikes'] - 1 if hero.condition['spikes'] and re.search(
