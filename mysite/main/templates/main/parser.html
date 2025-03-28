@@ -7,14 +7,14 @@
 <h1>{{ header }}</h1>
 {% endblock %}
 {% block content %}
-        <div style="text-align: center">
+        <div>
             <div class="param_form" style="padding: 0.5vw; text-align: center">
                 {% if year and pages %}
-                    <h2>Фильмы за {{ year }} год. Страниц: {{ pages }}</h2>
+                    <h3>Фильмы за {{ year }} год. Страниц: {{ pages }}</h3>
                 {% elif year %}
-                    <h2>Фильмы за {{ year }} год.</h2>
+                    <h3>Фильмы за {{ year }} год.</h3>
                 {% else %}
-                    <h2>Выберете год и колличество отображаемых страниц.</h2>
+                    <h3>Выберете год и колличество отображаемых страниц.</h3>
                 {% endif %}
                 <form method="get"> <!--можно прописать атрибут action, чтобы указать на какой странице будет происходить обработка данных, если не указывать, то на текущей-->
                     {% csrf_token %}<br>
@@ -26,34 +26,26 @@
             </div>
             <p style="font-size: {{ font_size }}px; color: #b5b3b3">{{ content }}</p>
         </div>
-
 {% if JsonData %}
     <div class="content">
         {% for item in JsonData %}
-            <div class="film_card">
-                <h3>{{item.name}}</h3>
-
-
-
-
-
+        <a class="film-card" href="{{item.link}}">
+            <div>
+                <h5>{{item.name}}</h5>
                 {% if item.img %}
-                    <a href="{{item.link}}"><img class="card_img" src="{{item.img}}" alt="{{item.name}}"></a>
+                    <img src="{{item.img}}" alt="{{item.name}}">
                 {% else %}
-                    <a><img class="card_img" src="{% static 'main/img/none.jpg' %}" alt="{{item.name}}"></a>
+                    <img src="{% static 'main/img/none.jpg' %}" alt="{{item.name}}">
                 {% endif %}
-
-
-
- <!--               <a href="{{item.link}}"><img class="card_img" src="{{item.img}}" alt="{{item.name}}"></a> -->
-                <h3>{{item.year}} стр{{item.page}}</h3>
+                <h5>{{item.year}} стр{{item.page}}</h5>
             </div>
+        </a>
         {% endfor %}
     </div>
 {% else %}
     <div class="content">
-        <div style="width: 300px; height: 100px">
-            <h2>Нечего отображать</h2>
+        <div class="film_card">
+            <h4>Нечего отображать</h4>
         </div>
     </div>
 {% endif %}

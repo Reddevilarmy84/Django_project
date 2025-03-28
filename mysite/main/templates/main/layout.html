@@ -11,8 +11,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'main/img/favicon-16x16.png' %}">
     <script type="text/javascript" src="{% static 'main/JC/main.js' %}"></script>
     <title>{% block title %}{% endblock %}</title>
-    {% block style %}
-    {% endblock %}
+    {% block style %}{% endblock %}
 <body id="body">
     <div id="tinting">
         <div id="skeleton">
@@ -22,7 +21,6 @@
             </header>
             <nav id="navigation">
                 <div id="time">
-                    <p>
                     <script>
                         function TimeNow () {
                             var Now = new Date();
@@ -40,7 +38,6 @@
                         };
                         TimeNow ()
                     </script>
-                    </p>
                 </div>
                 <div class="navButton">
                     <a href="{% url 'home' %}">Домой</a>
@@ -70,11 +67,11 @@
                     <a href="{% url 'Dungeon_master' %}">Повелитель пещер</a>
                 </div>
             </nav>
-            <main>{% block content %}{% endblock %}</main>
+            <main id="main">
+                {% block content %}{% endblock %}
+            </main>
             <footer id="footer">
-                <h1>
-                    2025
-                </h1>
+                <h3>&copy; Александр Поставец. Все права защищены. 2025</h3>
             </footer>
         </div>
     </div>

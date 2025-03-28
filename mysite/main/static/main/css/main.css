@@ -1,79 +1,70 @@
 * {
     box-sizing: border-box;
     user-select: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: "Comic Sans MS", sans-serif;
 }
 
 #body {
-    display: flex;
-    margin: 0;
-    padding: 0;
+    position: relative;
+    height: 100vh;
+    width: 100vw;
     background-image: url("../img/background.webp");
     background-attachment: fixed;
     background-size: cover;
 }
 
 #tinting {
+    position: absolute;
+    min-height: 100vh;
+    width: 100vw;
     background-color: rgba(50, 50, 50, 0.8);
-    background-size: cover;
-    width: min(100vw);
-    height: min(120vw), max(max-content);
-
 }
 
 #skeleton {
-    position: static;
-    margin: 3vw;
-    background-color: rgba(50, 50, 50, 0.8);
-    border-radius: 2vw;
-    border: rgba(0, 0, 0, 1) solid 0.2vw;
+    margin: 3vh 3vw;
+    min-height: 90vh;
 }
 
 #header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-height: 10.3vw;
     background-color: rgba(50, 50, 50, 0.8);
-    text-align: center;
     border-top-left-radius: 1.8vw;
     border-top-right-radius: 1.8vw;
-    border-bottom: rgba(0, 0, 0, 1) solid 0.2vw;
+    border: rgba(0, 0, 0, 1) solid 0.2vw;
 }
 
-#headerImg {
+#header Img {
     position: absolute;
-    left: 3.2vw;
-    top: 3.2vw;
+    left: 0;
+    top: 0;
     height: 10.1vw;
     border-top-left-radius: 1.8vw;
 }
 
-h1 {
+#time {
     color: rgb(200, 200, 200);
-    font-size: 4vw;
-}
-
-h2 {
-    margin: 2vw;
-    color: rgb(200, 200, 200);
-    font-size: 2vw;
-    text-align: center;
-}
-
-h3 {
-    color: rgb(200, 200, 200);
-    font-size: 0.7vw;
-    width: 12vw;
-
-}
-
-h4 {
-    color: rgb(200, 200, 200);
+    position: absolute;
+    right: 1vw;
+    top: -2vw;
     font-size: 1vw;
-    text-align: center;
+    font-family: "Comic Sans MS";
 }
 
 #navigation {
+    margin-top: 0.3vh;
     display: flex;
     position: sticky;
     top: -0.8vw;
     background-color: rgba(255, 0, 0, 0.5);
+    border: rgba(0, 0, 0, 1) solid 0.2vw;
 }
 
 .navButton {
@@ -88,109 +79,110 @@ h4 {
     cursor: pointer;
 }
 
-nav div a {
-    font-family: "Comic Sans MS";
-    font-weight: bolder;
+nav a {
     font-size: 1vw;
+    font-weight: bolder;
     text-decoration: none;
     color: rgb(200, 200, 200);
-    text-align: center;
     text-shadow: rgba(0, 0, 0, 1) 0.2vw 0.2vw 0.3vw;
 }
 
-#time {
-    color: rgb(200, 200, 200);
-    position: absolute;
-    right: 1vw;
-    top: -2vw;
-    font-size: 1vw;
-    font-family: "Comic Sans MS";
+#main {
+    padding: 2vw;
+    background-color: rgba(50, 50, 50, 0.8);
+    margin-top: 0.2vh;
+    min-height: 55vh;
+    border: rgba(0, 0, 0, 1) solid 0.2vw;
 }
 
 .content {
+    margin: 2vw 0;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
-    height: min(27vw), max(max-content);
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1vw;
 }
 
 #footer {
-    height: 10vw;
+    margin-top: 0.2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 6vw;
     background-color: rgba(50, 50, 50, 0.8);
-    text-align: center;
     border-bottom-left-radius: 1.8vw;
     border-bottom-right-radius: 1.8vw;
-    border-top: rgba(0, 0, 0, 1) solid 0.2vw;
-}
-
-.JavaBox {
-    margin: 1vw;
-    padding: 1vw;
-    height: max-content;
-    width: max-content;
-    background-color: rgb(200, 200, 200);
     border: rgba(0, 0, 0, 1) solid 0.2vw;
-    font-family: "Comic Sans MS";
-    font-size: 1.5vw;
-    border-radius: 30px;
 }
 
-#monitor {
-    display: none;
-    padding: 1vw;
-    position: fixed;
-    top: 4vw;
-    right: 1.5vw;
-    float: right;
-    height: 10vw;
-    width: 20vw;
-    background-color: rgba(0, 0, 0, 1);
-    border: rgb(255, 0, 0) solid 0.2vw;
-    border-radius: 1.8vw;
+h1 {
+    color: rgb(200, 200, 200);
+    font-size: 4vw;
+}
+
+h2 {
+    color: rgb(200, 200, 200);
+    font-size: 2vw;
+}
+
+h3 {
+    color: rgb(200, 200, 200);
+    font-size: 1.5vw;
+}
+
+h4 {
     color: rgb(200, 200, 200);
     font-size: 1vw;
 }
 
-.about-links {
-    height: max-content;
-    width: max-content;
-    font-size: 26px;
-    text-decoration: none;
-    margin: 10px;
+h5 {
     color: rgb(200, 200, 200);
-    font-family: Impact;
-    font-weight: normal;
-    display: block;
-    transition: all .9s;
-    transition-delay: 0.01s;
+    font-size: 0.8vw;
 }
 
-.film_card {
-    margin: 1vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    height: max-content;
-    width: max-content;
+
+.JavaBox {
+    padding: 1vw;
+    background-color: rgb(200, 200, 200);
+    border: rgba(0, 0, 0, 1) solid 0.2vw;
+    border-radius: 2vw;
+}
+
+.about-links {
+    text-decoration: none;
+    color: rgb(200, 200, 200);
+    transition: all 1s;
+}
+
+.about-links:hover {
+    transform: scale(1.1);
+}
+
+.film-card {
+    width: 14vw;
     border: rgba(0, 0, 0, 1) solid 0.2vw;
     border-radius: 1vw;
     background-color: rgba(50, 50, 50, 0.8);
     cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 1) 1vw 1vw 1vw;
+    box-shadow: rgba(0, 0, 0, 1) 0vw 0vw 1vw;
     transition: all 0.3s;
+    text-decoration: none;
 }
 
-.film_card:hover {
+.film-card:hover {
     background-color: rgba(56, 255, 0, 0.2);
 }
 
-.card_img {
-    height: 15vw;
-    width: 12vw;
+.film-card img {
+    height: 50%;
+    width: 100%;
 }
 
+.film-card h5 {
+    padding: 0.8vw 0;
+}
+/* оптимизировать */
 .form {
     display: flex;
     flex-wrap: wrap;
@@ -273,6 +265,7 @@ nav div a {
     height: 4vw;
     margin: 0.5vw;
     display: flex;
+    align-items: center;
     border-radius: 0.5vw
 }
 
@@ -287,6 +280,7 @@ nav div a {
     height: 4vw;
     margin: 0.5vw;
     display: flex;
+    align-items: center;
     border-radius: 0.5vw
 }
 

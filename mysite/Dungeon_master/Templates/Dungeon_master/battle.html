@@ -94,22 +94,18 @@
                             <div style="display: flex; flex-direction: column; position: absolute; left: 30px; top: 250px">
 <!--POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS POTIONS -->
                                  <!--POTIONS GOLD-->
-                                <form method="get">
-                                    <button style="background-color: rgba(0, 0, 0, 0); border: none; display: flex; position: relative" name="action" value="">
+                                    <button style="background-color: rgba(0, 0, 0, 0); border: none; position: relative" name="action" value="">
                                         <img src="{% static 'main/img/items/gold.jpg' %}" height="100px" width="100px" style="border-radius: 10px; box-shadow: #ff8000 0 0 10px; border: #ff7300 solid 2px; ">
-                                        <h3 class="DM-h3" style="position: absolute; top: 25px; right: 10px">{{hero.potions.gold}}</h3>
+                                        <h3 class="DM-h3" style="position: absolute; top: 25px; right: 20px">{{hero.potions.gold}}</h3>
                                     </button>
-                                </form>
                                 <!--POTIONS HEAL-->
                                 {% if game.phase == 'hero_attack' or game.phase == 'mob_attack' %}
                                 {% if hero.potions.heal or hero.condition.heal %}
                                 {% if hero.condition.heal %}
-                                <form method="get">
-                                    <button style="background-color: rgba(0, 0, 0, 0); border: none; display: flex" name="action" value="heal">
-                                        <img src="{% static 'main/img/items/potion_0_active.jpg' %}" height="100px" width="100px" style="border-radius: 10px; box-shadow: #ff0000 0 0 10px; border: #ff0000 solid 2px; ">
-                                        <h3 class="DM-h3" style="position: relative; top: 10px; left: -30px">{{hero.condition.heal}}</h3>
-                                    </button>
-                                </form>
+
+                                    <img src="{% static 'main/img/items/potion_0_active.jpg' %}" height="100px" width="100px" style="border-radius: 10px; box-shadow: #ff0000 0 0 10px; border: #ff0000 solid 2px;">
+                                    <h3 class="DM-h3">{{hero.condition.heal}}</h3>
+
                                 {% else %}
                                 <form method="get">
                                     <button style="background-color: rgba(0, 0, 0, 0); border: none; display: flex" name="action" value="potion_heal">
@@ -122,12 +118,10 @@
                                 <!--POTIONS MANA-->
                                 {% if hero.potions.mana or hero.condition.mana %}
                                 {% if hero.condition.mana %}
-                                <form method="get">
                                     <button style="background-color: rgba(0, 0, 0, 0); border: none; display: flex" name="action" value="mana">
                                         <img src="{% static 'main/img/items/potion_1_active.jpg' %}" height="100px" width="100px" style="border-radius: 10px; box-shadow: #0022ff 0 0 10px; border: #0048ff solid 2px; ">
                                         <h3 class="DM-h3" style="position: relative; top: 10px; left: -30px">{{hero.condition.mana}}</h3>
                                     </button>
-                                </form>
                                 {% else %}
                                 <form method="get">
                                     <button style="background-color: rgba(0, 0, 0, 0); border: none; display: flex" name="action" value="potion_mana">
@@ -140,12 +134,10 @@
                                 <!--POTIONS FURY-->
                                 {% if hero.potions.fury or hero.condition.fury %}
                                 {% if hero.condition.fury %}
-                                <form method="get">
                                     <button style="background-color: rgba(0, 0, 0, 0); border: none; display: flex" name="action" value="fury">
                                         <img src="{% static 'main/img/items/potion_2_active.jpg' %}" height="100px" width="100px" style="border-radius: 10px; border: #40ff00 solid 2px; box-shadow: #1aff00 0 0 10px;">
                                         <h3 class="DM-h3" style="position: relative; top: 10px; right: 45px">{{hero.condition.fury}}</h3>
                                     </button>
-                                </form>
                                 {% else %}
                                 <form method="get">
                                     <button style="background-color: rgba(0, 0, 0, 0); border: none; display: flex" name="action" value="potion_fury">
@@ -158,12 +150,10 @@
                                 <!--POTIONS SHIELD-->
                                 {% if hero.potions.shield or hero.condition.shield %}
                                 {% if hero.condition.shield %}
-                                <form method="get">
                                     <button style="background-color: rgba(0, 0, 0, 0); border: none; display: flex" name="action" value="shield">
                                         <img src="{% static 'main/img/items/potion_3_active.jpg' %}" height="100px" width="100px" style="border-radius: 10px; border: #ffdd00 solid 2px; box-shadow: #ffdd00 0 0 10px;">
                                         <h3 class="DM-h3" style="position: relative; top: 10px; right: 45px">{{hero.condition.shield}}</h3>
                                     </button>
-                                </form>
                                 {% else %}
                                 <form method="get">
                                     <button style="background-color: rgba(0, 0, 0, 0); border: none; display: flex" name="action" value="potion_shield">
@@ -176,12 +166,10 @@
                                 <!--POTIONS SPIKES-->
                                 {% if hero.potions.spikes or hero.condition.spikes %}
                                 {% if hero.condition.spikes %}
-                                <form method="get">
                                     <button style="background-color: rgba(0, 0, 0, 0); border: none; display: flex" name="action" value="spikes">
                                         <img src="{% static 'main/img/items/potion_4_active.jpg' %}" height="100px" width="100px" style="border-radius: 10px; border: #a100ff solid 2px; box-shadow: #a100ff 0 0 10px;">
                                         <h3 class="DM-h3" style="position: relative; top: 10px; right: 45px">{{hero.condition.spikes}}</h3>
                                     </button>
-                                </form>
                                 {% else %}
                                 <form method="get">
                                     <button style="background-color: rgba(0, 0, 0, 0); border: none; display: flex" name="action" value="potion_spikes">

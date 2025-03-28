@@ -63,7 +63,7 @@ def Dungeon_master(request, action: str = None):
     # отслеживание фазы выбор героя
     if phase == "choose_hero" and re.match('hero', action):
         hero.choose_hero(int(list(action)[-1]))
-        hero.potions['heal'], hero.potions['mana'], hero.potions['fury'], hero.potions['shield'], hero.potions['spikes'] = 3, 3, 3, 3, 3
+
         game.phase = "choose_location"
     # отслеживание фазы выбор локации
     if phase == "choose_location" and re.match("cave", action):
@@ -160,7 +160,7 @@ def Dungeon_master(request, action: str = None):
         hero.stats['mp'] = hero.stats['mp_max'] if hero.stats['mp'] > hero.stats['mp_max'] else hero.stats['mp']
         hero.condition['heal'] = hero.condition['heal'] - 1 if hero.condition['heal'] and re.search('attack', action) else hero.condition['heal']
         hero.condition['mana'] = hero.condition['mana'] - 1 if hero.condition['mana'] and re.search('attack', action) else hero.condition['mana']
-        hero.condition['fury'] = hero.condition['fury'] - 1 if hero.condition['fury'] and game.phase == "mob_attack" and re.search('attack', action) else hero.condition['fury']
+        hero.condition['fury'] = hero.condition['fury'] - 1 if hero.condition['fury'] and re.search('attack', action) else hero.condition['fury']
         hero.condition['shield'] = hero.condition['shield'] - 1 if hero.condition['shield'] and re.search(
             'mob_attack', action) else hero.condition['shield']
         hero.condition['spikes'] = hero.condition['spikes'] - 1 if hero.condition['spikes'] and re.search(
