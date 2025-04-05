@@ -250,6 +250,9 @@
             </div>
             <div id="body-div">
                 <!--         BODY                -->
+                {% if game.phase == 'exploration' %}
+                    <h1>{{ location.step_discription.discription }}</h1>
+                {% endif %}
                 <!--       phase  title                -->
                 {% if game.phase == 'title' %}
                 <a href="#back-div" style="display: block"><form method="get">

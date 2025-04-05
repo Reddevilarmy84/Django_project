@@ -33,7 +33,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'Parser_lord_films',
     'blog',
-    'kish',
     'main',
     'Dungeon_master',
     'django.contrib.admin',

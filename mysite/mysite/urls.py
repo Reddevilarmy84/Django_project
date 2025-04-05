@@ -22,7 +22,6 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
-    path('kish', include('kish.urls')),
     path('blog/', include('blog.urls')),
     path('Dungeon_master/', include('Dungeon_master.urls')),
     path('Parser_lord_films/', include('Parser_lord_films.urls')),

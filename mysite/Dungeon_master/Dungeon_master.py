@@ -359,22 +359,22 @@ class Hero:
     stats_list = [
         {
             'lvl': 1,
-            'attack_pwr': 50,
-            'hp': 200,
-            'hp_max': 200,
-            'hp_before': 200,
-            'mp': 350,
-            'mp_max': 350,
-            'mp_before': 350,
+            'attack_pwr': 25,
+            'hp': 300,
+            'hp_max': 300,
+            'hp_before': 300,
+            'mp': 200,
+            'mp_max': 200,
+            'mp_before': 200,
             'exp': 0,
             'exp_to_lvl': 200,
             'exp_before': 0,
-            'spec1_pwr': 70,
-            'spec2_pwr': 90,
-            'spec3_pwr': 140,
-            'spec1_mp': 30,
-            'spec2_mp': 60,
-            'spec3_mp': 100,
+            'spec1_pwr': 35,
+            'spec2_pwr': 60,
+            'spec3_pwr': 100,
+            'spec1_mp': 22,
+            'spec2_mp': 35,
+            'spec3_mp': 48,
         },
         {
             'lvl': 1,
@@ -482,19 +482,19 @@ class Hero:
 
     def hp_bar(self):
         try:
-            bar = 70 if int( self.stats['hp'] / self.stats['hp_max'] * 300 ) <= 70 else int( self.stats['hp'] / self.stats['hp_max'] * 300 )
+            bar = 70 if self.stats['hp'] // self.stats['hp_max'] * 300 <= 70 else self.stats['hp'] // self.stats['hp_max'] * 300
         except:
             bar = 70
         return bar
 
     def mp_bar(self):
-        return 70 if int( self.stats['mp'] / self.stats['mp_max'] * 300 ) <= 70 else int( self.stats['mp'] / self.stats['mp_max'] * 300 )
+        return 70 if self.stats['mp'] // self.stats['mp_max'] * 300 <= 70 else self.stats['mp'] // self.stats['mp_max'] * 300
 
     def exp_bar(self):
-        return 70 if int( self.stats['exp'] / self.stats['exp_to_lvl'] * 300 ) <= 70 else int( self.stats['exp'] / self.stats['exp_to_lvl'] * 300 )
+        return 70 if self.stats['exp'] // self.stats['exp_to_lvl'] * 300 <= 70 else self.stats['exp'] // self.stats['exp_to_lvl'] * 300
 
     def exp_bar_value(self):
-        return int( self.stats['exp'] / self.stats['exp_to_lvl'] * 100 )
+        return self.stats['exp'] // self.stats['exp_to_lvl'] * 100
 
     def fury_damage(self):
         return int(self.current_attack['pwr']*1.3)
@@ -519,27 +519,57 @@ class Location:
     ]
     stats_list = [
         {
-            'length': 10,
+            'length': 20,
             'completed': 0,
             'chance_mob': 20,
             'chance_reward': 20,
             'dificult': 0,
         },
         {
-            'length': 15,
+            'length': 35,
             'completed': 0,
             'chance_mob': 30,
             'chance_reward': 30,
             'dificult': 1,
         },
         {
-            'length': 20,
+            'length': 50,
             'completed': 0,
             'chance_mob': 50,
             'chance_reward': 50,
             'dificult': 2,
         },
 
+    ]
+    step_discription = {}
+    step_discriptions = [
+        {
+            'discription': 'Здесь ничего нет'
+        },
+        {
+            'discription': 'Пустота да мрак'
+        },
+        {
+            'discription': 'За углом кто-то есть?'
+        },
+        {
+            'discription': 'Холодно, тихо.. Что это за хруст?'
+        },
+        {
+            'discription': 'Здесь всё чисто!'
+        },
+        {
+            'discription': 'Продвигаюсь вперёд.'
+        },
+        {
+            'discription': 'В животе урчит, не отказался бы от Дошика.'
+        },
+        {
+            'discription': 'Подозрительно тихо!'
+        },
+        {
+            'discription': 'Такое чувство, что за мной кто-то следит.'
+        },
     ]
 
 class Loot:
@@ -592,6 +622,11 @@ class Loot:
             gold = self.loot[5]
             gold['quantity'] = random.randrange(500)
             self.bount.append(gold)
+
+def mob_spec_chance(chance):
+    n = random.randrange(1, 100)
+    n = n + chance if n + chance < 100 else 100
+    return 1 if 50 < n < 75 else 2 if 74 < n < 90 else 3 if 89 < n < 100 else 0
 
 class Colors:
     black = '\033[30m'

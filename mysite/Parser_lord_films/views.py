@@ -92,5 +92,5 @@ def Parser_lord_films(request, year: int = None, pages: int = None, clear: bool 
         'content': content,
         'font_size': font_size,
     }
-    return render(request, 'main/parser.html', context)
+    return render(request, 'Parser_lord_films/parser_lord_films.html', context)
 

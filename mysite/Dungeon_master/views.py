@@ -1,4 +1,4 @@
-from .Dungeon_master import dict_to_json, json_to_dict, path_to_json_DM, Hero, Mob, Location, Game, Loot
+from .Dungeon_master import mob_spec_chance, Hero, Mob, Location, Game, Loot
 from django.shortcuts import render
 import random
 import re
@@ -80,16 +80,17 @@ def Dungeon_master(request, action: str = "Nothing"):
             if location.stats['chance_mob'] >= chance:
                 mob.set_mob()
                 mob.set_lvl_mob(random.randint(location.stats['dificult'] - 2 + hero.stats['lvl'], location.stats['dificult'] + 2 + hero.stats['lvl']))
-                mob.attack(random.randrange(4))
+                mob.attack(mob_spec_chance(0))
                 mob.current_attack['pwr'] = None
                 game.phase = "meet_mob"
             location.stats['completed'] += 1
+            location.step_discription = random.choice(location.step_discriptions)
     # отслеживание фазы встреча моба
     game.phase = random.choice(["hero_attack", "mob_attack"]) if game.phase == "meet_mob" and action == "enter_the_battle" else game.phase
     # отслеживание атака моба
     if phase == "mob_attack":
         hero.current_attack['pwr'] = None
-        mob.attack(random.randrange(4))
+        mob.attack(mob_spec_chance(0))
         hero.stats['hp_before'] = int(hero.stats['hp'] / hero.stats['hp_max'] * 300)
         # если активно состояние героя щит то хп героя уменьшается на 50% меньше. результат деления - это целое число
         hero.stats['hp'] = hero.stats['hp'] - int(mob.current_attack['pwr']/2) if hero.condition['shield'] else hero.stats['hp'] - mob.current_attack['pwr']

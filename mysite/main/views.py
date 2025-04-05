@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .parser import pars_trading_view
+from .parser_trading_views import pars_trading_view
 
 
 def index(request):
