@@ -9,7 +9,7 @@ game = None
 location = None
 loot = None
 
-def Dungeon_master(request, action: str = None):
+def Dungeon_master(request, action: str = "Nothing"):
     global hero, mob, game, location, loot
     loot = Loot() if not loot else loot
     hero = Hero() if not hero else hero
@@ -61,12 +61,12 @@ def Dungeon_master(request, action: str = None):
     #отслеживание фазы title
     game.phase = 'choose_hero' if game.phase == "title" and action == "start_game" else game.phase
     # отслеживание фазы выбор героя
-    if phase == "choose_hero" and re.match('hero', action):
+    if phase == "choose_hero" and 'hero' in action:
         hero.choose_hero(int(list(action)[-1]))
 
         game.phase = "choose_location"
     # отслеживание фазы выбор локации
-    if phase == "choose_location" and re.match("cave", action):
+    if phase == "choose_location" and "cave" in action:
         location.content = dict(location.content_list[int(list(action)[-1])].items())
         location.stats = dict(location.stats_list[int(list(action)[-1])].items())
         game.phase = "exploration"
