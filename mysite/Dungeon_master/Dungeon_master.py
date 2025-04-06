@@ -300,8 +300,11 @@ class Mob:
         },
     ]
 
-    def set_mob(self):
-        self.content = dict(random.choice(self.content_list).items())
+    def set_mob(self, mobs: list = None):
+        print(mobs)
+        start = mobs[0] if mobs else None
+        end = mobs[1] if mobs else None
+        self.content = dict(random.choice(self.content_list[start:end]).items())
         self.stats = dict(self.stats_list[self.content_list.index(self.content)].items())
 
     def set_lvl_mob(self, lvl: int):
@@ -524,6 +527,7 @@ class Location:
             'chance_mob': 20,
             'chance_reward': 20,
             'dificult': 0,
+            'mobs_list':[0, 3],
         },
         {
             'length': 35,
@@ -531,6 +535,7 @@ class Location:
             'chance_mob': 30,
             'chance_reward': 30,
             'dificult': 1,
+            'mobs_list': [3, 6],
         },
         {
             'length': 50,
@@ -538,6 +543,7 @@ class Location:
             'chance_mob': 50,
             'chance_reward': 50,
             'dificult': 2,
+            'mobs_list': [6, 9],
         },
 
     ]

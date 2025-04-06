@@ -78,7 +78,7 @@ def Dungeon_master(request, action: str = "Nothing"):
         else:
             chance = random.randrange(100)
             if location.stats['chance_mob'] >= chance:
-                mob.set_mob()
+                mob.set_mob(location.stats['mobs_list'])
                 mob.set_lvl_mob(random.randint(location.stats['dificult'] - 2 + hero.stats['lvl'], location.stats['dificult'] + 2 + hero.stats['lvl']))
                 mob.attack(mob_spec_chance(0))
                 mob.current_attack['pwr'] = None
