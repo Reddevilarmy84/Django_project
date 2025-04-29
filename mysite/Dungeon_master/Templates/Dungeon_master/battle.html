@@ -58,12 +58,17 @@
 @keyframes damage {
     0% {
         width: {{hero.stats.hp_before}}px;
+    {% if hero.stats.hp_before != hero.hp_bar %}
+        background-color: #a60000;
+    {% endif %}
     }
 
     100% {
         width: {{hero.hp_bar}}px;
+
     }
 }
+
 </style>
 </head>
 <body>

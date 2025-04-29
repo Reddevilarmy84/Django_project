@@ -485,19 +485,19 @@ class Hero:
 
     def hp_bar(self):
         try:
-            bar = 70 if self.stats['hp'] // self.stats['hp_max'] * 300 <= 70 else self.stats['hp'] // self.stats['hp_max'] * 300
+            bar = 70 if int(self.stats['hp'] / self.stats['hp_max'] * 300) <= 70 else int(self.stats['hp'] / self.stats['hp_max'] * 300)
         except:
             bar = 70
         return bar
 
     def mp_bar(self):
-        return 70 if self.stats['mp'] // self.stats['mp_max'] * 300 <= 70 else self.stats['mp'] // self.stats['mp_max'] * 300
+        return 70 if int(self.stats['mp'] / self.stats['mp_max'] * 300) <= 70 else int(self.stats['mp'] / self.stats['mp_max'] * 300)
 
     def exp_bar(self):
-        return 70 if self.stats['exp'] // self.stats['exp_to_lvl'] * 300 <= 70 else self.stats['exp'] // self.stats['exp_to_lvl'] * 300
+        return 75 if int(self.stats['exp'] / self.stats['exp_to_lvl'] * 300) <= 75 else int(self.stats['exp'] / self.stats['exp_to_lvl'] * 300)
 
     def exp_bar_value(self):
-        return self.stats['exp'] // self.stats['exp_to_lvl'] * 100
+        return int(self.stats['exp'] / self.stats['exp_to_lvl'] * 100)
 
     def fury_damage(self):
         return int(self.current_attack['pwr']*1.3)
